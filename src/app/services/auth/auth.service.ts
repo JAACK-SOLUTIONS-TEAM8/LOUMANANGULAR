@@ -25,4 +25,9 @@ export class AuthService {
     return this.dataService.genericCaller("post", "Auth/ResetPassword", userData);
   }
 
+  forgetPassword(email: string) {
+    debugger
+    return this.dataService.genericCaller("get", `Auth/${email}`, "");
+  }
+
 }
