@@ -27,5 +27,11 @@ export class ClientService {
     return this.dataService.genericCaller("get", `Client/${clientId}`, "");
   }
 
+  getClientByUserId(clientUserId: number) {
+    debugger
+    return this.dataService.genericCaller("get", `Client/Users/${clientUserId}`, "");
+  }
+
+
 
 }
