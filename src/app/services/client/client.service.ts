@@ -37,6 +37,11 @@ export class ClientService {
     return this.dataService.genericCaller("get", `Client/Delete/${clientUserId}`, "");
   }
 
+  searchClientByName(searchTerm:string)
+  {
+    return this.dataService.genericCaller("get","Client/Search?name="+searchTerm,"");
+  }
+
 
 
 }
