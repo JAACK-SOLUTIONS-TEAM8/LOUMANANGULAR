@@ -42,6 +42,11 @@ export class ClientService {
     return this.dataService.genericCaller("get","Client/Search?name="+searchTerm,"");
   }
 
+  searchSlots(adminUserId:number,searchDate:string)
+  {
+    return this.dataService.genericCaller("get",`Meeting/AdminSlots/Search?adminUserId=${adminUserId}&date=${searchDate}`,"");
+  }
+
 
 
 }
