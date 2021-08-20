@@ -17,7 +17,10 @@ export class ClientService {
     return this.dataService.genericCaller("get", "Client/All", "");
   }
 
- 
+  addClient(clientData: any) {
+    debugger
+    return this.dataService.genericCaller("post", "Client/Add", clientData);
+  }
 
 
 }
