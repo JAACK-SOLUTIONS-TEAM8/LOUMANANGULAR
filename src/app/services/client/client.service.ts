@@ -1,9 +1,23 @@
 import { Injectable } from '@angular/core';
+import { DataService } from '../data/data.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ClientService {
 
-  constructor() { }
+  constructor(
+    private dataService:DataService,
+    
+  ) { }
+
+
+  getAllClients() {
+    debugger
+    return this.dataService.genericCaller("get", "Client/All", "");
+  }
+
+ 
+
+
 }
