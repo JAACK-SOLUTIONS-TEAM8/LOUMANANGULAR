@@ -1,9 +1,18 @@
 import { Injectable } from '@angular/core';
+import { DataService } from '../data/data.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  constructor() { }
+  constructor(
+    private dataService:DataService
+  ) { }
+
+  login(userData:any) {
+    debugger
+    return this.dataService.genericCaller("post", "Auth/Login", userData);
+  }
+
 }
