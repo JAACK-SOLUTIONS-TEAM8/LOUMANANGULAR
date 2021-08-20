@@ -22,5 +22,10 @@ export class ClientService {
     return this.dataService.genericCaller("post", "Client/Add", clientData);
   }
 
+  getClientById(clientId: number) {
+    debugger
+    return this.dataService.genericCaller("get", `Client/${clientId}`, "");
+  }
+
 
 }
