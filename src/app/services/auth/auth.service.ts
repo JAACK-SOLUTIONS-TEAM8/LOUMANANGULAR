@@ -20,4 +20,9 @@ export class AuthService {
     return this.dataService.genericCaller("get", "Auth/Logout/"+userId, "");
   }
 
+  resetPasswordInitial(userData: any) {
+    debugger
+    return this.dataService.genericCaller("post", "Auth/ResetPassword", userData);
+  }
+
 }
