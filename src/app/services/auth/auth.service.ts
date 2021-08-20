@@ -15,4 +15,9 @@ export class AuthService {
     return this.dataService.genericCaller("post", "Auth/Login", userData);
   }
 
+  logout(userId:number) {
+    debugger
+    return this.dataService.genericCaller("get", "Auth/Logout/"+userId, "");
+  }
+
 }
