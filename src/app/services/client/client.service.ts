@@ -32,6 +32,11 @@ export class ClientService {
     return this.dataService.genericCaller("get", `Client/Users/${clientUserId}`, "");
   }
 
+  deleteClient(clientUserId: number) {
+    debugger
+    return this.dataService.genericCaller("get", `Client/Delete/${clientUserId}`, "");
+  }
+
 
 
 }
