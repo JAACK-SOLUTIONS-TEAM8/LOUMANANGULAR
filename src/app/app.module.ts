@@ -19,6 +19,10 @@ import { AddAdminComponent } from './Admin/components/add-admin/add-admin.compon
 import { AdminDetailComponent } from './Admin/components/admin-detail/admin-detail.component';
 import { AddEnquiryTypeComponent } from './Admin/add-enquiry-type/add-enquiry-type.component';
 import { EnquiryTypeDetailComponent } from './Admin/enquiry-type-detail/enquiry-type-detail.component';
+import { AddTeamComponent } from './Admin/add-team/add-team.component';
+import { AttendanceComponent } from './Admin/attendance/attendance.component';
+import { ManageTeamComponent } from './Admin/manage-team/manage-team.component';
+import { TeamsDetailComponent } from './Admin/teams-detail/teams-detail.component';
 
 
 @NgModule({
@@ -40,6 +44,10 @@ import { EnquiryTypeDetailComponent } from './Admin/enquiry-type-detail/enquiry-
     AdminDetailComponent,
     AddEnquiryTypeComponent,
     EnquiryTypeDetailComponent,
+    AddTeamComponent,
+    AttendanceComponent,
+    ManageTeamComponent,
+    TeamsDetailComponent,
     
   ],
   imports: [
