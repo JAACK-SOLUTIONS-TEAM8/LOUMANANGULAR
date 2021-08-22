@@ -7,6 +7,8 @@ import { CommonModule } from '@angular/common';
 import { AddSlotComponent } from './Admin/Meeting/add-slot/add-slot.component';
 import { MeetingDetailComponent } from './Admin/Meeting/meeting-detail/meeting-detail.component';
 import { SlotsDetailComponent } from './Admin/Meeting/slots-detail/slots-detail.component';
+import { StockDetailComponent } from './Admin/Stock/stock-detail/stock-detail.component';
+import { WireOffStockComponent } from './Admin/Stock/wire-off-stock/wire-off-stock.component';
 
 
 @NgModule({
@@ -16,6 +18,8 @@ import { SlotsDetailComponent } from './Admin/Meeting/slots-detail/slots-detail.
     AddSlotComponent,
     MeetingDetailComponent,
     SlotsDetailComponent,
+    StockDetailComponent,
+    WireOffStockComponent,
     
   ],
   imports: [
