@@ -12,6 +12,7 @@ import { WireOffStockComponent } from './Admin/Stock/wire-off-stock/wire-off-sto
 import { ClientListComponent } from './admin/Client/client-list/client-list.component';
 import { AddLocationComponent } from './Admin/Location/add-location/add-location.component';
 import { LocationDetailComponent } from './Admin/Location/location-detail/location-detail.component';
+import { ClientEnquiryComponent } from './Admin/ClientEnquiry/client-enquiry/client-enquiry.component';
 
 
 @NgModule({
@@ -26,6 +27,7 @@ import { LocationDetailComponent } from './Admin/Location/location-detail/locati
     ClientListComponent,
     AddLocationComponent,
     LocationDetailComponent,
+    ClientEnquiryComponent,
     
   ],
   imports: [
