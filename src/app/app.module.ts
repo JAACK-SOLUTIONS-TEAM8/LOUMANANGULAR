@@ -9,7 +9,7 @@ import { MeetingDetailComponent } from './Admin/Meeting/meeting-detail/meeting-d
 import { SlotsDetailComponent } from './Admin/Meeting/slots-detail/slots-detail.component';
 import { StockDetailComponent } from './Admin/Stock/stock-detail/stock-detail.component';
 import { WireOffStockComponent } from './Admin/Stock/wire-off-stock/wire-off-stock.component';
-import { ClientListComponent } from './admin/Client/client-list/client-list.component';
+import { ClientListComponent } from './Admin/Client/client-list/client-list.component';
 import { AddLocationComponent } from './Admin/Location/add-location/add-location.component';
 import { LocationDetailComponent } from './Admin/Location/location-detail/location-detail.component';
 import { ClientEnquiryComponent } from './Admin/ClientEnquiry/client-enquiry/client-enquiry.component';
