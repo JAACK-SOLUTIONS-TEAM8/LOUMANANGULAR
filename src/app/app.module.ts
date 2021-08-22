@@ -9,6 +9,7 @@ import { MeetingDetailComponent } from './Admin/Meeting/meeting-detail/meeting-d
 import { SlotsDetailComponent } from './Admin/Meeting/slots-detail/slots-detail.component';
 import { StockDetailComponent } from './Admin/Stock/stock-detail/stock-detail.component';
 import { WireOffStockComponent } from './Admin/Stock/wire-off-stock/wire-off-stock.component';
+import { ClientListComponent } from './admin/Client/client-list/client-list.component';
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import { WireOffStockComponent } from './Admin/Stock/wire-off-stock/wire-off-sto
     SlotsDetailComponent,
     StockDetailComponent,
     WireOffStockComponent,
+    ClientListComponent,
     
   ],
   imports: [
