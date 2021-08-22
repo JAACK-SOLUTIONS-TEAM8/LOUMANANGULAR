@@ -15,6 +15,8 @@ import { LocationDetailComponent } from './Admin/Location/location-detail/locati
 import { ClientEnquiryComponent } from './Admin/ClientEnquiry/client-enquiry/client-enquiry.component';
 import { ClientEnquiryDetailComponent } from './Admin/ClientEnquiry/client-enquiry-detail/client-enquiry-detail.component';
 import { EnquiryResponseComponent } from './Admin/ClientEnquiry/enquiry-response/enquiry-response.component';
+import { AddAdminComponent } from './Admin/components/add-admin/add-admin.component';
+import { AdminDetailComponent } from './Admin/components/admin-detail/admin-detail.component';
 
 
 @NgModule({
@@ -32,6 +34,8 @@ import { EnquiryResponseComponent } from './Admin/ClientEnquiry/enquiry-response
     ClientEnquiryComponent,
     ClientEnquiryDetailComponent,
     EnquiryResponseComponent,
+    AddAdminComponent,
+    AdminDetailComponent,
     
   ],
   imports: [
