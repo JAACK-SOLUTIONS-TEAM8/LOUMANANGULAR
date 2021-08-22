@@ -13,6 +13,7 @@ import { ClientListComponent } from './admin/Client/client-list/client-list.comp
 import { AddLocationComponent } from './Admin/Location/add-location/add-location.component';
 import { LocationDetailComponent } from './Admin/Location/location-detail/location-detail.component';
 import { ClientEnquiryComponent } from './Admin/ClientEnquiry/client-enquiry/client-enquiry.component';
+import { ClientEnquiryDetailComponent } from './Admin/ClientEnquiry/client-enquiry-detail/client-enquiry-detail.component';
 
 
 @NgModule({
@@ -28,6 +29,7 @@ import { ClientEnquiryComponent } from './Admin/ClientEnquiry/client-enquiry/cli
     AddLocationComponent,
     LocationDetailComponent,
     ClientEnquiryComponent,
+    ClientEnquiryDetailComponent,
     
   ],
   imports: [
