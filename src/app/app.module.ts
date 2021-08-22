@@ -23,6 +23,7 @@ import { AddTeamComponent } from './Admin/add-team/add-team.component';
 import { AttendanceComponent } from './Admin/attendance/attendance.component';
 import { ManageTeamComponent } from './Admin/manage-team/manage-team.component';
 import { TeamsDetailComponent } from './Admin/teams-detail/teams-detail.component';
+import { TeamsAttendanceHistoryComponent } from './Admin/teams-attendance-history/teams-attendance-history.component';
 
 
 @NgModule({
@@ -48,6 +49,7 @@ import { TeamsDetailComponent } from './Admin/teams-detail/teams-detail.componen
     AttendanceComponent,
     ManageTeamComponent,
     TeamsDetailComponent,
+    TeamsAttendanceHistoryComponent,
     
   ],
   imports: [
