@@ -37,9 +37,6 @@ import { TeamsAttendanceHistoryComponent } from './Admin/teams-attendance-histor
     EnquiryResponseComponent,
     AddAdminComponent,
     AdminDetailComponent,
-    ClientEnquiryDetailComponent,
-    AddAdminComponent,
-    SlotsDetailComponent,
     TeamsAttendanceHistoryComponent,
   ],
   imports: [
