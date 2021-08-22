@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, Component } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -17,12 +17,6 @@ import { ClientEnquiryDetailComponent } from './Admin/ClientEnquiry/client-enqui
 import { EnquiryResponseComponent } from './Admin/ClientEnquiry/enquiry-response/enquiry-response.component';
 import { AddAdminComponent } from './Admin/components/add-admin/add-admin.component';
 import { AdminDetailComponent } from './Admin/components/admin-detail/admin-detail.component';
-import { AddEnquiryTypeComponent } from './Admin/add-enquiry-type/add-enquiry-type.component';
-import { EnquiryTypeDetailComponent } from './Admin/enquiry-type-detail/enquiry-type-detail.component';
-import { AddTeamComponent } from './Admin/add-team/add-team.component';
-import { AttendanceComponent } from './Admin/attendance/attendance.component';
-import { ManageTeamComponent } from './Admin/manage-team/manage-team.component';
-import { TeamsDetailComponent } from './Admin/teams-detail/teams-detail.component';
 import { TeamsAttendanceHistoryComponent } from './Admin/teams-attendance-history/teams-attendance-history.component';
 
 
@@ -43,14 +37,10 @@ import { TeamsAttendanceHistoryComponent } from './Admin/teams-attendance-histor
     EnquiryResponseComponent,
     AddAdminComponent,
     AdminDetailComponent,
-    AddEnquiryTypeComponent,
-    EnquiryTypeDetailComponent,
-    AddTeamComponent,
-    AttendanceComponent,
-    ManageTeamComponent,
-    TeamsDetailComponent,
+    ClientEnquiryDetailComponent,
+    AddAdminComponent,
+    SlotsDetailComponent,
     TeamsAttendanceHistoryComponent,
-    
   ],
   imports: [
     AppRoutingModule,
