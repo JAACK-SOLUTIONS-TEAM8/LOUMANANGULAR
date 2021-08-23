@@ -21,6 +21,12 @@ import { TeamsAttendanceHistoryComponent } from './Admin/teams-attendance-histor
 import { AddEnquiryTypeComponent } from './Admin/EnquiryType/add-enquiry-type/add-enquiry-type.component';
 import { EnquiryTypeDetailComponent } from './Admin/EnquiryType/enquiry-type-detail/enquiry-type-detail.component';
 import { AddClientComponent } from './client-sub-system/add-client/add-client.component';
+import { AddProductComponent } from './product-sub-system/add-product/add-product.component';
+import { AddProductSizeComponent } from './product-sub-system/add-product-size/add-product-size.component';
+import { AddProductTypeComponent } from './product-sub-system/add-product-type/add-product-type.component';
+import { ProductListComponent } from './product-sub-system/product-list/product-list.component';
+import { ProductSizeDetailComponent } from './product-sub-system/product-size-detail/product-size-detail.component';
+import { ProductTypeDetailComponent } from './product-sub-system/product-type-detail/product-type-detail.component';
 
 
 
@@ -47,6 +53,12 @@ import { AddClientComponent } from './client-sub-system/add-client/add-client.co
     AddEnquiryTypeComponent,
     EnquiryTypeDetailComponent,
     AddClientComponent,
+    AddProductComponent,
+    AddProductSizeComponent,
+    AddProductTypeComponent,
+    ProductListComponent,
+    ProductSizeDetailComponent,
+    ProductTypeDetailComponent,
 
 
     
