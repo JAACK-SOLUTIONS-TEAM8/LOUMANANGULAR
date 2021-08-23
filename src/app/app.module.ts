@@ -23,6 +23,7 @@ import { EnquiryTypeDetailComponent } from './Admin/EnquiryType/enquiry-type-det
 import { AddClientComponent } from './client-sub-system/add-client/add-client.component';
 import { ClientProfileComponent } from './client-sub-system/client-profile/client-profile.component';
 import { AddEnquiryComponent } from './client-sub-system/Enquiries/add-enquiry/add-enquiry.component';
+import { EnquiryComponent } from './client-sub-system/Enquiries/enquiry/enquiry.component';
 
 
 
@@ -49,6 +50,7 @@ import { AddEnquiryComponent } from './client-sub-system/Enquiries/add-enquiry/a
     AddClientComponent,
     ClientProfileComponent,
     AddEnquiryComponent,
+    EnquiryComponent,
     
   ],
   imports: [
