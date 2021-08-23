@@ -18,6 +18,8 @@ import { EnquiryResponseComponent } from './Admin/ClientEnquiry/enquiry-response
 import { AddAdminComponent } from './Admin/components/add-admin/add-admin.component';
 import { AdminDetailComponent } from './Admin/components/admin-detail/admin-detail.component';
 import { TeamsAttendanceHistoryComponent } from './Admin/teams-attendance-history/teams-attendance-history.component';
+import { AddEnquiryTypeComponent } from './Admin/EnquiryType/add-enquiry-type/add-enquiry-type.component';
+import { EnquiryTypeDetailComponent } from './Admin/EnquiryType/enquiry-type-detail/enquiry-type-detail.component';
 
 
 @NgModule({
@@ -38,6 +40,8 @@ import { TeamsAttendanceHistoryComponent } from './Admin/teams-attendance-histor
     AddAdminComponent,
     AdminDetailComponent,
     TeamsAttendanceHistoryComponent,
+    AddEnquiryTypeComponent,
+    EnquiryTypeDetailComponent,
   ],
   imports: [
     AppRoutingModule,
