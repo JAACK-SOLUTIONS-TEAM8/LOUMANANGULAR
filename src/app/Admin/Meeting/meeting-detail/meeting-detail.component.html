@@ -1,1 +1,44 @@
-<p>meeting-detail works!</p>
+
+<div class="card">
+    <div  class="card-header text-center">
+      <h3>Meeting Details</h3>
+    </div>
+    <div class="card-body">
+      <div class="row mt-5 mb-5">
+          <div class="col-2">
+
+          </div>
+        <div class="col-8">
+            
+            <div class="card">
+                <div class="card-body">
+                  <div class="row">
+                    <table class="table">
+                        <thead  style="background-color: rgb(103, 186, 241);">
+                          <tr>
+                            <th scope="col">Date</th>
+                            <th scope="col">StartTime</th>
+                            <th scope="col">EndTime</th>
+                            <th scope="col">Client Name</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let slot of slotsData">
+                            <td scope="row">{{slot.date | date}}</td>
+                            <td scope="row">{{slot.startTime | date:'shortTime'}}</td>
+                            <td scope="row">{{slot.endTime | date:'shortTime'}}</td>
+                            <td scope="row">{{slot.clientName}}</td>
+                        </tbody>
+                      </table>
+                  </div>
+                </div>
+              </div>
+
+        </div>
+        <div class="col-2">
+
+        </div>
+
+      </div>
+    </div>
+</div>
