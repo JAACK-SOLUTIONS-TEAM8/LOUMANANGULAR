@@ -24,6 +24,7 @@ import { AddClientComponent } from './client-sub-system/add-client/add-client.co
 import { ClientProfileComponent } from './client-sub-system/client-profile/client-profile.component';
 import { AddEnquiryComponent } from './client-sub-system/Enquiries/add-enquiry/add-enquiry.component';
 import { EnquiryComponent } from './client-sub-system/Enquiries/enquiry/enquiry.component';
+import { ClientSignUpComponent } from './user-sub-system/client-sign-up/client-sign-up.component';
 
 
 
@@ -51,6 +52,7 @@ import { EnquiryComponent } from './client-sub-system/Enquiries/enquiry/enquiry.
     ClientProfileComponent,
     AddEnquiryComponent,
     EnquiryComponent,
+    ClientSignUpComponent,
     
   ],
   imports: [
