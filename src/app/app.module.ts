@@ -21,6 +21,10 @@ import { TeamsAttendanceHistoryComponent } from './Admin/teams-attendance-histor
 import { AddEnquiryTypeComponent } from './Admin/EnquiryType/add-enquiry-type/add-enquiry-type.component';
 import { EnquiryTypeDetailComponent } from './Admin/EnquiryType/enquiry-type-detail/enquiry-type-detail.component';
 import { AddClientComponent } from './client-sub-system/add-client/add-client.component';
+import { DeliveryTypeComponent } from './order-sub-system/delivery-type/delivery-type/delivery-type.component';
+import { InvoiceComponent } from './order-sub-system/invoice/invoice/invoice.component';
+import { OrderProductComponent } from './order-sub-system/order-product/order-product/order-product.component';
+import { ShoppingCartComponent } from './order-sub-system/shopping-cart/shopping-cart/shopping-cart.component';
 
 
 
@@ -46,6 +50,10 @@ import { AddClientComponent } from './client-sub-system/add-client/add-client.co
     AddEnquiryTypeComponent,
     EnquiryTypeDetailComponent,
     AddClientComponent,
+    DeliveryTypeComponent,
+    InvoiceComponent,
+    OrderProductComponent,
+    ShoppingCartComponent,
 
     
   ],
