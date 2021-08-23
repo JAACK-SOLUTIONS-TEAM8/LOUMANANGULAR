@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MeetingService } from 'src/app/services/meeting/meeting.service';
 
 @Component({
   selector: 'app-meeting-detail',
@@ -7,9 +8,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MeetingDetailComponent implements OnInit {
 
-  constructor() { }
+  slotsData:any[]=[];
+
+  constructor(
+    private meetingService:MeetingService
+  ) { }
 
   ngOnInit(): void {
+    this.getBookedSlots();
+  }
+
+  getBookedSlots()
+  {
+    // var userDetail=JSON.parse(localStorage.getItem("User"));
+    // this.meetingService.getBookedSlotsByAdmin(Number(userDetail.userId)).subscribe(response=>{
+  //   //   this.slotsData=response.slots;
+  //   });
   }
 
 }
