@@ -21,6 +21,11 @@ import { TeamsAttendanceHistoryComponent } from './Admin/teams-attendance-histor
 import { AddEnquiryTypeComponent } from './Admin/EnquiryType/add-enquiry-type/add-enquiry-type.component';
 import { EnquiryTypeDetailComponent } from './Admin/EnquiryType/enquiry-type-detail/enquiry-type-detail.component';
 import { AddClientComponent } from './client-sub-system/add-client/add-client.component';
+import { AddEmployeeComponent } from './Employee/add-employee/add-employee.component';
+import { EmployeeDetailComponent } from './Employee/employee-detail/employee-detail.component';
+import { EmployeeRegisterComponent } from './Employee/employee-register/employee-register.component';
+import { EmployeeTeamDetailComponent } from './Employee/employee-team-detail/employee-team-detail.component';
+import { EmployeeTeamsComponent } from './Employee/employee-teams/employee-teams.component';
 
 
 
@@ -45,6 +50,11 @@ import { AddClientComponent } from './client-sub-system/add-client/add-client.co
     AddEnquiryTypeComponent,
     EnquiryTypeDetailComponent,
     AddClientComponent,
+    AddEmployeeComponent,
+    EmployeeDetailComponent,
+    EmployeeRegisterComponent,
+    EmployeeTeamDetailComponent,
+    EmployeeTeamsComponent,
     
   ],
   imports: [
