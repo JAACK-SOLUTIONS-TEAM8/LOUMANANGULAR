@@ -20,6 +20,10 @@ import { AdminDetailComponent } from './Admin/components/admin-detail/admin-deta
 import { TeamsAttendanceHistoryComponent } from './Admin/teams-attendance-history/teams-attendance-history.component';
 import { AddEnquiryTypeComponent } from './Admin/EnquiryType/add-enquiry-type/add-enquiry-type.component';
 import { EnquiryTypeDetailComponent } from './Admin/EnquiryType/enquiry-type-detail/enquiry-type-detail.component';
+import { AddDeliveryTypeComponent } from './order-sub-system/add-delivery-type/add-delivery-type/add-delivery-type.component';
+import { CheckoutComponent } from './order-sub-system/checkout/checkout/checkout.component';
+
+
 
 
 @NgModule({
@@ -42,6 +46,9 @@ import { EnquiryTypeDetailComponent } from './Admin/EnquiryType/enquiry-type-det
     TeamsAttendanceHistoryComponent,
     AddEnquiryTypeComponent,
     EnquiryTypeDetailComponent,
+    AddDeliveryTypeComponent,
+    CheckoutComponent,
+    
   ],
   imports: [
     AppRoutingModule,
