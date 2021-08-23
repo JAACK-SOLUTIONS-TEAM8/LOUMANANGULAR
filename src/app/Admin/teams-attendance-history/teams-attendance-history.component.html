@@ -1,1 +1,132 @@
-<p>teams-attendance-history works!</p>
+<div class="card">
+    <div  class="card-header text-center">
+      <h3>Teams Detail</h3>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-2">
+            </div>
+            <div class="col-lg-4 col-md-3 col-sm-6 col-12">
+              <span class="input-group" style="float: right;">
+                <input type="date" class="form-control"  [max]="today" aria-describedby="basic-addon1" [(ngModel)]="dateData">
+              </span>
+            </div>
+            <div class="col-2">
+            </div>
+          </div>    
+      <div class="row mt-5 mb-5">
+          <div class="col-2">
+
+          </div>
+        <div class="col-8">
+            
+            <div class="card">
+                <div class="card-body">
+                  <div class="row">
+                    <table class="table">
+                        <thead  style="background-color: rgb(103, 186, 241);">
+                          <tr>
+                            <th scope="col">Team</th>
+                            <th scope="col">Location</th>
+                            <th scope="col">Actions</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let team of allTeamsData">
+                            <td scope="row">{{team.teamName}}</td>
+                            <td scope="row">{{team.locationArea}}</td>
+                            <td scope="row">
+                              <button class="btn btn-outline-primary" (click)="getAttendance(team)">View Attendance</button>
+                            </td>  
+                          </tr>
+                      </tbody>
+                      </table>
+                  </div>
+                </div>
+              </div>
+
+        </div>
+        <div class="col-2">
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+<div class="row mt-5" id="teamAttendance">
+    <div class="col-12">
+        <div  class="card-header text-center">
+            <h3>Team Attendance</h3>
+        </div>
+          <div class="card-body">
+        
+            <div class="row mt-5 mb-5">
+                <div class="col-2">
+                </div>
+              <div class="col-8">
+                  
+                  <div class="card">
+                    <div  class="card-header text-center">
+                      <div class="row">
+                        <div class="col-3">
+                          <h5><b>Team: </b><span>{{teamData.teamName}}</span></h5>
+                        </div>
+                        <div class="col-5">
+                          <h5><b>Date: </b><span>{{dateData | date}}</span></h5>
+                        </div>
+                        <div class="col-4">
+                          <h5><b>Timings: </b><span>{{teamData.startTime | date:'shortTime'}} - {{teamData.endTime | date:'shortTime'}}</span></h5>
+                        </div>
+                      </div>
+                  </div>
+                      <div class="card-body">
+                        <div class="row">
+                          <table class="table">
+                              <thead  style="background-color: rgb(103, 186, 241);">
+                                <tr>
+                                  <th scope="col">Initial</th>
+                                  <th scope="col">Surname</th>
+                                  <th scope="col">Present</th>
+                                  <th scope="col">Absent</th>
+                                  <th scope="col">Reason</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr *ngFor="let attendance of teamAttendanceData">
+                                  <td scope="row">{{attendance.initials}}</td>
+                                  <td scope="row">{{attendance.surname}}</td>
+                                  <td scope="row">
+                                    <div class="form-check">
+                                      <input class="form-check-input" type="radio" [name]="attendance.initials" [id]="attendance.attendanceId" [checked]="attendance.present" disabled >
+                                    </div>
+                                  </td>
+                                  <td scope="row">
+                                    <div class="form-check">
+                                      <input class="form-check-input" type="radio" [name]="attendance.initials" [id]="attendance.attendanceId" [checked]="attendance.absent" disabled>
+                                    </div>
+                                  </td>
+                                  <td scope="row">
+                                    <div class="row form-group">
+                                      <div class="col-12">
+                                        <input type="text"  class="form-control" [name]="attendance.initials" [id]="attendance.attendanceId" [(ngModel)]="attendance.reason" readonly>
+                                      </div>
+                                    </div>
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                        </div>
+                      </div>
+                    </div>
+      
+              </div>
+              <div class="col-2">
+      
+              </div>
+      
+            </div>
+          </div>
+    </div>
+  </div>
