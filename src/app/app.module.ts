@@ -21,6 +21,7 @@ import { TeamsAttendanceHistoryComponent } from './Admin/teams-attendance-histor
 import { AddEnquiryTypeComponent } from './Admin/EnquiryType/add-enquiry-type/add-enquiry-type.component';
 import { EnquiryTypeDetailComponent } from './Admin/EnquiryType/enquiry-type-detail/enquiry-type-detail.component';
 import { AddClientComponent } from './client-sub-system/add-client/add-client.component';
+import { ClientProfileComponent } from './client-sub-system/client-profile/client-profile.component';
 
 
 
@@ -45,6 +46,7 @@ import { AddClientComponent } from './client-sub-system/add-client/add-client.co
     AddEnquiryTypeComponent,
     EnquiryTypeDetailComponent,
     AddClientComponent,
+    ClientProfileComponent,
     
   ],
   imports: [
