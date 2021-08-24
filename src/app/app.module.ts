@@ -3,7 +3,7 @@ import { NgModule, Component } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuditComponent } from './Admin/Audit/audit/audit.component';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { AddSlotComponent } from './Admin/Meeting/add-slot/add-slot.component';
 import { MeetingDetailComponent } from './Admin/Meeting/meeting-detail/meeting-detail.component';
 import { SlotsDetailComponent } from './Admin/Meeting/slots-detail/slots-detail.component';
@@ -27,6 +27,12 @@ import { AddProductTypeComponent } from './product-sub-system/add-product-type/a
 import { ProductListComponent } from './product-sub-system/product-list/product-list.component';
 import { ProductSizeDetailComponent } from './product-sub-system/product-size-detail/product-size-detail.component';
 import { ProductTypeDetailComponent } from './product-sub-system/product-type-detail/product-type-detail.component';
+import { AddEmployeeComponent } from './Shared/Components/Employee/add-employee/add-employee.component';
+import { EmployeeDetailComponent } from './Shared/Components/Employee/employee-detail/employee-detail.component';
+import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -59,15 +65,23 @@ import { ProductTypeDetailComponent } from './product-sub-system/product-type-de
     ProductListComponent,
     ProductSizeDetailComponent,
     ProductTypeDetailComponent,
+    AddEmployeeComponent,
+    EmployeeDetailComponent,
 
 
     
   ],
-  imports: [
+    imports: [
+      CommonModule,
+      BrowserModule,
     AppRoutingModule,
-    CommonModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+    Ng2SearchPipeModule
+      ],
+    providers: [DatePipe],
+
+    bootstrap: [AppComponent]
 })
 export class AppModule { }

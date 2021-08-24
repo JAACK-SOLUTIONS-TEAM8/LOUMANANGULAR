@@ -1,0 +1,168 @@
+<div class="card">
+    <div class="card-header text-center">
+      <h3>{{employeeId==0?'Add Employee':'View Employee Detail '}}</h3>
+    </div>
+    <div class="card-body">
+  
+      <div class="row">
+        <div class="card">
+          <div class="card-header">
+            <h5>Profile details</h5>
+          </div>
+          <div class="card-body">
+            <form [formGroup]="profileDetailForm">
+              <div class="row form-group">
+                <div class="col-lg-6 col-md-4 col-sm-8 col-12">
+                  <label>Username:</label>
+                  <input type="text" class="form-control" formControlName="userName" placeholder="username">
+                </div>
+              </div>
+              <div class="row form-group">
+                <div class="col-lg-6 col-md-4 col-sm-8 col-12">
+                  <label>Password:</label>
+                  <input type="password" class="form-control" formControlName="password" placeholder="username">
+                </div>
+              </div>
+              <div class="row form-group">
+                <div class="col-lg-6 col-md-4 col-sm-8 col-12">
+                  <label>Confirm Password:</label>
+                  <input type="password" class="form-control" formControlName="confirmPassword" placeholder="username">
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+  
+      <div class="row mt-3 mb-3">
+        <div class="card">
+          <div class="card-header ">
+            <h5>Employee details</h5>
+          </div>
+          <div class="card-body">
+            <form [formGroup]="employeeDetailForm">
+              <div class="row form-group">
+                <div class="col-lg-6 col-md-4 col-sm-8 col-12">
+                  <label>User Type:</label>
+                  <select name="" id="" class="form-control" formControlName="userTypeId">
+                    <option value="none">--Select User Type--</option>
+                    <option [value]="userType.userTypeId" *ngFor="let userType of userTypes">{{userType.userTypeDescription}}</option>
+                  </select>
+                </div>
+              </div>
+              <div class="row form-group">
+                <div class="col-lg-6 col-md-4 col-sm-8 col-12">
+                  <label>Initials:</label>
+                  <input type="text" class="form-control" formControlName="initials" placeholder="initials">
+                </div>
+              </div>
+              <div class="row form-group">
+                <div class="col-lg-6 col-md-4 col-sm-8 col-12">
+                  <label>Surname:</label>
+                  <input type="text" class="form-control" formControlName="surname" placeholder="surname">
+                </div>
+              </div>
+              <div class="row form-group">
+                <div class="col-lg-6 col-md-4 col-sm-8 col-12">
+                  <label>Email Address:</label>
+                  <input type="email" class="form-control" formControlName="email" placeholder="email">
+                </div>
+              </div>
+              <div class="row form-group">
+                <div class="col-lg-6 col-md-4 col-sm-8 col-12">
+                  <label>ID Number:</label>
+                  <input type="text" class="form-control" formControlName="idNumber" placeholder="Id number">
+                </div>
+              </div>
+              <div class="row form-group mt-5 mb-5">
+                <div class="col-lg-4 col-md-3 col-sm-2 col-12">
+                    <input style="display: none;" type="file" id="employeeImage"
+                        (change)="uploadImage($event)" #file>
+                    <button style=" color:rgb(252, 250, 250);" type="button" class="btn btn-primary" (click)="file.click()">Upload Image<i
+                            class="fas fa-upload mg-l-10"></i></button>
+                </div>
+                <div class="col-lg-8 col-md-6 col-sm-5 col-12">
+                    <!-- <img style="height:15rem; width: 15rem; float: rigth;" [src]="mandiImage.file" > -->
+                    <img style="height:15rem; width: 15rem; float: rigth;" [src]="employeeImage.file"
+                        *ngIf="employeeId==0 || employeeImage.file!=null">
+                    <img style="height:15rem; width: 15rem; float: rigth;" [src]="imageUrl"
+                        *ngIf="employeeId!=0 && employeeImage.file==null">
+                </div>
+            </div>
+            <div class="row form-group mt-5 mb-5">
+              <div class="col-lg-4 col-md-3 col-sm-2 col-12">
+                  <input style="display: none;" type="file" id="employeeDocument"
+                      (change)="uploadDocument($event)" #documentFile>
+                  <button style=" color:rgb(252, 250, 250);" type="button" class="btn btn-primary" (click)="documentFile.click()">{{employeeDocument.file!=null?'Upload Document':'Update Document'}}</button>
+              </div>
+              <div class="col-lg-8 col-md-6 col-sm-5 col-12">
+                  <h4 style="height:15rem; width: 15rem; float: rigth;" *ngIf="employeeId==0 || employeeDocument.file!=null">{{employeeDocument.fileName}}</h4>
+              </div>
+          </div> 
+            </form>
+          </div>
+        </div>
+      </div>
+  
+      <div class="row mt-3 mb-3">
+        <div class="card">
+          <div class="card-header ">
+            <h5>Employment Details</h5>
+          </div>
+          <div class="card-body">
+            <form [formGroup]="employeeEmployeementDetailForm">
+              <div class="row form-group">
+                <div class="col-lg-6 col-md-4 col-sm-8 col-12">
+                  <label>Commencement date of employment:</label>
+                  <input type="date" class="form-control" formControlName="commenceDate">
+                </div>
+              </div>
+              <div class="row form-group" *ngIf="employeeId!=0">
+                <div class="col-lg-6 col-md-4 col-sm-8 col-12">
+                  <label>Termination date of employment:</label>
+                  <input type="date" class="form-control" formControlName="terminationDate">
+                </div>
+              </div>
+              <div class="row form-group" *ngIf="employeeId!=0">
+                <div class="col-lg-6 col-md-4 col-sm-8 col-12">
+                  <label>Termination Reason:</label>
+                  <textarea cols="10" rows="5" class="form-control" formControlName="terminationReason"></textarea>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+  
+  
+      <div class="row mt-5">
+        <div class="col-12">
+          <button type="button" class="btn btn-primary" style="float: right; margin-left: 5px;"
+          data-bs-toggle="modal" data-bs-target="#additionConfirmation">{{employeeId==0?'Save':'Update'}}</button>
+          <button type="button" class="btn btn-secondary" style="float: right;" [routerLink]="'/employee/detail'">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  
+  <!-- Admin Addition Confimation Model -->
+  <div class="modal fade" id="additionConfirmation" tabindex="-1" aria-labelledby="additionConfirmationLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Employee Addition confirmation</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>Confirm Employee Addition</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="submitAddAdminForm()">Yes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  

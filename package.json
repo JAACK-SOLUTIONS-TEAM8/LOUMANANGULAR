@@ -21,6 +21,7 @@
     "@fortawesome/fontawesome-free": "^5.15.4",
     "bootstrap": "^5.1.0",
     "html2pdf-jspdf2": "^0.1.2",
+    "ng2-search-filter": "^0.5.1",
     "jquery": "^3.6.0",
     "jspdf": "^2.3.1",
     "jspdf-html2canvas": "^1.4.9",

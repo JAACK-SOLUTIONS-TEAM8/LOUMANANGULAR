@@ -102,4 +102,8 @@ export class EmployeeDetailComponent implements OnInit {
   
   }
 
+  addEmployee()
+{
+  this.router.navigateByUrl("/employee/add/0");
+}
 }
