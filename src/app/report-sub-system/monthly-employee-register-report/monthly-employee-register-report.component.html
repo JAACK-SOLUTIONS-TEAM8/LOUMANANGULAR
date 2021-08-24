@@ -1,1 +1,59 @@
-<p>monthly-employee-register-report works!</p>
+<div class="card">
+    <div class="card-header text-center">
+      <h3>Employee Monthly Registration Report </h3>
+    </div>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-2">
+        </div>
+        <div class="col-lg-4 col-md-3 col-sm-6 col-12">
+          <span class="input-group" style="float: right;">
+            <input type="month" class="form-control"  aria-describedby="basic-addon1" [(ngModel)]="dateData">
+            <button type="button" class="btn btn-outline-primary" style="float: left;" (click)="getMonthlyRegistrationReport()">Get Report</button>
+          </span>
+        </div>
+        <div class="col-2">
+        </div>
+      </div>
+      <div class="row mt-5 mb-5">
+        <div class="col-1">
+        </div>
+        <div class="col-10">
+  
+          <div class="card">
+            <div class="card-body">
+              <div class="row">
+                <table class="table">
+                  <thead  style="background-color: rgb(103, 186, 241);">
+                    <tr>
+                      <th scope="col">Initials</th>
+                      <th scope="col">Surname</th>
+                      <th scope="col">Team</th>
+                      <th scope="col">Days Attended</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let employee of employeeData">
+                      <td scope="row">{{employee.initial}}</td>
+                      <td scope="row">{{employee.surname}}</td>
+                      <td scope="row">{{employee.teamName}}</td>
+                      <td scope="row">{{employee.attendance}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+  
+        </div>
+        <div class="col-1">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="co-12">
+        <button class="btn btn-primary" (click)="downloadPDF()" style="float: right;" [disabled]="employeeData.length==0">Download Report</button>
+      </div>
+    </div>
+  </div>
+  
