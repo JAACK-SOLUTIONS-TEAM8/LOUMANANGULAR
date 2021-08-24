@@ -27,8 +27,6 @@ import { AddProductTypeComponent } from './product-sub-system/add-product-type/a
 import { ProductListComponent } from './product-sub-system/product-list/product-list.component';
 import { ProductSizeDetailComponent } from './product-sub-system/product-size-detail/product-size-detail.component';
 import { ProductTypeDetailComponent } from './product-sub-system/product-type-detail/product-type-detail.component';
-import { AddEmployeeComponent } from './Shared/Components/Employee/add-employee/add-employee.component';
-import { EmployeeDetailComponent } from './Shared/Components/Employee/employee-detail/employee-detail.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
@@ -64,12 +62,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     AddProductTypeComponent,
     ProductListComponent,
     ProductSizeDetailComponent,
-    ProductTypeDetailComponent,
-    AddEmployeeComponent,
-    EmployeeDetailComponent,
-
-
-    
+    ProductTypeDetailComponent,  
   ],
     imports: [
       CommonModule,
