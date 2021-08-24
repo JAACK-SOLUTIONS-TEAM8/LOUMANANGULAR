@@ -1,1 +1,43 @@
-<p>audit works!</p>
+
+<div class="card">
+    <div  class="card-header text-center">
+      <h3>Audit Trail:</h3>
+    </div>
+    <div class="card-body">
+      <div class="row mt-5 mb-5">
+          <div class="col-2">
+  
+          </div>
+        <div class="col-8">
+            
+            <div class="card">
+                <div class="card-body">
+                  <div class="row">
+                    <table class="table">
+                        <thead style="background-color: rgb(103, 186, 241);">
+                          <tr>
+                            <th scope="col">UserName</th>
+                            <th scope="col">Operation</th>
+                            <th scope="col">Date</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let audit of auditData">
+                            <td scope="row">{{audit.userName}}</td>
+                            <td scope="row">{{audit.operation}}</td>
+                            <td scope="row">{{audit.date}}</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                  </div>
+                </div>
+              </div>
+  
+        </div>
+        <div class="col-2">
+  
+        </div>
+  
+      </div>
+    </div>
+  </div>
