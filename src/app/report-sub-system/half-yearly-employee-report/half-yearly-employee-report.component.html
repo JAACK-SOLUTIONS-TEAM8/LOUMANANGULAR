@@ -1,1 +1,52 @@
-<p>half-yearly-employee-report works!</p>
+<div class="card" id="report" #report>
+    <div class="card-header text-center">
+      <h3>Employee Half Yearly Registration Report </h3>
+    </div>
+    <div class="card-body">
+      <div class="row mt-5 mb-5">
+        <div class="col-1">
+        </div>
+        <div class="col-10">
+  
+          <div class="card mt-5" *ngFor="let report of reportData">
+            <div class="card-header text-center">
+                <h3>{{report.monthName +','+report.year}} </h3>
+              </div>
+            <div class="card-body">
+              <div class="row">
+                <table class="table">
+                  <thead  style="background-color: rgb(103, 186, 241);">
+                    <tr>
+                      <th scope="col">Initials</th>
+                      <th scope="col">Surname</th>
+                      <th scope="col">Id Number</th>
+                      <th scope="col">Email</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let employee of report.employees">
+                      <td scope="row">{{employee.initials}}</td>
+                      <td scope="row">{{employee.surname}}</td>
+                      <td scope="row">{{employee.idNumber}}</td>
+                      <td scope="row">{{employee.email}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+  
+        </div>
+        <div class="col-1">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="co-12">
+        <button class="btn btn-primary" (click)="downloadPDF()" style="float: right;">Download Report</button>
+      </div>
+    </div>
+  </div>
+
+
+  
