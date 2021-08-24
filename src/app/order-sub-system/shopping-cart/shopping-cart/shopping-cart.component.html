@@ -1,1 +1,67 @@
-<p>shopping-cart works!</p>
+<div class="card">
+    <div  class="card-header text-center">
+      <h3>Shopping Cart</h3>
+    </div>
+    <div class="card-body">
+      <div class="row mt-5 mb-5">
+          <div class="col-2">
+
+          </div>
+        <div class="col-8">
+            
+            <div class="card">
+                <div class="card-body">
+                  <div class="row">
+                      <div class="col-lg-3 col-md-3 col-sm-3 mt-5" *ngFor="let product of productData">
+                        <div class="card" >
+                            <img [src]="product.product.productImage" class="card-img-top" alt="...">
+                            <div class="card-body">
+                              <div class="card-body">
+                                <h5 class="card-title">{{product.product.productName}}</h5>
+                                <p class="card-text"><b>Type: </b>{{product.product.productTypeName}}</p>
+                                <p class="card-text"><b>Size: </b>{{product.product.productSizeDescription}}</p>
+                                <a href="#" class="btn btn-primary" (click)="removeFromCart(product.product)" data-bs-toggle="modal" data-bs-target="#removeConfirmation">Remove from Cart</a>
+                            </div>
+                          </div>
+                      </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row mt-5">
+                <div class="col-12">
+                  <button class="btn btn-primary mr-2" style="float: right;" type="button" [routerLink]="'/client/checkout'" *ngIf="productCount>0">Proceed</button>
+                  <button class="btn btn-primary mr-2" style="float: right;" type="button" (click)="clearCart()">Clear Cart</button>
+                </div>
+              </div>
+          
+
+        </div>
+        <div class="col-2">
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+      <!-- Admin Deletion Confimation Model -->
+<div class="modal fade" id="removeConfirmation" tabindex="-1" aria-labelledby="removeConfirmationLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Remove from Cart confirmation</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <p>Remove From Cart Confirmation</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="confirmRemoveFromCart()">Remove</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
