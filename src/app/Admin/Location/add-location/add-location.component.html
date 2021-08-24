@@ -1,1 +1,59 @@
-<p>add-location works!</p>
+<div class="card">
+  <div class="card-header text-center">
+    <h3>Add Location</h3>
+  </div>
+  <div class="card-body">
+
+    <div class="row">
+      <div class="card">
+        <div class="card-header">
+          <h5>Location details</h5>
+        </div>
+        <div class="card-body">
+          <form [formGroup]="addLocationForm">
+            <div class="row form-group">
+              <div class="col-lg-6 col-md-4 col-sm-8 col-12">
+                <label>Location Area:</label>
+                <input type="text" class="form-control" placeholder="area" formControlName="locationArea">
+              </div>
+            </div>
+            <div class="row form-group">
+              <div class="col-lg-6 col-md-4 col-sm-8 col-12">
+                <label>Location Province:</label>
+                <input type="text" class="form-control" placeholder="province" formControlName="province">
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mt-5">
+      <div class="col-12">
+        <button type="button" class="btn btn-primary" style="float: right; margin-left: 5px;"
+        data-bs-toggle="modal" data-bs-target="#additionConfirmation">{{locationId==0?'Save':'Update'}}</button>
+        <button type="button" class="btn btn-secondary" style="float: right;" [routerLink]="'/admin/location/detail'">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <!-- Location Addition Confimation Model -->
+  <div class="modal fade" id="additionConfirmation" tabindex="-1" aria-labelledby="additionConfirmationLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Location Addition confirmation</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>Confirm Location Addition</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="submitAddLocationForm()">Yes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
