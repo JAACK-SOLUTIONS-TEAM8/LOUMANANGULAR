@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ClientService } from 'src/app/services/client/client.service';
 
 @Component({
   selector: 'app-client-profile',
@@ -7,9 +9,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ClientProfileComponent implements OnInit {
 
-  constructor() { }
+  clientData:any={}
+  clientId!:number;
+  constructor(
+    private router:Router,
+    private route:ActivatedRoute,
+    private clientService:ClientService
+  ) { 
+    this.route.params.subscribe(params=>{
+      this.clientId=params["id"];
+    })
+  }
 
   ngOnInit(): void {
+    this.clientService.getClientById(this.clientId).subscribe(response=>{
+      this.clientData=response.client
+    })
   }
 
 }
