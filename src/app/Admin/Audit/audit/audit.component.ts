@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from 'src/app/services/user/user.service';
 
 @Component({
   selector: 'app-audit',
@@ -7,9 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AuditComponent implements OnInit {
 
-  constructor() { }
+  auditData:any[]=[]
+  constructor(
+    private userService:UserService
+  ) { }
 
   ngOnInit(): void {
+    this.getAuditDetail();
   }
+
+  getAuditDetail()
+    {
+      this.userService.getAudit().subscribe(response=>{
+        this.auditData=response.audits;
+      })
+    }
 
 }

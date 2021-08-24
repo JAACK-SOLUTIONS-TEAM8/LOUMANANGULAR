@@ -39,6 +39,10 @@ import { HalfYearlyEmployeeReportComponent } from './report-sub-system/half-year
 import { MonthlyEmployeeRegisterReportComponent } from './report-sub-system/monthly-employee-register-report/monthly-employee-register-report.component';
 import { MonthlySalesReportComponent } from './report-sub-system/monthly-sales-report/monthly-sales-report.component';
 import { MonthlyStockReportComponent } from './report-sub-system/monthly-stock-report/monthly-stock-report.component';
+import { AddTeamComponent } from './Admin/Team/add-team/add-team.component';
+import { AttendanceComponent } from './Admin/Team/attendance/attendance.component';
+import { ManageTeamComponent } from './Admin/Team/manage-team/manage-team.component';
+import { TeamsDetailComponent } from './Admin/Team/teams-detail/teams-detail.component';
 
 
 
@@ -78,7 +82,11 @@ import { MonthlyStockReportComponent } from './report-sub-system/monthly-stock-r
     HalfYearlyEmployeeReportComponent,
     MonthlyEmployeeRegisterReportComponent,
     MonthlySalesReportComponent,
-    MonthlyStockReportComponent,  
+    MonthlyStockReportComponent,
+    AddTeamComponent,
+    AttendanceComponent,
+    ManageTeamComponent,
+    TeamsDetailComponent,  
   ],
     imports: [
       CommonModule,
