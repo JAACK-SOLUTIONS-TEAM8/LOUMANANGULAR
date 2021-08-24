@@ -32,6 +32,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './Home/home/home.component';
+import { AttendanceReportComponent } from './report-sub-system/attendance-report/attendance-report.component';
+import { ClientReportComponent } from './report-sub-system/client-report/client-report.component';
+import { EmployeeRegisterReportComponent } from './report-sub-system/employee-register-report/employee-register-report.component';
+import { HalfYearlyEmployeeReportComponent } from './report-sub-system/half-yearly-employee-report/half-yearly-employee-report.component';
+import { MonthlyEmployeeRegisterReportComponent } from './report-sub-system/monthly-employee-register-report/monthly-employee-register-report.component';
+import { MonthlySalesReportComponent } from './report-sub-system/monthly-sales-report/monthly-sales-report.component';
+import { MonthlyStockReportComponent } from './report-sub-system/monthly-stock-report/monthly-stock-report.component';
 
 
 
@@ -64,7 +71,14 @@ import { HomeComponent } from './Home/home/home.component';
     ProductListComponent,
     ProductSizeDetailComponent,
     ProductTypeDetailComponent,
-    HomeComponent,  
+    HomeComponent,
+    AttendanceReportComponent,
+    ClientReportComponent,
+    EmployeeRegisterReportComponent,
+    HalfYearlyEmployeeReportComponent,
+    MonthlyEmployeeRegisterReportComponent,
+    MonthlySalesReportComponent,
+    MonthlyStockReportComponent,  
   ],
     imports: [
       CommonModule,
