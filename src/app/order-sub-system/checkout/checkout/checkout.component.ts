@@ -16,19 +16,19 @@ import html2PDF from 'jspdf-html2canvas';
 export class CheckoutComponent implements OnInit {
 
 
-  productData:any[];
+  productData:any[] | undefined;
   deliveryTypeData:any[]=[];
   userInfo:any;
 
-  total:number;
-  subTotal:number;
-  discount:number;
-  vat:number;
+  total:number | undefined;
+  subTotal:number | undefined;
+  discount:number | undefined;
+  vat:number | undefined;
 
-deliveryTypeForm:FormGroup;
-paymentTypeForm:FormGroup;
-cardFormForm:FormGroup;
-pickupInfoForm:FormGroup;
+deliveryTypeForm:FormGroup | undefined;
+paymentTypeForm:FormGroup | undefined;
+cardFormForm:FormGroup | undefined;
+pickupInfoForm:FormGroup | undefined;
 
 role:string="client";
 
