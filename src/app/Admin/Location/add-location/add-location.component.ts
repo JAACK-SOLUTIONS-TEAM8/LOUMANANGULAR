@@ -13,7 +13,7 @@ export class AddLocationComponent implements OnInit {
 
   addLocationForm: FormGroup;
 
-  locationId: number;
+  locationId!: number;
   location:any;
   constructor(
     private formBuilder: FormBuilder,
