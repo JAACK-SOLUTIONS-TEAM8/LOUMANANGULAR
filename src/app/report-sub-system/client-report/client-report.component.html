@@ -1,1 +1,118 @@
-<p>client-report works!</p>
+
+<div class="card">
+    <div  class="card-header text-center">
+      <h3>Client List</h3>
+    </div>
+    <div class="card-body">
+      <div class="row mt-5 mb-5">
+          <div class="col-2">
+
+          </div>
+        <div class="col-8">
+            
+            <div class="card">
+                <div class="card-body">
+                  <div class="row">
+                    <table class="table">
+                        <thead style="background-color: rgb(103, 186, 241);">
+                          <tr>
+                            <th scope="col">Initial</th>
+                            <th scope="col">Surname</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Cell Phone</th>
+                            <th scope="col">Id Number</th>
+                            <th scope="col">Actions</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let client of clientData">
+                            <td scope="row">{{client.initials}}</td>
+                            <td scope="row">{{client.surname}}</td>
+                            <td scope="row">{{client.email}}</td>
+                            <td scope="row">{{client.cellPhone}}</td>
+                            <td scope="row">{{client.idNumber}}</td>
+                            <td scope="row">
+                              <button class="btn btn-outline-primary" (click)="generateReport(client)">Generate Report</button>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                  </div>
+                </div>
+              </div>
+
+        </div>
+        <div class="col-2">
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div id="clientData" class="row">
+    <div class="col-2">
+    </div>
+    <div class="col-8">
+        <div class="card">
+            <div class="card-header" style="text-align: center; background-color: rgb(103, 186, 241);">
+                <h3>Client Detail</h3> 
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-6">
+                    <b>Initial</b>
+                    </div>
+                    <div class="col-6">
+                        <b>{{selectedClient.initials}}</b>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <b>Surname</b>
+                    </div>
+                    <div class="col-6">
+                        <b>{{selectedClient.surname}}</b>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <b>Email Address</b>
+                    </div>
+                    <div class="col-6">
+                        <b>{{selectedClient.email}}</b>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <b>Cell Phone</b>
+                    </div>
+                    <div class="col-6">
+                        <b>{{selectedClient.cellNumber}}</b>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <b>Id Number</b>
+                    </div>
+                    <div class="col-6">
+                        <b>{{selectedClient.idNumber}}</b>
+                    </div>
+                </div>
+            </div>
+          </div>
+    </div>
+    <div class="col-2">
+    </div>
+
+  </div>
+
+
+
+
+
+
+
+
+
+
