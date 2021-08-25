@@ -1,1 +1,126 @@
-<p>client-sign-up works!</p>
+<div class="card">
+    <div class="card-header text-center">
+      <h3>Add Client</h3>
+    </div>
+    <div class="card-body">
+  
+      <div class="row">
+        <div class="card">
+          <div class="card-header">
+            <h5>Profile details</h5>
+          </div>
+          <div class="card-body">
+            <form [formGroup]="profileDetailForm">
+              <div class="row form-group">
+                <div class="col-lg-6 col-md-4 col-sm-8 col-12">
+                  <label>Username:</label>
+                  <input type="text" class="form-control" placeholder="username" formControlName="userName">
+                </div>
+              </div>
+              <div class="row form-group">
+                <div class="col-lg-6 col-md-4 col-sm-8 col-12">
+                  <label>Password:</label>
+                  <input type="password" class="form-control" placeholder="username" formControlName="password">
+                </div>
+              </div>
+              <div class="row form-group">
+                <div class="col-lg-6 col-md-4 col-sm-8 col-12">
+                  <label>Confirm Password:</label>
+                  <input type="password" class="form-control" placeholder="username" formControlName="confirmPassword">
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+  
+      <div class="row">
+        <div class="card">
+          <div class="card-header ">
+            <h5>Client details</h5>
+          </div>
+          <div class="card-body">
+            <form [formGroup]="clientDetailForm">
+                  <div class="row form-group">
+                <div class="col-lg-6 col-md-4 col-sm-8 col-12">
+                  <label>Initials:</label>
+                  <input type="text" class="form-control" placeholder="initials" formControlName="initials">
+                </div>
+              </div>
+              <div class="row form-group">
+                <div class="col-lg-6 col-md-4 col-sm-8 col-12">
+                  <label>Surname:</label>
+                  <input type="text" class="form-control" placeholder="surname" formControlName="surname">
+                </div>
+              </div>
+              <div class=" row form-group">
+                  <div class="col-lg-6 col-md-4 col-sm-8 col-12">
+                    <label>Email Address:</label>
+                    <input type="email" class="form-control" placeholder="email" formControlName="email">
+                  </div>
+                </div>
+                <div class=" row form-group">
+                    <div class="col-lg-6 col-md-4 col-sm-8 col-12">
+                      <label>ID Number:</label>
+                      <input type="text" class="form-control" placeholder="Id number" formControlName="idNumber">
+                  </div>
+                </div>
+                <div class="row form-group" style="visibility: hidden;">
+                    <div class="col-lg-6 col-md-4 col-sm-8 col-12">
+                      <label>UserType:</label>
+                      <input type="number" value="3" class="form-control" placeholder="initials" formControlName="userTypeId">
+                    </div>
+                  </div>
+
+            </form>
+          </div>
+        </div>
+      </div>
+  
+      <div class=" row">
+                      <div class="card">
+                        <div class="card-header ">
+                          <h5>Address details</h5>
+                        </div>
+                        <div class="card-body">
+                          <form [formGroup]="addressDetailForm">
+                            <div class="row form-group">
+                              <div class="col-lg-6 col-md-4 col-sm-8 col-12">
+                                <label>Street Name:</label>
+                                <input type="text" class="form-control" placeholder="street name" formControlName="streetName">
+                              </div>
+                            </div>
+                            <div class=" row form-group">
+                                <div class="col-lg-6 col-md-4 col-sm-8 col-12">
+                                  <label>Street Number:</label>
+                                  <input type="number" class="form-control" placeholder="street number" formControlName="streetNumber">
+                                </div>
+                              </div>
+                              <div class=" row form-group">
+                                  <div class="col-lg-6 col-md-4 col-sm-8 col-12">
+                                    <label>City Name:</label>
+                                    <input type="text" class="form-control" placeholder="city name" formControlName="cityName">
+                                  </div>
+                                </div>
+                                <div class=" row form-group">
+                                    <div class="col-lg-6 col-md-4 col-sm-8 col-12">
+                                      <label>City Code:</label>
+                                      <input type="text" class="form-control" placeholder="city code" formControlName="cityCode">
+                                    </div>
+                                  </div>
+                          </form>
+                        </div>
+                      </div>
+      </div>
+  
+  
+      <div class=" row mt-5">
+        <div class="col-12">
+          <button type="button" class="btn btn-primary" style="float: right; margin-left: 5px;" (click)="submitAddClientForm()">Sign up</button>
+          <button type="button" class="btn btn-secondary" style="float: right;"[routerLink]="'/login'" >Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
