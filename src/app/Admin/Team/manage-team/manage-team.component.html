@@ -1,1 +1,142 @@
-<p>manage-team works!</p>
+<div class="card">
+    <div  class="card-header text-center">
+      <h3>Manage Team</h3>
+    </div>
+    <div class="card-body">
+      
+        <div class="row">
+            <div class="card">
+                <div  class="card-header">
+                  <h5>Team details</h5>
+                </div>
+                <div class="card-body">
+                      <div class="row ">
+                        <div class="col-lg-6 col-md-4 col-sm-8 col-12">
+                            <h5 >Team Name:</h5><span><b>{{teamData.teamName}}</b></span>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-lg-6 col-md-4 col-sm-8 col-12">
+                            <h5 >Maximum Employees:</h5><span><b>{{teamData.maxEmployees}}</b></span>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-lg-6 col-md-4 col-sm-8 col-12">
+                            <h5 > Number OfEmployees:</h5><span><b>{{teamEmployeeData.length}}</b></span>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-lg-6 col-md-4 col-sm-8 col-12">
+                            <h5 >Start Time:</h5><span><b>{{teamData.startTime | date:'shortTime'}}</b></span>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-lg-6 col-md-4 col-sm-8 col-12">
+                            <h5 >End Time:</h5><span><b>{{teamData.endTime | date:'shortTime'}}</b></span>
+                        </div>
+                      </div>
+
+
+                      <div class="row mt-5">
+                        <div class="col-12">
+                            <div  class="card-header text-center">
+                                <h3>Employees in Team</h3>
+                              </div>
+                              <div class="card-body">
+                                <div class="row">
+                                  <div class="col-2">
+                                  </div>
+                                  <div class="col-lg-8 col-md-6 col-sm-4 col-12 ">
+                                    <button type="button" class="btn btn-primary" style="float: left;width: 8rem;" (click)="markAttendance()">Attendance</button>
+                                  </div>
+                                  <div class="col-2">
+                                  </div>
+                                </div>
+                            
+                                <div class="row mt-5 mb-5">
+                                    <div class="col-2">
+                                    </div>
+                                  <div class="col-8">
+                                      
+                                      <div class="card">
+                                          <div class="card-body">
+                                            <div class="row">
+                                              <table class="table">
+                                                  <thead  style="background-color: rgb(103, 186, 241);">
+                                                    <tr>
+                                                      <th scope="col">Initial</th>
+                                                      <th scope="col">Surname</th>
+                                                      <th scope="col">Actions</th>
+                                                    </tr>
+                                                  </thead>
+                                                  <tbody>
+                                                    <tr *ngFor="let employee of teamEmployeeData">
+                                                      <td scope="row">{{employee.initials}}</td>
+                                                      <td scope="row">{{employee.surname}}</td>
+                                                      <td scope="row">
+                                                        <button class="btn btn-outline-primary" (click)="viewEmployeeDetail(employee)">View</button>
+                                                        <button class="btn btn-outline-primary"  (click)="removeFromTeam(employee)" >Remove From Team</button>
+                                                      </td>
+                                                    </tr>
+                                                  </tbody>
+                                                </table>
+                                            </div>
+                                          </div>
+                                        </div>
+                          
+                                  </div>
+                                  <div class="col-2">
+                          
+                                  </div>
+                          
+                                </div>
+                              </div>
+                        </div>
+                      </div>
+                      <div class="row" *ngIf="!(teamEmployeeData.length>=teamData.maxEmployees)" >
+                        <div class="col-12">
+                            <form [formGroup]="employeeForm">
+                                <div class="row form-group">
+                                    <div class="col-lg-6 col-md-4 col-sm-8 col-12">
+                                        <label >Select Employee:</label>
+                                        <select class="form-control" (click)="employeeSelected()" formControlName="employee" >
+                                            <option value="none">-- select Employee --</option>
+                                            <option [ngValue]="employee" *ngFor="let employee of employeeData" >{{employee.initials+' '+employee.surname}}</option>
+                                        </select>
+                                    </div>
+                                  </div>            
+                            </form>
+                        </div>
+                      </div>
+                </div>
+              </div>
+        </div>
+
+        <div class="row mt-5">
+            <div class="col-12">
+                <button type="button" class="btn btn-primary" [disabled]="(teamEmployeeData.length>=teamData.maxEmployees)" style="float: right; margin-left: 5px;" data-bs-toggle="modal" data-bs-target="#additionConfirmation">Add</button>
+                <button type="button" class="btn btn-secondary" style="float: right;" >Cancel</button>
+            </div>
+        </div>
+    </div>
+  </div>
+
+
+    <!-- Team Addition Confimation Model -->
+    <div class="modal fade" id="additionConfirmation" tabindex="-1" aria-labelledby="additionConfirmationLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Team Addition confirmation</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p>Confirm Team Addition</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+            <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="addEmployeeToTeam()">Yes</button>
+          </div>
+        </div>
+      </div>
+    </div>
