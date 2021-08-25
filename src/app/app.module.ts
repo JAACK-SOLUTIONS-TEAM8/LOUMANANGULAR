@@ -43,6 +43,8 @@ import { AddTeamComponent } from './Admin/Team/add-team/add-team.component';
 import { AttendanceComponent } from './Admin/Team/attendance/attendance.component';
 import { ManageTeamComponent } from './Admin/Team/manage-team/manage-team.component';
 import { TeamsDetailComponent } from './Admin/Team/teams-detail/teams-detail.component';
+import { ClientMeetingComponent } from './client-sub-system/meetings/client-meeting/client-meeting.component';
+import { ClientMeetingSlotsComponent } from './client-sub-system/meetings/client-meeting-slots/client-meeting-slots.component';
 
 
 
@@ -86,7 +88,9 @@ import { TeamsDetailComponent } from './Admin/Team/teams-detail/teams-detail.com
     AddTeamComponent,
     AttendanceComponent,
     ManageTeamComponent,
-    TeamsDetailComponent,  
+    TeamsDetailComponent,
+    ClientMeetingComponent,
+    ClientMeetingSlotsComponent,  
   ],
     imports: [
       CommonModule,
