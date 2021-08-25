@@ -95,11 +95,11 @@ import { ClientMeetingSlotsComponent } from './client-sub-system/meetings/client
     imports: [
       CommonModule,
       BrowserModule,
-    AppRoutingModule,
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    Ng2SearchPipeModule
+    Ng2SearchPipeModule,
+    AppRoutingModule
       ],
     providers: [DatePipe],
 
