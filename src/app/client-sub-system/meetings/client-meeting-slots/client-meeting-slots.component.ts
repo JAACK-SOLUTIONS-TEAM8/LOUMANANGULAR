@@ -12,7 +12,7 @@ import Swal from 'sweetalert2';
 })
 export class ClientMeetingSlotsComponent implements OnInit {
 
-  searchAdminSlotForm:FormGroup;
+  searchAdminSlotForm!:FormGroup;
   adminData:any[]=[];
 
   slotData:any[]=[];
