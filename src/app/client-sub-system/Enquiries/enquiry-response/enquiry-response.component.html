@@ -1,1 +1,56 @@
-<p>enquiry-response works!</p>
+<div class="card">
+    <div  class="card-header text-center">
+      <h3>Enquiry Details</h3>
+    </div>
+    <div class="card-body">
+      <div class="row mt-5 mb-5">
+          <div class="col-2">
+
+          </div>
+        <div class="col-8">
+            
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <h5>Admin Name:</h5>{{enquiryData?.adminName}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <h5>Enquiry Type</h5>{{enquiryData?.enquiryType}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <h5>Message</h5>
+                            <p>{{enquiryData?.enquiryMessage}}</p>
+                        </div>
+                    </div>
+                </div>
+              </div>
+                    <div class="card mt-5">
+                        <div  class="card-header text-center">
+                            <h5>Respond Enquiry</h5>
+                          </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-12">
+                                    <p>{{this.enquiryData.enquiryResponseMessage}}</p>
+                                </div>
+                            </div>
+                        </div>
+                      </div>
+                      <div class="row mt-5">
+                        <div class="col-12">
+                            <button type="button" class="btn btn-primary" style="float: right; margin-left: 5px;" data-bs-toggle="modal" data-bs-target="#additionConfirmation">Back</button>
+                        </div>
+                    </div>                    
+        </div>
+        <div class="col-2">
+
+        </div>
+
+      </div>
+    </div>
+  </div>
