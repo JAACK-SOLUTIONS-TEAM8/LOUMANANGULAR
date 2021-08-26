@@ -1,0 +1,47 @@
+.login-page-wrap {
+    background-image: url("src/assets/home.png");
+  
+    background-repeat: no-repeat;
+    background-position: top;
+    position: fixed;
+    background-size: cover;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 80%;
+    width: 80%;
+  }
+
+.navbar-brand {
+    font-weight: 1000;
+    font-stretch: semi-expanded;
+    font-size: 3cm;
+    font-style: oblique;
+    background-color: darkblue;
+    color: white;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    
+  }
+  
+  .navbar-nav {
+  color:white;
+    
+    font-size: medium;
+    position: absolute;
+    top: 0%;
+    right: 0%;
+    width:250px ;
+    text-align: right;
+    
+  } 
+  
+  .container-fluid{
+    height: 7cm;
+    width: 50cm;
+    background-color: darkblue;
+    border: 30cm;
+    border-color: darkgrey;
+    
+    
+  }
