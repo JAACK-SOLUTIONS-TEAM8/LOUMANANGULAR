@@ -12,7 +12,7 @@ import Swal from 'sweetalert2';
 })
 export class ClientSignUpComponent implements OnInit {
 
-  clientId!: number;
+  clientId: number;
   clientData:any;
   addressDetailForm: FormGroup;
   profileDetailForm: FormGroup;
