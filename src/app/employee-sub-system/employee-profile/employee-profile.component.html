@@ -1,1 +1,52 @@
-<p>employee-profile works!</p>
+<div class="card">
+    <div  class="card-header text-center">
+      <h3>Employee Profile</h3>
+    </div>
+    <div class="card-body">
+        <div class="row mt-3 mb-3">
+          <div class="row form-group mt-5 mb-5">
+            <div class="col-lg-8 col-md-6 col-sm-5 col-12">
+                <img style="height:15rem; width: 15rem; float: rigth;" [src]="employeeData?.image">
+            </div>
+        </div>  
+
+          <div class="row form-group">
+            <div class="col-lg-6 col-md-4 col-sm-8 col-12">
+                <h5 >Initials: <span><b>{{employeeData?.initials}}</b></span></h5>
+            </div>
+          </div>
+          <div class="row form-group">
+            <div class="col-lg-6 col-md-4 col-sm-8 col-12">
+                <h5 >Surname: <span><b>{{employeeData?.surname}}</b></span></h5>
+            </div>
+          </div>
+          <div class="row form-group">
+              <div class="col-lg-6 col-md-4 col-sm-8 col-12">
+                  <h5 >ID Number: <span><b>{{employeeData?.idNumber}}</b></span></h5>
+              </div>
+            </div>    
+          <div class="row form-group">
+              <div class="col-lg-6 col-md-4 col-sm-8 col-12">
+                  <h5 >Email Address: <span><b>{{employeeData?.email}}</b></span></h5>
+              </div>
+            </div>
+            <div class="row form-group">
+              <div class="col-lg-6 col-md-4 col-sm-8 col-12">
+                  <h5 >Commence Date: <span><b>{{employeeData?.commenceDate}}</b></span></h5>
+              </div>
+            </div>
+            <div class="row form-group" *ngIf="employeeData.document!=null">
+              <div class="col-lg-6 col-md-4 col-sm-8 col-12">
+                  <h5 >Document: <span><a  [routerLink] (click)="downloadDocument(employeeData)">Download</a></span></h5>
+              </div>
+            </div>
+        </div>
+    </div>
+
+  </div>
+  <div class="row"> 
+    <div class="col-12">
+      <button class="btn btn-primary" style="float: right;" (click)="goBack()">Back</button>
+    </div>
+  </div>
+
