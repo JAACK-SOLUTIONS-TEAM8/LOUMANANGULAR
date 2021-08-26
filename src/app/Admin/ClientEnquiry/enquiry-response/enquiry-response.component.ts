@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-enquiry-response',
@@ -7,7 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EnquiryResponseComponent implements OnInit {
 
-  constructor() { }
+  enquiry
+  constructor(
+    private route:ActivatedRoute
+  ) { 
+    this
+  }
 
   ngOnInit(): void {
   }
