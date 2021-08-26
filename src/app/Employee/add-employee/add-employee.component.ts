@@ -27,9 +27,9 @@ export class AddEmployeeComponent implements OnInit {
   }
 
   employeeData:any;
-  profileDetailForm: FormGroup|any;
-  employeeDetailForm: FormGroup|any;
-  employeeEmployeementDetailForm: FormGroup|any;
+  profileDetailForm: FormGroup;
+  employeeDetailForm: FormGroup;
+  employeeEmployeementDetailForm: FormGroup;
   employeeImage:any={}
   employeeDocument:any={}
   imageUrl:string=""
