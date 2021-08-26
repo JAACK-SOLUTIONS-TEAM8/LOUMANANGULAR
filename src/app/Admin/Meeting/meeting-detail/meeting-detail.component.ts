@@ -20,10 +20,10 @@ export class MeetingDetailComponent implements OnInit {
 
   getBookedSlots()
   {
-    // var userDetail=JSON.parse(localStorage.getItem("User"));
-    // this.meetingService.getBookedSlotsByAdmin(Number(userDetail.userId)).subscribe(response=>{
-  //   //   this.slotsData=response.slots;
-  //   });
+    var userDetail=JSON.parse(localStorage.getItem("User"));
+     this.meetingService.getBookedSlotsByAdmin(Number(userDetail.userId)).subscribe(response=>{
+   this.slotsData=response.slots;
+     });
   }
 
 }

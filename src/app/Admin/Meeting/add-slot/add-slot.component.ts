@@ -75,7 +75,7 @@ export class AddSlotComponent implements OnInit {
         "date": new Date(this.addSlotForm.controls["date"].value),
         "startTime": String(this.addSlotForm.controls["startTime"].value),
         "endTime": String(this.addSlotForm.controls["endTime"].value),
-        // "adminUserId":Number(JSON.parse(localStorage.getItem("User")).userId)
+        "adminUserId":Number(JSON.parse(localStorage.getItem("User")).userId)
     };
 
     this.meetingService.addSlot(slotDetail).subscribe(response=>{
