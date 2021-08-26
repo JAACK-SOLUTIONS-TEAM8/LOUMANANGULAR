@@ -10,9 +10,9 @@ import { UserService } from './services/user/user.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  isLoggedIn!:boolean;
-  itemCount!:number
-  role!:string;
+  isLoggedIn:boolean;
+  itemCount:number
+  role:string;
   user:any
   constructor(
     private router:Router,
