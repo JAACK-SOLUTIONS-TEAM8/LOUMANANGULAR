@@ -10,7 +10,7 @@ import { ClientService } from 'src/app/services/client/client.service';
 export class ClientProfileComponent implements OnInit {
 
   clientData:any={}
-  clientId!:number;
+  clientId:number;
   constructor(
     private router:Router,
     private route:ActivatedRoute,

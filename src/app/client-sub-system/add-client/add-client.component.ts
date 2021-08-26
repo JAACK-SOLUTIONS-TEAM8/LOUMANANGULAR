@@ -13,11 +13,11 @@ declare var $;
 })
 export class AddClientComponent implements OnInit {
 
-  clientId!: number;
+  clientId: number;
   clientData:any;
-  addressDetailForm!: FormGroup;
-  profileDetailForm!: FormGroup;
-  clientDetailForm!: FormGroup;
+  addressDetailForm: FormGroup;
+  profileDetailForm: FormGroup;
+  clientDetailForm: FormGroup;
   userTypes: any[]=[];
 
   constructor(
