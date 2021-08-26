@@ -12,7 +12,7 @@ import Swal from 'sweetalert2';
 })
 export class AddEnquiryComponent implements OnInit {
 
-  enquiryId!:number;
+  enquiryId:number;
   enquiryTypesData:any[]=[];
   enquiry:any;
 
