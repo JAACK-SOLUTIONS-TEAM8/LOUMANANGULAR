@@ -11,7 +11,7 @@ import Swal from 'sweetalert2';
 export class EmployeeDetailComponent implements OnInit {
 
   selectedEmployee: any;
-  searchTerm!: string;
+  searchTerm: string;
 
   constructor(
     private router: Router, 

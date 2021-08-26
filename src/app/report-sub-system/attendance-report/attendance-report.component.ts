@@ -15,7 +15,7 @@ export class AttendanceReportComponent implements OnInit {
   allTeamsData:any[]=[];
   selectedTeam: any={};
   teamAttendanceData:any[]=[]
-  teamId!:number;
+  teamId:number;
   reason:string="";
  teamData:any={};
 

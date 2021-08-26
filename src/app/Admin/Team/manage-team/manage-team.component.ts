@@ -12,10 +12,10 @@ import Swal from 'sweetalert2';
 })
 export class ManageTeamComponent implements OnInit {
 
-  teamId!: number
+  teamId: number
   locationData:any[]=[];
 
-  employeeForm!:FormGroup;
+  employeeForm:FormGroup;
   teamData:any={};
   employeeData:any[]=[];
   teamEmployeeData:any[]=[];

@@ -13,7 +13,7 @@ export class TeamsDetailComponent implements OnInit {
   selectedTeam: any;
   teamData:any[]=[];
 
-  searchTerm!:string;
+  searchTerm:string;
 
   constructor(
     private router: Router,

@@ -11,7 +11,7 @@ import Swal from 'sweetalert2';
 export class AttendanceComponent implements OnInit {
 
   teamAttendanceData:any[]=[]
-  teamId!:number;
+  teamId:number;
   reason:string="";
   teamData:any={};
 

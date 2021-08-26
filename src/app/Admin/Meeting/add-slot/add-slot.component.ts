@@ -12,8 +12,8 @@ import Swal from 'sweetalert2';
 })
 export class AddSlotComponent implements OnInit {
 
-  addSlotForm!: FormGroup;
-  slotId!:number;
+  addSlotForm: FormGroup;
+  slotId:number;
   slot:any;
 
   constructor(

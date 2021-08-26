@@ -14,8 +14,8 @@ import Swal from 'sweetalert2';
 })
 export class AddTeamComponent implements OnInit {
 
-  addTeamForm!: FormGroup;;
-  teamId!: number
+  addTeamForm: FormGroup;;
+  teamId: number
   locationData:any[]=[];
   daysData:any[]=[]
   team:any;
