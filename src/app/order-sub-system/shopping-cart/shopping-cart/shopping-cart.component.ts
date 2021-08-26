@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-
-import { Component, OnInit } from '@angular/core';
 import { CartService } from 'src/app/services/cart/cart.service';
 import Swal from 'sweetalert2';
 
