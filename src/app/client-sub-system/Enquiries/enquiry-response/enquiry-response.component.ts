@@ -9,7 +9,7 @@ import { EnquiryService } from 'src/app/services/enquiry/enquiry.service';
 })
 export class EnquiryResponseComponent implements OnInit {
 
-  enquiryId!:number;
+  enquiryId:number;
   enquiryData:any={};
 
 

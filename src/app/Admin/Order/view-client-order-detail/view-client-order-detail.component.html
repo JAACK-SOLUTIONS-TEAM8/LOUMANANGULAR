@@ -1,1 +1,162 @@
-<p>view-client-order-detail works!</p>
+<div class="card">
+  <div class="card-header text-center">
+    <h3>{{orderData?.clientName}}'s Order Detail ({{orderData?.orderId}} )</h3>
+  </div>
+  <div class="card-body">
+
+    <div class="row">
+      <div class="card">
+        <div class="card-header">
+          <h5>Contact Information</h5>
+        </div>
+        <div class="card-body">
+          <div class="row">
+              <div class="col-lg-6">
+                  <h5>Client Name:</h5>{{orderData?.clientName}}
+              </div>
+          </div>
+          <div class="row">
+              <div class="col-lg-6">
+                  <h5>ID Number:</h5>{{orderData?.idNumber}}
+              </div>
+          </div>
+          <div class="row">
+              <div class="col-lg-6">
+                  <h5>Email:</h5>{{orderData?.email}}
+              </div>
+          </div>
+          <div class="row">
+              <div class="col-lg-6">
+                  <h5>Address:</h5>
+                  <p><span><b>street Name Name : </b></span> {{orderData?.streetName}}</p>
+                  <p><span><b>Street Number : </b></span>{{orderData?.streetNumber}}</p>
+                  <p><span><b>City Name : </b></span>{{orderData?.cityName}}</p>
+                  <p><span><b>City Code : </b></span>{{orderData?.cityCode}}</p>
+              </div>
+          </div>
+          
+      </div>
+</div>
+    </div>
+
+    <div class="row mt-5">
+      <div class="card">
+        <div class="card-header ">
+          <h5>Order Summery</h5>
+        </div>
+        <div class="card-body">
+          <div class="row">
+              <table class="table">
+                  <thead  style="background-color: rgb(103, 186, 241);">
+                    <tr>
+                      <th scope="col">Product Name</th>
+                      <th scope="col">Category</th>
+                      <th scope="col">Size</th>
+                      <th scope="col">Price</th>
+                      <th scope="col">Ordered Quantity</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let product of orderData?.products">
+                      <td scope="row">{{product.product.productName}}</td>
+                      <td scope="row">{{product.product.productTypeName}}</td>
+                      <td scope="row">{{product.product.productSizeDescription}}</td>
+                      <td scope="row">{{product.product.price}}</td>
+                      <td scope="row">{{product.quantity}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+            </div>
+            <div class="card-body mt-3">
+              <div class="row">
+                  <div class="col-lg-6">
+                      <h5>Discount:</h5>{{orderData?.discount}}
+                  </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-6">
+                    <h5>Total:</h5>{{orderData?.total}}
+                </div>
+            </div>
+          </div>    
+        </div>
+      </div>
+    </div>
+
+    <div class=" row mt-5">
+      <div class="card">
+          <div class="card-header ">
+            <h5>Delivry Type</h5>{{orderData?.deliveryType}}
+          </div>
+        </div>
+    </div>
+
+
+
+    <div class=" row mt-5" >
+      <div class="card">
+          <div class="card-header ">
+            <h5>Payment Type Type</h5>{{orderData?.paymentType}}
+          </div>
+        </div>
+    </div>
+
+    <div class=" row mt-5">
+      <div class="card">
+          <div class="card-header ">
+            <h5>Payment Type Type</h5>
+          </div>
+          <div class="card-body">
+              <div class="row form-group">
+                <div class="col-lg-6 col-md-4 col-sm-8 col-12">
+                  <h5>Pickup Date</h5>{{orderData?.pickupDate | date}}
+                </div>
+              </div>
+              <div class="row form-group">
+                <div class="col-lg-6 col-md-4 col-sm-8 col-12">
+                  <h5>PickUp Time</h5>{{orderData?.pickupTime | date:'shortTime'}}
+                </div>
+              </div>    
+          </div>
+        </div>
+    </div>
+
+
+
+    <div class=" row mt-5">
+      <div class="card">
+          <div class="card-header ">
+            <h5>Card Detail</h5>
+          </div>
+          <div class="card-body">
+              <div class="row form-group">
+                <div class="row form-group">
+                  <div class="col-lg-6 col-md-4 col-sm-8 col-12">
+                      <label ><b>Card Holder Name: </b> </label>{{' '+orderData?.cardDetail.holderName}}
+                  </div>
+                </div>
+                <div class="row form-group">
+                  <div class="col-lg-6 col-md-4 col-sm-8 col-12">
+                      <label ><b>Card Number: </b> </label>{{' '+orderData?.cardDetail.cardNumber}}
+                  </div>
+                </div>
+                <div class="row form-group">
+                  <div class="col-lg-6 col-md-4 col-sm-8 col-12">
+                      <label > <b>Security Number: </b> </label>{{' '+orderData?.cardDetail.securityNumber}}
+                  </div>
+                </div>
+            </div>  
+          </div>
+          <div class=" row mt-5">
+            <div class="col-12">
+              <button type="button" class="btn btn-primary" style="float: right; margin-left: 5px;" [disabled]="orderData?.orderStatus!='Pending'" (click)="completeOrder()"> {{orderData?.orderStatus=='Pending'?'Complete':'Completed'}}</button>
+              <button type="button" class="btn btn-secondary" style="float: right;" [routerLink]="'/admin/orders/all'">Cancel</button>
+            </div>
+          </div>    
+        </div>
+    </div>
+  </div>
+</div>
+
+
+
