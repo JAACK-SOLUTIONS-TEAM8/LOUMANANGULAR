@@ -28,9 +28,9 @@ initilization()
     this.itemCount=this.cartService.getItemCountInCart();
 
     this.isLoggedIn=localStorage.getItem("User")!=null?true:false;
-    // this.role=JSON.parse(localStorage.getItem("User"))?.userType;
+    this.role=JSON.parse(localStorage.getItem("User"))?.userType;
     
-  //  this.user=JSON.parse(localStorage.getItem("User"));
+    this.user=JSON.parse(localStorage.getItem("User"));
     debugger
    if(localStorage.getItem("User")==null)
     this.router.navigateByUrl("/login");
@@ -41,7 +41,7 @@ initilization()
 
   logout()
   {
-    // this.authService.logout(Number(JSON.parse(localStorage.getItem("User")).userId)).subscribe(response=>{})
+     this.authService.logout(Number(JSON.parse(localStorage.getItem("User")).userId)).subscribe(response=>{})
     localStorage.removeItem("User");
     this.cartService.clearCart();
     this.router.navigateByUrl("/login");
