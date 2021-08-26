@@ -12,7 +12,7 @@ export class EnquiryComponent implements OnInit {
 
   enquiryData:any[]=[]
   selectedEnquiry:any;
-  searchTerm!:string;
+  searchTerm:string;
 
   constructor(
     private enquiryService:EnquiryService,
