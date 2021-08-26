@@ -40,6 +40,25 @@ import { ClientSignUpComponent } from './user-sub-system/client-sign-up/client-s
 import { EmployeeDetailComponent } from './Employee/employee-detail/employee-detail.component';
 import { AddEmployeeComponent } from './Employee/add-employee/add-employee.component';
 import { IsLoggedInGuard } from './user-sub-system/is-logged-in.guard';
+import { AttendanceComponent } from './Admin/Team/attendance/attendance.component';
+import { AddTeamComponent } from './Admin/Team/add-team/add-team.component';
+import { ManageTeamComponent } from './Admin/Team/manage-team/manage-team.component';
+import { TeamsDetailComponent } from './Admin/Team/teams-detail/teams-detail.component';
+import { TeamsAttendanceHistoryComponent } from './Admin/teams-attendance-history/teams-attendance-history.component';
+import { ClientMeetingSlotsComponent } from './client-sub-system/meetings/client-meeting-slots/client-meeting-slots.component';
+import { ClientMeetingComponent } from './client-sub-system/meetings/client-meeting/client-meeting.component';
+import { HomeComponent } from './Home/home/home.component';
+import { AddDeliveryTypeComponent } from './order-sub-system/add-delivery-type/add-delivery-type/add-delivery-type.component';
+import { CheckoutComponent } from './order-sub-system/checkout/checkout/checkout.component';
+import { DeliveryTypeComponent } from './order-sub-system/delivery-type/delivery-type/delivery-type.component';
+import { OrderProductComponent } from './order-sub-system/order-product/order-product/order-product.component';
+import { ShoppingCartComponent } from './order-sub-system/shopping-cart/shopping-cart/shopping-cart.component';
+import { AttendanceReportComponent } from './report-sub-system/attendance-report/attendance-report.component';
+import { ClientReportComponent } from './report-sub-system/client-report/client-report.component';
+import { HalfYearlyEmployeeReportComponent } from './report-sub-system/half-yearly-employee-report/half-yearly-employee-report.component';
+import { MonthlyEmployeeRegisterReportComponent } from './report-sub-system/monthly-employee-register-report/monthly-employee-register-report.component';
+import { MonthlySalesReportComponent } from './report-sub-system/monthly-sales-report/monthly-sales-report.component';
+import { MonthlyStockReportComponent } from './report-sub-system/monthly-stock-report/monthly-stock-report.component';
 
 const routes: Routes = [
 
@@ -60,7 +79,25 @@ const routes: Routes = [
       }
     ]
   },
-
+  {
+    path:"order",
+    canActivate:[IsLoggedInGuard],
+    children:[
+      {
+        path:"deliveryType",
+        children:[
+          {
+            path:"detail",
+            component:DeliveryTypeComponent
+          },
+          {
+            path:"add/:id",
+            component:AddDeliveryTypeComponent
+          }
+        ]
+      }
+    ]
+  },
   {
     path: "client",
     canActivate:[IsLoggedInGuard],
@@ -80,8 +117,28 @@ const routes: Routes = [
       {
         path: "enquiry",
         component: ClientEnquiryComponent
-       },
-    
+      },
+      {
+        path:"cart",
+        component:ShoppingCartComponent
+      },
+      {
+        path:"checkout",
+        component:CheckoutComponent
+      },
+      {
+        path:"meeting",
+        children:[
+          {
+            path:"slots",
+            component:ClientMeetingSlotsComponent
+          },
+          {
+            path: "detail",
+            component: ClientMeetingComponent
+          },    
+        ]
+      },
       {
         path:"enquiry",
         children:[
@@ -102,7 +159,10 @@ const routes: Routes = [
       {
         path:"product",
         children:[
-        
+          {
+            path:"list",
+            component:OrderProductComponent
+          }
         ]
       }
     ]
@@ -122,8 +182,15 @@ const routes: Routes = [
       {
         path: "add/:id",
         component: AddAdminComponent
-       },
-    
+      },
+      {
+        path: "teams-detail",
+        component: TeamsDetailComponent
+      },
+      {
+        path: "add-team/:id",
+        component: AddTeamComponent
+      },
       {
         path: "add-location/:id",
         component: AddLocationComponent
@@ -163,7 +230,38 @@ const routes: Routes = [
         path: "wire-off-stock",
         component: WireOffStockComponent
       },
-    
+      {
+        path:"report",
+        children:[
+          {
+            path:"monthly-stock",
+            component:MonthlyStockReportComponent
+          },
+          {
+            path:"monthly-sales",
+            component:MonthlySalesReportComponent
+          },
+          {
+            path:"registration-report",
+            component:MonthlyEmployeeRegisterReportComponent
+          },
+          {
+            path:"half-yearly-employee-report",
+            component:HalfYearlyEmployeeReportComponent
+          }
+          ,
+          {
+            path:"client-report",
+            component:ClientReportComponent
+          }
+          ,
+          {
+            path:"attendance-report",
+            component:AttendanceReportComponent
+          }
+        ]
+      }
+      ,
       {
         path:"location",
         children:[
@@ -177,7 +275,32 @@ const routes: Routes = [
           }
         ]
       },
-     
+      {
+        path:"team",
+        children:[
+          {
+            path:"add/:id",
+            component:AddTeamComponent
+          },
+          {
+            path:"detail",
+            component:TeamsDetailComponent
+          }
+          ,
+          {
+            path:"manage/:id",
+            component:ManageTeamComponent
+          },
+          {
+            path:"attendance/:id",
+            component:AttendanceComponent
+          },
+          {
+            path:"attendanceHistory",
+            component:TeamsAttendanceHistoryComponent
+          }
+        ]
+      },
       {
         path:"meeting",
         children:[
@@ -312,7 +435,12 @@ const routes: Routes = [
       }
     ]
   },
-
+  {
+    path: "home",
+    canActivate:[IsLoggedInGuard],
+    component: HomeComponent
+  },
+  
 
 
 ];

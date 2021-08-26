@@ -10,7 +10,7 @@ import Swal from 'sweetalert2';
 })
 export class SlotsDetailComponent implements OnInit {
 
-  searchDate!:Date;
+  searchDate:Date;
   slotData:any[]=[];
 
   selectedSlot:any;

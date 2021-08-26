@@ -1,1 +1,78 @@
-<p>enquiry works!</p>
+
+<div class="card">
+    <div  class="card-header text-center">
+      <h3>Enquiry Details</h3>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-2">
+            </div>
+          <div class="col-lg-4 col-md-3 col-sm-2 col-12 "> 
+              <button type="button" class="btn btn-primary" style="float: left;width: 8rem;" [routerLink]="'/client/enquiry/add/0'" >Add</button>
+          </div>
+          <div class="col-2">
+          </div>
+        </div>  
+      <div class="row mt-5 mb-5">
+          <div class="col-2">
+
+          </div>
+        <div class="col-8">
+            
+            <div class="card">
+                <div class="card-body">
+                  <div class="row">
+                    <table class="table">
+                        <thead  style="background-color: rgb(103, 186, 241);">
+                          <tr>
+                            <th scope="col">EnquiryType</th>
+                            <th scope="col">Admin Name</th>
+                            <th scope="col">Enquiry Status</th>
+                            <th scope="col">Action</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let enquiry of enquiryData">
+                            <td scope="row">{{enquiry.enquiryType}}</td>
+                            <td scope="row">{{enquiry.adminName}}</td>
+                            <td scope="row">{{enquiry.enquiryStatus}}</td>
+
+                            <td scope="row">
+                              <button class="btn btn-outline-primary" (click)="editEnquiry(enquiry)">{{enquiry.enquiryStatus=='Pending'?'View':'View Response'}}</button>
+                              <button class="btn btn-outline-primary"  data-bs-toggle="modal" data-bs-target="#deletionConfirmation" (click)="deleteEnquiry(enquiry)" >Delete</button>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                  </div>
+                </div>
+              </div>
+
+        </div>
+        <div class="col-2">
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Admin Deletion Confimation Model -->
+<div class="modal fade" id="deletionConfirmation" tabindex="-1" aria-labelledby="deletionConfirmationLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Enquiry Type Deletion confirmation</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Confirm Enquiry Type Deletion</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="confirmDeleteion()">Yes</button>
+      </div>
+    </div>
+  </div>
+</div>
