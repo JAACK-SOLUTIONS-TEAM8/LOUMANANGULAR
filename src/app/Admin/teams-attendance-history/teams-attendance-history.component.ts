@@ -4,6 +4,7 @@ import html2PDF from 'jspdf-html2canvas';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TeamService } from 'src/app/services/team/team.service';
 import { DatePipe } from '@angular/common';
+import * as XLSX from 'xlsx';
 
 @Component({
   selector: 'app-teams-attendance-history',
@@ -47,6 +48,8 @@ export class TeamsAttendanceHistoryComponent implements OnInit {
   getAttendance(team:any)
   {
     this.teamData={}
+    this.selectedTeam=team;
+
     if(this.dateData==null || this.dateData=="")
     {
       Swal.fire({
@@ -83,6 +86,24 @@ export class TeamsAttendanceHistoryComponent implements OnInit {
 
     
   }
+
+  exportToExcel()
+  {
+
+
+   let attendanceData=[]
+
+   this.teamAttendanceData.forEach(att=>{
+     attendanceData.push({"Date":att.date,"TeamId":att.teamId,"Initials":att.initials,"Surname":att.surname,"Present":att.present,"Absent":att.absent,"Reason":att.reason})
+   });
+
+    const ws: XLSX.WorkSheet = XLSX.utils.json_to_sheet(attendanceData);
+		const wb: XLSX.WorkBook = XLSX.utils.book_new();
+		XLSX.utils.book_append_sheet(wb, ws, 'sheet1');
+
+		XLSX.writeFile(wb, `${this.selectedTeam.teamName}.xlsx`);
+  }
+
 
 }
 

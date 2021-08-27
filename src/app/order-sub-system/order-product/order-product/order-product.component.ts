@@ -115,11 +115,12 @@ export class OrderProductComponent implements OnInit {
       return;
     }
 var stockQuantity=0;
+var orderedQuantity=this.productQuantity;
     this.productService.checkProductQuantityInStock(this.selectedProduct.productId).subscribe(response=>{
      stockQuantity= response.quantity;
      console.log("stock quantity"+stockQuantity)
-    if(stockQuantity<this.productQuantity)
-    {
+     if(Number(stockQuantity) < Number(orderedQuantity))
+     {
       Swal.fire({
         title: 'Warning!',
         text: "Not Enough quantity in the stock!",
