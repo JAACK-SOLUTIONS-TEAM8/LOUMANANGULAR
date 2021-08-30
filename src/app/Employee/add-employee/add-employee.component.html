@@ -1,6 +1,9 @@
 <div class="card">
   <div class="card-header text-center">
     <h3>{{employeeId==0?'Add Employee':'View Employee Detail '}}</h3>
+    <span style="float: right;">
+      <h3><countdown #cd [config]="config" (event)="handleEvent($event)"></countdown></h3>
+    </span>
   </div>
   <div class="card-body">
 

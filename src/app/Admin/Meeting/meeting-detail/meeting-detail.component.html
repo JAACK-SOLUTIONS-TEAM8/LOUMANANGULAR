@@ -3,6 +3,16 @@
     <div  class="card-header text-center">
       <h3>Meeting Details</h3>
     </div>
+    <div class="row mt-5">
+      <div class="col-3"></div>
+      <div class="col-lg-4 col-md-3 col-sm-6 col-12">
+        <span class="input-group" style="float: right;">
+            <input type="date" class="form-control" placeholder="meeting" aria-label="date" aria-describedby="basic-addon1" [(ngModel)]="searchDate">
+            <button type="button" class="btn btn-outline-primary" style="float: left;"(click)="searchByDate()" >Search</button>
+        </span>
+    </div>
+    </div>
+
     <div class="card-body">
       <div class="row mt-5 mb-5">
           <div class="col-2">

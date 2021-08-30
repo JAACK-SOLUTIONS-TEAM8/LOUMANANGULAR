@@ -16,19 +16,19 @@ import html2PDF from 'jspdf-html2canvas';
 export class CheckoutComponent implements OnInit {
 
 
-  productData:any[] | undefined;
+  productData:any[];
   deliveryTypeData:any[]=[];
   userInfo:any;
 
-  total:number | undefined;
-  subTotal:number | undefined;
-  discount:number | undefined;
-  vat:number | undefined;
+  total:number;
+  subTotal:number;
+  discount:number;
+  vat:number;
 
-deliveryTypeForm:FormGroup | undefined;
-paymentTypeForm:FormGroup | undefined;
-cardFormForm:FormGroup | undefined;
-pickupInfoForm:FormGroup | undefined;
+deliveryTypeForm:FormGroup;
+paymentTypeForm:FormGroup;
+cardFormForm:FormGroup;
+pickupInfoForm:FormGroup;
 
 role:string="client";
 
@@ -206,7 +206,7 @@ role:string="client";
   downloadPDF() {
   
 
-    var element=document.getElementById("report");
+    var element=document.getElementById("invoice");
     html2PDF(element, {
       jsPDF: {
         format: 'a4',

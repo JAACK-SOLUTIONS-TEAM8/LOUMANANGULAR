@@ -133,7 +133,7 @@ var orderedQuantity=this.productQuantity;
     {
       Swal.fire({
         title: 'Success!',
-        text: "Product Added to the Stock!",
+        text: "Product Added to the Cart!",
         icon: 'success',
         confirmButtonText: 'Ok'
       })

@@ -56,4 +56,13 @@ export class MeetingService {
     return this.dataService.genericCaller("get",`Meeting/BookedSlots/Cancel/${slotId}`,"");
   }
   
+  searchBookedSlotsByAdmin(adminUserId:number,date:string)
+  {
+    return this.dataService.genericCaller("get",`Meeting/AdminSlots/SearchSlots?userId=${adminUserId}&date=${date}`,"");
+  }
+
+  searchBookedSlotsByClient(clientUserId:number,date:string)
+  {
+    return this.dataService.genericCaller("get",`Meeting/ClientSlots/SearchSlots?userId=${clientUserId}&date=${date}`,"");
+  }
 }

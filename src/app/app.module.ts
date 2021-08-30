@@ -1,3 +1,5 @@
+import { OrderHistoryComponent } from './client-sub-system/order-history/order-history.component';
+import { OrderDetailComponent } from './client-sub-system/order-detail/order-detail.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
@@ -69,6 +71,7 @@ import { DeliveryTypeComponent } from './order-sub-system/delivery-type/delivery
 import { AddDeliveryTypeComponent } from './order-sub-system/add-delivery-type/add-delivery-type/add-delivery-type.component';
 import { CheckoutComponent } from './order-sub-system/checkout/checkout/checkout.component';
 import { InvoiceComponent } from './order-sub-system/invoice/invoice/invoice.component';
+import { CountdownModule } from 'ngx-countdown';
 @NgModule({
   declarations: [
     AppComponent,
@@ -135,6 +138,8 @@ import { InvoiceComponent } from './order-sub-system/invoice/invoice/invoice.com
     AttendanceReportComponent,
     TeamsAttendanceHistoryComponent,
     ClientSignUpComponent,
+    OrderDetailComponent,
+    OrderHistoryComponent
   ],
   imports: [
     BrowserModule,
@@ -144,6 +149,7 @@ import { InvoiceComponent } from './order-sub-system/invoice/invoice/invoice.com
     ReactiveFormsModule,
     Ng2SearchPipeModule,
     CommonModule,
+    CountdownModule 
     ],
   providers: [    DatePipe
   ],
