@@ -72,6 +72,10 @@ import { AddDeliveryTypeComponent } from './order-sub-system/add-delivery-type/a
 import { CheckoutComponent } from './order-sub-system/checkout/checkout/checkout.component';
 import { InvoiceComponent } from './order-sub-system/invoice/invoice/invoice.component';
 import { CountdownModule } from 'ngx-countdown';
+import {VgCoreModule} from '@videogular/ngx-videogular/core';
+import {VgControlsModule} from '@videogular/ngx-videogular/controls';
+import {VgOverlayPlayModule} from '@videogular/ngx-videogular/overlay-play';
+import {VgBufferingModule} from '@videogular/ngx-videogular/buffering';
 @NgModule({
   declarations: [
     AppComponent,
@@ -139,7 +143,12 @@ import { CountdownModule } from 'ngx-countdown';
     TeamsAttendanceHistoryComponent,
     ClientSignUpComponent,
     OrderDetailComponent,
-    OrderHistoryComponent
+    OrderHistoryComponent,
+     VgCoreModule,
+    VgControlsModule,
+    VgOverlayPlayModule,
+    VgBufferingModule
+
   ],
   imports: [
     BrowserModule,

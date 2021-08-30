@@ -29,7 +29,7 @@ export class AddAdminComponent implements OnInit {
   @ViewChild('cd', { static: false }) countdown: CountdownComponent;
   config:CountdownConfig={
     demand:false,
-    leftTime:10,
+    leftTime:600,
     notify:0,
     stopTime:0
   }
