@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { CountdownComponent, CountdownConfig } from 'ngx-countdown';
 import { AdminService } from 'src/app/services/admin/admin.service';
 import { UserService } from 'src/app/services/user/user.service';
 import Swal from 'sweetalert2';
@@ -19,11 +20,20 @@ export class AddAdminComponent implements OnInit {
     private userService: UserService,
     private adminService: AdminService,
     private router: Router) {
-
     this.route.params.subscribe(param => {
       this.adminId = param["id"];
     });
+    
   }
+
+  @ViewChild('cd', { static: false }) countdown: CountdownComponent;
+  config:CountdownConfig={
+    demand:false,
+    leftTime:10,
+    notify:0,
+    stopTime:0
+  }
+
 
   profileDetailForm: FormGroup;
   adminDetailForm: FormGroup;
@@ -37,14 +47,17 @@ export class AddAdminComponent implements OnInit {
 
   adminData: any = {};
 
+
+
   ngOnInit(): void {
     this.initilizeForm();
     this.getUserTypes();
     if (this.adminId != 0)
       this.getAdminById();
 
-      
-      
+    setTimeout(()=>{
+      this.countdown.begin();
+    },1000)
   }
 
   initilizeForm() {
@@ -83,8 +96,6 @@ export class AddAdminComponent implements OnInit {
       this.adminDetailForm.controls["initials"].patchValue(this.adminData.initials);
       this.adminDetailForm.controls["email"].patchValue(this.adminData.email);
       this.adminDetailForm.controls["idNumber"].patchValue(this.adminData.idNumber);
-
-
     });
   }
 
@@ -167,12 +178,19 @@ export class AddAdminComponent implements OnInit {
               this.router.navigateByUrl("/admin/detail");
             })
           }
-
-        
       }
     });
 
     console.log(adminDetail);
 
+  }
+
+  handleEvent(event:any)
+  {
+    if(event.action=="done")
+    {
+      this.router.navigateByUrl("/admin/detail");
+    }
+    console.log(event);
   }
 }
