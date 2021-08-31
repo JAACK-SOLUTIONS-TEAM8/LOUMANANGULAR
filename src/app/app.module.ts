@@ -73,6 +73,7 @@ import { CheckoutComponent } from './order-sub-system/checkout/checkout/checkout
 import { InvoiceComponent } from './order-sub-system/invoice/invoice/invoice.component';
 import { CountdownModule } from 'ngx-countdown';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -141,6 +142,7 @@ import { CountdownModule } from 'ngx-countdown';
     ClientSignUpComponent,
     OrderDetailComponent,
     OrderHistoryComponent,
+   
     
   ],
   imports: [
@@ -151,7 +153,7 @@ import { CountdownModule } from 'ngx-countdown';
     ReactiveFormsModule,
     Ng2SearchPipeModule,
     CommonModule,
-    CountdownModule 
+    CountdownModule
     ],
   providers: [    DatePipe
   ],
