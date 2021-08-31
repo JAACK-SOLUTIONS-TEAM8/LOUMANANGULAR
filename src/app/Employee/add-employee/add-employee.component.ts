@@ -1,7 +1,8 @@
 import { DatePipe } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { CountdownComponent, CountdownConfig } from 'ngx-countdown';
 import { Observable } from 'rxjs';
 import { EmployeeService } from 'src/app/services/employee/employee.service';
 import { UserService } from 'src/app/services/user/user.service';
@@ -17,6 +18,13 @@ declare var $: any;
 export class AddEmployeeComponent implements OnInit {
   userTypes: any[]=[];
 
+  @ViewChild('cd', { static: false }) countdown: CountdownComponent;
+  config:CountdownConfig={
+    demand:false,
+    leftTime:10*60,
+    notify:0,
+    stopTime:0
+  }
 
   ngOnInit(): void {
 
@@ -205,4 +213,12 @@ export class AddEmployeeComponent implements OnInit {
  });
 }
 
+handleEvent(event:any)
+  {
+    if(event.action=="done")
+    {
+      this.router.navigateByUrl("/client/list");
+    }
+    console.log(event);
+  }
 }

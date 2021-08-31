@@ -19,7 +19,7 @@
 
           </div>
         <div class="col-8">
-            
+
             <div class="card">
                 <div class="card-body">
                   <div class="row">
@@ -66,7 +66,12 @@
                 <div class="col-2">
                 </div>
               <div class="col-8">
-                  
+                <div class="row mb-5 mt-5">
+                  <div class="col-12">
+                    <button class="btn btn-primary" style="float: right;" *ngIf="teamAttendanceData.length!=0" (click)="exportToExcel()">Export to Excel</button>
+                  </div>
+                </div>
+      
                   <div class="card">
                     <div  class="card-header text-center">
                       <div class="row">

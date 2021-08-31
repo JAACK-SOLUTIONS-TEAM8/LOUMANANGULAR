@@ -64,5 +64,10 @@ export class OrderService {
     return this.dataService.genericCaller("get", `Order/MonthlySalesReport?dateInfo=${dateInfo}`, "");
   }
 
-}
 
+  getClientAllOrders(clientUserId:number) {
+    debugger
+    return this.dataService.genericCaller("get", `Order/ClientOrders/${clientUserId}`, "");
+  }
+
+}

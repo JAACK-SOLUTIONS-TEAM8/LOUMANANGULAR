@@ -1,1 +1,79 @@
-<p>enquiry-type-detail works!</p>
+
+<div class="card">
+    <div  class="card-header text-center">
+      <h3>Enquiry Type Details</h3>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-2">
+            </div>
+          <div class="col-lg-4 col-md-3 col-sm-2 col-12 "> 
+              <button type="button" class="btn btn-primary" style="float: left;width: 8rem;" [routerLink]="'/admin/add-enquiry-type/0'" >Add</button>
+          </div>
+          <div class="col-lg-4 col-md-3 col-sm-6 col-12">
+              <span class="input-group" style="float: right;">
+                  <input type="text" class="form-control" placeholder="Username" aria-label="enquiry type" aria-describedby="basic-addon1" [(ngModel)]="searchTerm">
+                  <button type="button" class="btn btn-outline-primary" style="float: left;" (click)="searchByName()">Search</button>
+              </span>
+          </div>
+          <div class="col-2">
+          </div>
+        </div>  
+      <div class="row mt-5 mb-5">
+          <div class="col-2">
+
+          </div>
+        <div class="col-8">
+            
+            <div class="card">
+                <div class="card-body">
+                  <div class="row">
+                    <table class="table">
+                        <thead  style="background-color: rgb(103, 186, 241);">
+                          <tr>
+                            <th scope="col">Enquiry Type</th>
+                            <th scope="col">Action</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let enquiryType of enquiryTypesData">
+                            <td scope="row">{{enquiryType.enquiryTypeDescription}}</td>
+                            <td scope="row">
+                              <button class="btn btn-outline-primary" (click)="editEnquiryType(enquiryType)">View</button>
+                              <button class="btn btn-outline-primary"  data-bs-toggle="modal" data-bs-target="#deletionConfirmation" (click)="deleteEnquiryType(enquiryType)" >Delete</button>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                  </div>
+                </div>
+              </div>
+
+        </div>
+        <div class="col-2">
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Admin Deletion Confimation Model -->
+<div class="modal fade" id="deletionConfirmation" tabindex="-1" aria-labelledby="deletionConfirmationLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Enquiry Type Deletion confirmation</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Confirm Enquiry Type Deletion</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="confirmDeleteion()">Yes</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -9,6 +9,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./client-meeting.component.css']
 })
 export class ClientMeetingComponent implements OnInit {
+  searchDate:string;
 
   slotsData:any[]=[];
   constructor(
@@ -57,5 +58,27 @@ export class ClientMeetingComponent implements OnInit {
     })
   }
 
+  searchByDate()
+  {
+    debugger
+    if(this.searchDate!=null || this.searchDate!=undefined)
+    {
+      var userDetail=JSON.parse(localStorage.getItem("User"));
+      debugger
+      this.meetingService.searchBookedSlotsByClient(Number(userDetail.userId),this.searchDate).subscribe(response=>{
+        this.slotsData=response.slots;
+      });
+  
+    }
+    else
+    {
+      Swal.fire({
+        title: 'Error!',
+        text: 'No search result found!',
+        icon: 'success',
+        confirmButtonText: 'Ok'
+      });
+    }
+  }
 
 }

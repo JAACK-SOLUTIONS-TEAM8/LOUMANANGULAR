@@ -1,214 +1,214 @@
 <div class="card" id="invoice" #invoice>
-    <div class="card-header text-center">
-      <h3>Checkout</h3>
-    </div>
-    <div class="card-body">
-  
-      <div class="row">
-        <div class="card">
-          <div class="card-header">
-            <h5>Contact Information</h5>
-          </div>
-          <div class="card-body">
-            <div class="row">
-                <div class="col-lg-6">
-                    <h5>Client Name:</h5>{{userInfo?.initials+' '+userInfo?.surname}}
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-6">
-                    <h5>ID Number:</h5>{{userInfo?.idNumber}}
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-6">
-                    <h5>Email:</h5>{{userInfo?.email}}
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-6">
-                    <h5>Address:</h5>
-                    <p><span><b>street Name Name : </b></span> {{userInfo?.streetName}}</p>
-                    <p><span><b>Street Number : </b></span>{{userInfo?.streetNumber}}</p>
-                    <p><span><b>City Name : </b></span>{{userInfo?.cityName}}</p>
-                    <p><span><b>City Code : </b></span>{{userInfo?.cityCode}}</p>
-                </div>
-            </div>
-            
+  <div class="card-header text-center">
+    <h3>Checkout</h3>
+  </div>
+  <div class="card-body">
+
+    <div class="row">
+      <div class="card">
+        <div class="card-header">
+          <h5>Contact Information</h5>
         </div>
+        <div class="card-body">
+          <div class="row">
+              <div class="col-lg-6">
+                  <h5>Client Name:</h5>{{userInfo?.initials+' '+userInfo?.surname}}
+              </div>
+          </div>
+          <div class="row">
+              <div class="col-lg-6">
+                  <h5>ID Number:</h5>{{userInfo?.idNumber}}
+              </div>
+          </div>
+          <div class="row">
+              <div class="col-lg-6">
+                  <h5>Email:</h5>{{userInfo?.email}}
+              </div>
+          </div>
+          <div class="row">
+              <div class="col-lg-6">
+                  <h5>Address:</h5>
+                  <p><span><b>street Name Name : </b></span> {{userInfo?.streetName}}</p>
+                  <p><span><b>Street Number : </b></span>{{userInfo?.streetNumber}}</p>
+                  <p><span><b>City Name : </b></span>{{userInfo?.cityName}}</p>
+                  <p><span><b>City Code : </b></span>{{userInfo?.cityCode}}</p>
+              </div>
+          </div>
+          
+      </div>
 </div>
+    </div>
+
+    <div class="row mt-5">
+      <div class="card">
+        <div class="card-header ">
+          <h5>Order Summery</h5>
+        </div>
+        <div class="card-body">
+          <div class="row">
+              <table class="table">
+                  <thead style="background-color: rgb(71, 142, 235);">
+                    <tr>
+                      <th scope="col">Product Name</th>
+                      <th scope="col">Category</th>
+                      <th scope="col">Size</th>
+                      <th scope="col">Price</th>
+                      <th scope="col">Ordered Quantity</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let product of productData">
+                      <td scope="row">{{product.product.productName}}</td>
+                      <td scope="row">{{product.product.productTypeName}}</td>
+                      <td scope="row">{{product.product.productSizeDescription}}</td>
+                      <td scope="row">{{product.product.price}}</td>
+                      <td scope="row">{{product.quantity}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+            </div>
+            <div class="card-body mt-3">
+              <div class="row">
+                  <div class="col-lg-6">
+                      <h5>Discount:</h5>{{discount}}
+                  </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-6">
+                    <h5>Total:</h5>{{total}}
+                </div>
+            </div>
+          </div>    
+        </div>
       </div>
-  
-      <div class="row mt-5">
-        <div class="card">
+    </div>
+
+    <div class=" row mt-5">
+      <div class="card">
           <div class="card-header ">
-            <h5>Order Summery</h5>
+            <h5>Delivry Type</h5>
           </div>
           <div class="card-body">
-            <div class="row">
-                <table class="table">
-                    <thead style="background-color: rgb(71, 142, 235);">
-                      <tr>
-                        <th scope="col">Product Name</th>
-                        <th scope="col">Category</th>
-                        <th scope="col">Size</th>
-                        <th scope="col">Price</th>
-                        <th scope="col">Ordered Quantity</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr *ngFor="let product of productData">
-                        <td scope="row">{{product.product.productName}}</td>
-                        <td scope="row">{{product.product.productTypeName}}</td>
-                        <td scope="row">{{product.product.productSizeDescription}}</td>
-                        <td scope="row">{{product.product.price}}</td>
-                        <td scope="row">{{product.quantity}}</td>
-                      </tr>
-                    </tbody>
-                  </table>
-              </div>
-              <div class="card-body mt-3">
-                <div class="row">
-                    <div class="col-lg-6">
-                        <h5>Discount:</h5>{{discount}}
-                    </div>
+            <form [formGroup]="deliveryTypeForm">
+              <div class="row form-group">
+                <div class="col-lg-6 col-md-4 col-sm-8 col-12">
+                    <select  class="form-control" formControlName="deliveryType" (change)="deliveryTypeChanged()">
+                      <option value="none">-- select Delivery Type --</option>
+                      <option [value]="type.deliveryTypeId" *ngFor="let type of deliveryTypeData">{{type.description}}</option>
+                    </select>    
                 </div>
-                <div class="row">
-                  <div class="col-lg-6">
-                      <h5>Total:</h5>{{total}}
-                  </div>
-              </div>
-            </div>    
+            </div>  
+            </form>
           </div>
         </div>
-      </div>
-  
-      <div class=" row mt-5">
-        <div class="card">
-            <div class="card-header ">
-              <h5>Delivry Type</h5>
-            </div>
-            <div class="card-body">
-              <form [formGroup]="deliveryTypeForm">
-                <div class="row form-group">
-                  <div class="col-lg-6 col-md-4 col-sm-8 col-12">
-                      <select  class="form-control" formControlName="deliveryType" (change)="deliveryTypeChanged()">
-                        <option value="none">-- select Delivery Type --</option>
-                        <option [value]="type.deliveryTypeId" *ngFor="let type of deliveryTypeData">{{type.description}}</option>
-                      </select>    
-                  </div>
-              </div>  
-              </form>
-            </div>
+    </div>
+
+    <div class=" row mt-5" *ngIf="showPaymentMethod">
+      <div class="card">
+          <div class="card-header ">
+            <h5>Payment Type Type</h5>
           </div>
-      </div>
-  
-      <div class=" row mt-5" *ngIf="showPaymentMethod">
-        <div class="card">
-            <div class="card-header ">
-              <h5>Payment Type Type</h5>
-            </div>
-            <div class="card-body">
-              <form [formGroup]="paymentTypeForm">
-                <div class="row form-group">
-                  <div class="col-lg-6 col-md-4 col-sm-8 col-12">
-                      <select  class="form-control" formControlName="paymentType" (change)="paymentMethodTypeChanged()">
-                        <option value="none">--- Select Payment Type ---</option>
-                        <option value="Cash On Delivery">Cash On Delivery</option>
-                        <option value="Credit Card" >Credit Card</option>
-                      </select>    
-                  </div>
-              </div>  
-              </form>
-            </div>
+          <div class="card-body">
+            <form [formGroup]="paymentTypeForm">
+              <div class="row form-group">
+                <div class="col-lg-6 col-md-4 col-sm-8 col-12">
+                    <select  class="form-control" formControlName="paymentType" (change)="paymentMethodTypeChanged()">
+                      <option value="none">--- Select Payment Type ---</option>
+                      <option value="Cash On Delivery">Cash On Delivery</option>
+                      <option value="Credit Card" >Credit Card</option>
+                    </select>    
+                </div>
+            </div>  
+            </form>
           </div>
-      </div>
+        </div>
+    </div>
 
 
-      <div class=" row mt-5" *ngIf="showPickupInfo">
-        <div class="card">
-            <div class="card-header ">
-              <h5>Pickup Info</h5>
-            </div>
-            <div class="card-body">
-              <form [formGroup]="pickupInfoForm">
+    <div class=" row mt-5" *ngIf="showPickupInfo">
+      <div class="card">
+          <div class="card-header ">
+            <h5>Pickup Info</h5>
+          </div>
+          <div class="card-body">
+            <form [formGroup]="pickupInfoForm">
+              <div class="row form-group">
+                <div class="col-lg-6 col-md-4 col-sm-8 col-12">
+                  <label>Pickup Date:</label>
+                  <input type="date" class="form-control" formControlName="pickupDate">
+                </div>
+              </div>
+              <div class="row form-group">
+                <div class="col-lg-6 col-md-4 col-sm-8 col-12">
+                  <label>Pickup Time:</label>
+                  <input type="time" class="form-control" formControlName="pickupTime">
+                </div>
+              </div>    
+            </form>
+          </div>
+        </div>
+    </div>
+
+
+    <div class=" row mt-5" *ngIf="showCardDetailForm">
+      <div class="card">
+          <div class="card-header ">
+            <h5>Card Detail</h5>
+          </div>
+          <div class="card-body">
+            <form [formGroup]="cardFormForm">
+              <div class="row form-group">
                 <div class="row form-group">
                   <div class="col-lg-6 col-md-4 col-sm-8 col-12">
-                    <label>Pickup Date:</label>
-                    <input type="date" class="form-control" formControlName="pickupDate">
+                      <label >Card Holder Name</label>
+                      <input type="text" class="form-control" formControlName="holderName" placeholder="Card Holder Name">
                   </div>
                 </div>
                 <div class="row form-group">
                   <div class="col-lg-6 col-md-4 col-sm-8 col-12">
-                    <label>Pickup Time:</label>
-                    <input type="time" class="form-control" formControlName="pickupTime">
+                      <label >Card Number:</label>
+                      <input type="text" class="form-control" formControlName="cardNumber" placeholder="Card Number">
                   </div>
-                </div>    
-              </form>
-            </div>
-          </div>
-      </div>
-
-
-      <div class=" row mt-5" *ngIf="showCardDetailForm">
-        <div class="card">
-            <div class="card-header ">
-              <h5>Card Detail</h5>
-            </div>
-            <div class="card-body">
-              <form [formGroup]="cardFormForm">
+                </div>
                 <div class="row form-group">
-                  <div class="row form-group">
-                    <div class="col-lg-6 col-md-4 col-sm-8 col-12">
-                        <label >Card Holder Name</label>
-                        <input type="text" class="form-control" formControlName="holderName" placeholder="Card Holder Name">
-                    </div>
+                  <div class="col-lg-6 col-md-4 col-sm-8 col-12">
+                      <label >Security Number</label>
+                      <input type="text" class="form-control" formControlName="securityNumber" placeholder="Security Number">
                   </div>
-                  <div class="row form-group">
-                    <div class="col-lg-6 col-md-4 col-sm-8 col-12">
-                        <label >Card Number:</label>
-                        <input type="text" class="form-control" formControlName="cardNumber" placeholder="Card Number">
-                    </div>
-                  </div>
-                  <div class="row form-group">
-                    <div class="col-lg-6 col-md-4 col-sm-8 col-12">
-                        <label >Security Number</label>
-                        <input type="text" class="form-control" formControlName="securityNumber" placeholder="Security Number">
-                    </div>
-                  </div>
-              </div>  
-              </form>
-            </div>
+                </div>
+            </div>  
+            </form>
           </div>
-      </div>
-
-
-      <div class=" row mt-5">
-        <div class="col-12">
-          <button type="button" class="btn btn-primary" style="float: right; margin-left: 5px;" data-bs-toggle="modal" data-bs-target="#additionConfirmation"> {{role=='admin'?'Complete Order':'Checkout'}}</button>
-          <button type="button" class="btn btn-primary" style="float: right; margin-left: 5px;" *ngIf="role=='admin'" (click)="downloadPDF()"> Generate Invoice</button>
-          <button type="button" class="btn btn-secondary" style="float: right;" [routerLink]="'/client/cart'" >Cancel</button>
         </div>
+    </div>
+
+
+    <div class=" row mt-5">
+      <div class="col-12">
+        <button type="button" class="btn btn-primary" style="float: right; margin-left: 5px;" data-bs-toggle="modal" data-bs-target="#additionConfirmation"> {{role=='admin'?'Complete Order':'Checkout'}}</button>
+        <button type="button" class="btn btn-primary" style="float: right; margin-left: 5px;" (click)="downloadPDF()"> Generate Invoice</button>
+        <button type="button" class="btn btn-secondary" style="float: right;" [routerLink]="'/client/cart'" >Back</button>
       </div>
     </div>
   </div>
-  
-  
-  <!-- Client Addition Confimation Model -->
-  <div class="modal fade" id="additionConfirmation" tabindex="-1" aria-labelledby="additionConfirmationLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Order Submission confirmation</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <p>Confirm Order Submission</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-          <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="submitOrder()">Yes</button>
-        </div>
+</div>
+
+
+<!-- Client Addition Confimation Model -->
+<div class="modal fade" id="additionConfirmation" tabindex="-1" aria-labelledby="additionConfirmationLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Order Submission confirmation</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Confirm Order Submission</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="submitOrder()">Yes</button>
       </div>
     </div>
   </div>
+</div>

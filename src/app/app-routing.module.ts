@@ -59,6 +59,8 @@ import { HalfYearlyEmployeeReportComponent } from './report-sub-system/half-year
 import { MonthlyEmployeeRegisterReportComponent } from './report-sub-system/monthly-employee-register-report/monthly-employee-register-report.component';
 import { MonthlySalesReportComponent } from './report-sub-system/monthly-sales-report/monthly-sales-report.component';
 import { MonthlyStockReportComponent } from './report-sub-system/monthly-stock-report/monthly-stock-report.component';
+import { OrderHistoryComponent } from './client-sub-system/order-history/order-history.component';
+import { OrderDetailComponent } from './client-sub-system/order-detail/order-detail.component';
 
 const routes: Routes = [
 
@@ -164,7 +166,21 @@ const routes: Routes = [
             component:OrderProductComponent
           }
         ]
-      }
+      },
+      {
+        path:"orders",
+        children:[
+          {
+            path:"history",
+            component:OrderHistoryComponent
+          },
+          {
+            path:"detail/:id",
+            component:OrderDetailComponent
+          }
+        ]
+      },
+
     ]
   },
   {

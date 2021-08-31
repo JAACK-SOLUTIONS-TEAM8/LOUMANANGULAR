@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { CountdownComponent, CountdownConfig } from 'ngx-countdown';
 import { ClientService } from 'src/app/services/client/client.service';
 import { UserService } from 'src/app/services/user/user.service';
 import Swal from 'sweetalert2';
@@ -20,6 +21,16 @@ export class AddClientComponent implements OnInit {
   clientDetailForm: FormGroup;
   userTypes: any[]=[];
 
+  @ViewChild('cd', { static: false }) countdown: CountdownComponent;
+  
+  config:CountdownConfig={
+    demand:false,
+    leftTime:10*60,
+    notify:0,
+    stopTime:0
+  }
+
+
   constructor(
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
@@ -37,6 +48,10 @@ export class AddClientComponent implements OnInit {
     this.initilizeForm();
     if(this.clientId!=0)
     this.getClientById();
+
+    setTimeout(()=>{
+      this.countdown.begin();
+    },1000)
   }
 
   
@@ -157,5 +172,12 @@ export class AddClientComponent implements OnInit {
 
   }
 
-
+  handleEvent(event:any)
+  {
+    if(event.action=="done")
+    {
+      this.router.navigateByUrl("/client/list");
+    }
+    console.log(event);
+  }
 }

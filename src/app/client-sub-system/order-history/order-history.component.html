@@ -1,0 +1,43 @@
+<div class="card">
+    <div class="card-header text-center">
+      <h3>Orders Detail</h3>
+    </div>
+    <div class="card-body">
+      <div class="row mt-5">
+        <div class="card">
+          <div class="card-header ">
+            <h5>Client Orders</h5>
+          </div>
+          <div class="card-body">
+            <div class="row">
+                <table class="table">
+                    <thead  style="background-color: rgb(103, 186, 241);">
+                      <tr>
+                        <th scope="col">Order Id</th>
+                        <th scope="col">Client Name</th>
+                        <th scope="col">Created Date</th>
+                        <th scope="col">Total</th>
+                        <th scope="col">Order Status</th>
+                        <th scope="col">Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let order of orderData">
+                        <td scope="row">{{order.orderId}}</td>
+                        <td scope="row">{{order.clientName}}</td>
+                        <td scope="row">{{order.createdDate | date:'medium'}}</td>
+                        <td scope="row">{{order.total}}</td>
+                        <td scope="row">{{order.orderStatus}}</td>
+                        <td scope="row">
+                          <button class="btn btn-primary" (click)="getOrderDetail(order)">View Detail</button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
