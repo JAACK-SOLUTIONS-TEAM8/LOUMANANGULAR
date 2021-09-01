@@ -27,38 +27,12 @@ export class LoginComponent implements OnInit {
   {
     this.loginForm=this.formBuilder.group({
       userName:[null,Validators.required],
-      password:[null,[Validators.required,Validators.minLength(5),Validators.maxLength(16)]]
+      password:[null,Validators.required] 
     });
   }
 
   login()
   {
-    debugger
-    if(this.loginForm.controls["password"].errors!=null || this.loginForm.controls["password"].errors!=undefined){
-      if(this.loginForm.controls["password"].errors.minlength)
-      {
-        Swal.fire({
-          title: 'Warning!',
-          text: "Password should be minimum of 5 characters and maximum of 16 characters",
-          icon: 'warning',
-          confirmButtonText: 'Ok'
-        })
-        return;
-      }
-  
-      if(this.loginForm.controls["password"].errors.maxlength)
-      {
-        Swal.fire({
-          title: 'Warning!',
-          text: "Password should be minimum of 5 characters and maximum of 16 characters",
-          icon: 'warning',
-          confirmButtonText: 'Ok'
-        })
-        return;
-      }
-  
-  
-    }
     if(this.loginForm.invalid)
     {
       Swal.fire({

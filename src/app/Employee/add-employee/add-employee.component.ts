@@ -121,7 +121,7 @@ export class AddEmployeeComponent implements OnInit {
 
   submitAddAdminForm() {
     debugger
-    if (this.profileDetailForm.controls["password"].value != this.profileDetailForm.controls["confirmPassword"].value) {
+    if (this.profileDetailForm.controls["confirmPassword"].value != this.profileDetailForm.controls["password"].value) {
       Swal.fire({
         title: 'Warning!',
         text: 'password does not matched!',

@@ -58,24 +58,24 @@ export class AddClientComponent implements OnInit {
 
   initilizeForm() {
     this.profileDetailForm = this.formBuilder.group({
-      userName: [null,[Validators.required,Validators.maxLength(50),Validators.minLength(5)]],
-      password: [null,[Validators.required,Validators.maxLength(8),Validators.minLength(6)]],
+      userName: [null,Validators.required],
+      password: [null,Validators.required],
       confirmPassword: [null,Validators.required]
     });
 
     this.clientDetailForm = this.formBuilder.group({
-      initials: [null,[Validators.required,Validators.maxLength(5),Validators.minLength(2)]],
-      surname: [null,[Validators.required,Validators.maxLength(50)]],
+      initials: [null,Validators.required],
+      surname: [null,Validators.required],
       userTypeId: [null,Validators.required],
-      idNumber: [null,[Validators.required,Validators.maxLength(13)]],
-      email: [null,[Validators.required,Validators.maxLength(50)]]
+      idNumber: [null,Validators.required],
+      email: [null,Validators.required]
     });
 
     this.addressDetailForm = this.formBuilder.group({
-      streetName: [null,[Validators.required,Validators.maxLength(10)]],
-      streetNumber: [null,[Validators.required,Validators.maxLength(3)]],
-      cityName: [null,[Validators.required,Validators.maxLength(50)]],
-      cityCode: [null,[Validators.required,Validators.maxLength(4)]]
+      streetName: [null,Validators.required],
+      streetNumber: [null,Validators.required],
+      cityName: [null,Validators.required],
+      cityCode: [null,Validators.required]
     });
   }
 
@@ -113,7 +113,7 @@ export class AddClientComponent implements OnInit {
 
   submitAddClientForm() {
     debugger
-    if (this.profileDetailForm.controls["password"].value != this.profileDetailForm.controls["confirmPassword"].value) {
+    if (this.profileDetailForm.controls["confirmPassword"].value != this.profileDetailForm.controls["password"].value) {
       Swal.fire({
         title: 'Warning!',
         text: "password does not matched!",
