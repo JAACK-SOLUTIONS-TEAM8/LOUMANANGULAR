@@ -62,17 +62,17 @@ export class AddAdminComponent implements OnInit {
 
   initilizeForm() {
     this.profileDetailForm = this.fromBuilder.group({
-      userName: [null,Validators.required],
-      password: [null,[Validators.required,Validators.maxLength(16),Validators.minLength(5)]],
+      userName: [null,[Validators.required,Validators.maxLength(50),Validators.minLength(5)]],
+      password: [null,[Validators.required,Validators.maxLength(8),Validators.minLength(6)]],
       confirmPassword: [null,Validators.required]
     });
 
     this.adminDetailForm = this.fromBuilder.group({
-      initials: [null,[Validators.required,Validators.maxLength(16),Validators.minLength(5)]],
-      surname: [null,Validators.required],
+      initials: [null,[Validators.required,Validators.maxLength(5),Validators.minLength(2)]],
+      surname: [null,[Validators.required,Validators.maxLength(50)]],
       userTypeId: [null,Validators.required],
-      idNumber: [null,Validators.required],
-      email: [null,Validators.required]
+      idNumber: [null,[Validators.required,Validators.maxLength(13)]],
+      email: [null,[Validators.required,Validators.maxLength(50)]]
     });
   }
 
@@ -110,7 +110,7 @@ export class AddAdminComponent implements OnInit {
       {
         Swal.fire({
           title: 'Warning!',
-          text: "Password should be minimum of 5 characters and maximum of 16 characters",
+          text: "Password should be minimum of 6 characters and maximum of 8 characters",
           icon: 'warning',
           confirmButtonText: 'Ok'
         })
@@ -121,21 +121,21 @@ export class AddAdminComponent implements OnInit {
       {
         Swal.fire({
           title: 'Warning!',
-          text: "Password should be minimum of 5 characters and maximum of 16 characters",
+          text: "Password should be minimum of 6 characters and maximum of 8 characters",
           icon: 'warning',
           confirmButtonText: 'Ok'
         })
         return;
       }
   
-    if (this.profileDetailForm.controls["password"].value != this.profileDetailForm.controls["confirmPassword"].value) 
+    if (this.profileDetailForm.controls["confirmPassword"].value != this.profileDetailForm.controls["password"].value) 
     {
 
-      console.log("password does not matched!");
+      console.log("password does not match!");
 
       Swal.fire({
         title: 'Warning!',
-        text: 'Password did not Matched',
+        text: 'Password did not Match',
         icon: 'info',
         confirmButtonText: 'Ok'
       })
@@ -144,12 +144,12 @@ export class AddAdminComponent implements OnInit {
     }
   }
 
-  if(this.adminDetailForm.controls["initials"].errors!=null || this.profileDetailForm.controls["initials"].errors!=undefined){
-    if(this.profileDetailForm.controls["initials"].errors.minlength)
+  if(this.profileDetailForm.controls["userName"].errors!=null || this.profileDetailForm.controls["userName"].errors!=undefined){
+    if(this.profileDetailForm.controls["userName"].errors.minlength)
     {
       Swal.fire({
         title: 'Warning!',
-        text: "initials should be minimum of 5 characters and maximum of 16 characters",
+        text: "User Name should be minimum of 5 characters and maximum of 50 characters",
         icon: 'warning',
         confirmButtonText: 'Ok'
       })
@@ -160,25 +160,76 @@ export class AddAdminComponent implements OnInit {
     {
       Swal.fire({
         title: 'Warning!',
-        text: "initials should be minimum of 5 characters and maximum of 16 characters",
+        text: "User Name should be minimum of 5 characters and maximum of 50 characters",
         icon: 'warning',
         confirmButtonText: 'Ok'
       })
       return;
     }
+}
 
-  if (this.profileDetailForm.controls["password"].value != this.profileDetailForm.controls["confirmPassword"].value) 
+if(this.adminDetailForm.controls["initials"].errors!=null || this.adminDetailForm.controls["initials"].errors!=undefined){
+  if(this.adminDetailForm.controls["initials"].errors.minlength)
   {
-
-    console.log("password does not matched!");
-
     Swal.fire({
       title: 'Warning!',
-      text: 'Password did not Matched',
-      icon: 'info',
+      text: "Initials should be minimum of 2 characters and maximum of 8 characters",
+      icon: 'warning',
       confirmButtonText: 'Ok'
     })
+    return;
+  }
 
+  if(this.adminDetailForm.controls["initials"].errors.maxlength)
+  {
+    Swal.fire({
+      title: 'Warning!',
+      text: "Initials should be minimum of 2 characters and maximum of 8 characters",
+      icon: 'warning',
+      confirmButtonText: 'Ok'
+    })
+    return;
+  }
+}
+
+if(this.adminDetailForm.controls["surname"].errors!=null || this.adminDetailForm.controls["surname"].errors!=undefined){
+  
+  if(this.adminDetailForm.controls["surname"].errors.maxlength)
+  {
+    Swal.fire({
+      title: 'Warning!',
+      text: "Surname should be at least 50 characters",
+      icon: 'warning',
+      confirmButtonText: 'Ok'
+    })
+    return;
+  }
+}
+
+if(this.adminDetailForm.controls["idNumber"].errors!=null || this.adminDetailForm.controls["idNumber"].errors!=undefined){
+  
+  if(this.adminDetailForm.controls["idNumber"].errors.maxlength)
+  {
+    Swal.fire({
+      title: 'Warning!',
+      text: "ID Number should be at least 13 characters",
+      icon: 'warning',
+      confirmButtonText: 'Ok'
+    })
+    return;
+  }
+}
+
+if(this.adminDetailForm.controls["email"].errors!=null || this.adminDetailForm.controls["email"].errors!=undefined){
+  
+  if(this.adminDetailForm.controls["email"].errors.maxlength)
+  {
+    Swal.fire({
+      title: 'Warning!',
+      text: "Email Address should be at least 50 characters",
+      icon: 'warning',
+      confirmButtonText: 'Ok'
+    })
     return;
   }
 }

@@ -58,24 +58,24 @@ export class AddClientComponent implements OnInit {
 
   initilizeForm() {
     this.profileDetailForm = this.formBuilder.group({
-      userName: [null,Validators.required],
-      password: [null,Validators.required],
+      userName: [null,[Validators.required,Validators.maxLength(50),Validators.minLength(5)]],
+      password: [null,[Validators.required,Validators.maxLength(8),Validators.minLength(6)]],
       confirmPassword: [null,Validators.required]
     });
 
     this.clientDetailForm = this.formBuilder.group({
-      initials: [null,Validators.required],
-      surname: [null,Validators.required],
+      initials: [null,[Validators.required,Validators.maxLength(5),Validators.minLength(2)]],
+      surname: [null,[Validators.required,Validators.maxLength(50)]],
       userTypeId: [null,Validators.required],
-      idNumber: [null,Validators.required],
-      email: [null,Validators.required]
+      idNumber: [null,[Validators.required,Validators.maxLength(13)]],
+      email: [null,[Validators.required,Validators.maxLength(50)]]
     });
 
     this.addressDetailForm = this.formBuilder.group({
-      streetName: [null,Validators.required],
-      streetNumber: [null,Validators.required],
-      cityName: [null,Validators.required],
-      cityCode: [null,Validators.required]
+      streetName: [null,[Validators.required,Validators.maxLength(10)]],
+      streetNumber: [null,[Validators.required,Validators.maxLength(3)]],
+      cityName: [null,[Validators.required,Validators.maxLength(50)]],
+      cityCode: [null,[Validators.required,Validators.maxLength(4)]]
     });
   }
 
