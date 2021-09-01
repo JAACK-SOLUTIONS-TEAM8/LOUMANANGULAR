@@ -63,12 +63,12 @@ export class AddAdminComponent implements OnInit {
   initilizeForm() {
     this.profileDetailForm = this.fromBuilder.group({
       userName: [null,Validators.required],
-      password: [null,Validators.required],
+      password: [null,[Validators.required,Validators.maxLength(16),Validators.minLength(5)]],
       confirmPassword: [null,Validators.required]
     });
 
     this.adminDetailForm = this.fromBuilder.group({
-      initials: [null,Validators.required],
+      initials: [null,[Validators.required,Validators.maxLength(16),Validators.minLength(5)]],
       surname: [null,Validators.required],
       userTypeId: [null,Validators.required],
       idNumber: [null,Validators.required],
@@ -105,7 +105,29 @@ export class AddAdminComponent implements OnInit {
     console.log(this.profileDetailForm.value);
     console.log(this.adminDetailForm.value);
     debugger
-
+    if(this.profileDetailForm.controls["password"].errors!=null || this.profileDetailForm.controls["password"].errors!=undefined){
+      if(this.profileDetailForm.controls["password"].errors.minlength)
+      {
+        Swal.fire({
+          title: 'Warning!',
+          text: "Password should be minimum of 5 characters and maximum of 16 characters",
+          icon: 'warning',
+          confirmButtonText: 'Ok'
+        })
+        return;
+      }
+  
+      if(this.profileDetailForm.controls["password"].errors.maxlength)
+      {
+        Swal.fire({
+          title: 'Warning!',
+          text: "Password should be minimum of 5 characters and maximum of 16 characters",
+          icon: 'warning',
+          confirmButtonText: 'Ok'
+        })
+        return;
+      }
+  
     if (this.profileDetailForm.controls["password"].value != this.profileDetailForm.controls["confirmPassword"].value) 
     {
 
@@ -120,6 +142,48 @@ export class AddAdminComponent implements OnInit {
 
       return;
     }
+  }
+
+  if(this.adminDetailForm.controls["initials"].errors!=null || this.profileDetailForm.controls["initials"].errors!=undefined){
+    if(this.profileDetailForm.controls["initials"].errors.minlength)
+    {
+      Swal.fire({
+        title: 'Warning!',
+        text: "initials should be minimum of 5 characters and maximum of 16 characters",
+        icon: 'warning',
+        confirmButtonText: 'Ok'
+      })
+      return;
+    }
+
+    if(this.profileDetailForm.controls["initials"].errors.maxlength)
+    {
+      Swal.fire({
+        title: 'Warning!',
+        text: "initials should be minimum of 5 characters and maximum of 16 characters",
+        icon: 'warning',
+        confirmButtonText: 'Ok'
+      })
+      return;
+    }
+
+  if (this.profileDetailForm.controls["password"].value != this.profileDetailForm.controls["confirmPassword"].value) 
+  {
+
+    console.log("password does not matched!");
+
+    Swal.fire({
+      title: 'Warning!',
+      text: 'Password did not Matched',
+      icon: 'info',
+      confirmButtonText: 'Ok'
+    })
+
+    return;
+  }
+}
+
+
     else if(this.profileDetailForm.invalid || this.adminDetailForm.invalid)
     {
       console.log("provide all the required fields values!");

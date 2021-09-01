@@ -54,8 +54,9 @@ export class ProductListComponent implements OnInit {
       return
     }
     this.productService.searchProductByName(this.searchTerm).subscribe(response=>{
-      if(response.enquiryTypes.length!=null&&response.enquiryTypes.length!=0)
-        this.productData = response.enquiryTypes;
+
+      if(response.statusCode==200)
+        this.productData = response.products;
       else
       {
         Swal.fire({

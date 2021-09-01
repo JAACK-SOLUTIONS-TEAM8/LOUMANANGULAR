@@ -15,4 +15,9 @@ export class UserService {
   getAudit() {
     return this.dataService.genericCaller("get", "User/Audit", "");
   }
+
+  searchAuditByUserName(name:string) {
+    return this.dataService.genericCaller("get", "User/Audit/Search?name="+name, "");
+  }
+
 }

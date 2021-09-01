@@ -1,7 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AppComponent } from 'src/app/app.component';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import Swal from 'sweetalert2';
 
@@ -28,12 +27,38 @@ export class LoginComponent implements OnInit {
   {
     this.loginForm=this.formBuilder.group({
       userName:[null,Validators.required],
-      password:[null,Validators.required]
+      password:[null,[Validators.required,Validators.minLength(5),Validators.maxLength(16)]]
     });
   }
 
   login()
   {
+    debugger
+    if(this.loginForm.controls["password"].errors!=null || this.loginForm.controls["password"].errors!=undefined){
+      if(this.loginForm.controls["password"].errors.minlength)
+      {
+        Swal.fire({
+          title: 'Warning!',
+          text: "Password should be minimum of 5 characters and maximum of 16 characters",
+          icon: 'warning',
+          confirmButtonText: 'Ok'
+        })
+        return;
+      }
+  
+      if(this.loginForm.controls["password"].errors.maxlength)
+      {
+        Swal.fire({
+          title: 'Warning!',
+          text: "Password should be minimum of 5 characters and maximum of 16 characters",
+          icon: 'warning',
+          confirmButtonText: 'Ok'
+        })
+        return;
+      }
+  
+  
+    }
     if(this.loginForm.invalid)
     {
       Swal.fire({
