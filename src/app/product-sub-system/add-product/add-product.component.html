@@ -1,99 +1,98 @@
 
 <div class="row">
-    <div class="col-2">
-    </div>
-    <div class="col-8">
-        <div class="card">
-            <div  class="card-header text-center">
-              <h3>Add Product</h3>
-            </div>
-            <div class="card-body">
-              
-        
-                <div class="row">
-                    <div class="card">
-                        <div class="card-body">
-                            <form [formGroup]="productDetailForm">
-                                <div class="row form-group">
-                                  <div class="col-lg-6 col-md-4 col-sm-8 col-12">
-                                      <label >Product Name:</label>
-                                      <input type="text" class="form-control" placeholder="product name" formControlName="productName">
-                                  </div>
-                                </div>
-                                <div class="row form-group">
-                                  <div class="col-lg-6 col-md-4 col-sm-8 col-12">
-                                      <label >Price:</label>
-                                      <input type="number" class="form-control"  formControlName="price">
-                                  </div>
-                                </div>
-                                <div class="row form-group">
-                                    <div class="col-lg-6 col-md-4 col-sm-8 col-12" >
-                                        <label >Category:</label>
-                                        <select name="" id="" class="form-control" formControlName="productTypeId">
-                                          <option value="none">--Select Category--</option>
-                                          <option [value]="type.productTypeId" *ngFor="let type of productTypeData">{{type.productTypeName}}</option>
-                                        </select>
-                                    </div>
-                                  </div>
-                                  <div class="row form-group">
-                                    <div class="col-lg-6 col-md-4 col-sm-8 col-12" >
-                                        <label >Size:</label>
-                                        <select name="" id="" class="form-control" formControlName="productSizeId">
-                                          <option value="none">--Select Size--</option>
-                                          <option [value]="size.productSizeId" *ngFor="let size of productSizeData">{{size.productSizeDescription}}</option>
-                                        </select>
-                                    </div>
-                                  </div>  
-                                  <div class="row form-group mt-5 mb-5">
-                                    <div class="col-lg-4 col-md-3 col-sm-2 col-12">
-                                        <input style="display: none;" type="file" id="productImage"
-                                            (change)="uploadImage($event)" #file>
-                                        <button style=" color:rgb(252, 250, 250);" type="button" class="btn btn-primary" (click)="file.click()">Upload Image<i
-                                                class="fas fa-upload mg-l-10"></i></button>
-                                    </div>
-                                    <div class="col-lg-8 col-md-6 col-sm-5 col-12">
-                                        <!-- <img style="height:15rem; width: 15rem; float: rigth;" [src]="mandiImage.file" > -->
-                                        <img style="height:15rem; width: 15rem; float: rigth;" [src]="productImage.file"
-                                            *ngIf="productId==0 || productImage.file!=null">
-                                        <img style="height:15rem; width: 15rem; float: rigth;" [src]="imageUrl"
-                                            *ngIf="productId!=0 && productImage.file==null">
-                                    </div>
-                                </div>  
-                            </form>
-                        </div>
-                      </div>
-                </div>
-        
-                <div class="row mt-5">
-                    <div class="col-12">
-                        <button type="button" class="btn btn-primary" style="float: right; margin-left: 5px;"data-bs-toggle="modal" data-bs-target="#additionConfirmation">{{productId==0?'Save':'Update'}}</button>
-                        <button type="button" class="btn btn-secondary" style="float: right;" [routerLink]="'/admin/product/list'" >Cancel</button>
-                    </div>
-                </div>
-            </div>
+  <div class="col-2">
+  </div>
+  <div class="col-8">
+      <div class="card">
+          <div  class="card-header text-center">
+            <h3>Add Product</h3>
           </div>
-        
-    </div>
-    <div class="col-2">
-    </div>
+          <div class="card-body">
+            
+      
+              <div class="row">
+                  <div class="card">
+                      <div class="card-body">
+                          <form [formGroup]="productDetailForm">
+                              <div class="row form-group">
+                                <div class="col-lg-6 col-md-4 col-sm-8 col-12">
+                                    <label >Product Name:</label>
+                                    <input type="text" class="form-control" placeholder="product name" formControlName="productName">
+                                </div>
+                              </div>
+                              <div class="row form-group">
+                                <div class="col-lg-6 col-md-4 col-sm-8 col-12" >
+                                    <label >Size:</label>
+                                    <select name="" id="" class="form-control" formControlName="productSizeId">
+                                      <option value="none">--Select Size--</option>
+                                      <option [value]="size.productSizeId" *ngFor="let size of productSizeData">{{size.productSizeDescription}}</option>
+                                    </select>
+                                </div>
+                              </div>  
+                              <div class="row form-group">
+                                <div class="col-lg-6 col-md-4 col-sm-8 col-12">
+                                    <label >Price (R):</label>
+                                    <input type="number" class="form-control"  formControlName="price">
+                                </div>
+                              </div>
+                              <div class="row form-group">
+                                  <div class="col-lg-6 col-md-4 col-sm-8 col-12" >
+                                      <label >Type:</label>
+                                      <select name="" id="" class="form-control" formControlName="productTypeId">
+                                        <option value="none">--Select Type--</option>
+                                        <option [value]="type.productTypeId" *ngFor="let type of productTypeData">{{type.productTypeName}}</option>
+                                      </select>
+                                  </div>
+                                </div>
+                                <div class="row form-group mt-5 mb-5">
+                                  <div class="col-lg-4 col-md-3 col-sm-2 col-12">
+                                      <input style="display: none;" type="file" id="productImage"
+                                          (change)="uploadImage($event)" #file>
+                                      <button style=" color:rgb(252, 250, 250);" type="button" class="btn btn-primary" (click)="file.click()">Upload Image<i
+                                              class="fas fa-upload mg-l-10"></i></button>
+                                  </div>
+                                  <div class="col-lg-8 col-md-6 col-sm-5 col-12">
+                                      <!-- <img style="height:15rem; width: 15rem; float: rigth;" [src]="mandiImage.file" > -->
+                                      <img style="height:15rem; width: 15rem; float: rigth;" [src]="productImage.file"
+                                          *ngIf="productId==0 || productImage.file!=null">
+                                      <img style="height:15rem; width: 15rem; float: rigth;" [src]="imageUrl"
+                                          *ngIf="productId!=0 && productImage.file==null">
+                                  </div>
+                              </div>  
+                          </form>
+                      </div>
+                    </div>
+              </div>
+      
+              <div class="row mt-5">
+                  <div class="col-12">
+                      <button type="button" class="btn btn-primary" style="float: right; margin-left: 5px;"data-bs-toggle="modal" data-bs-target="#additionConfirmation">{{productId==0?'Save':'Update'}}</button>
+                      <button type="button" class="btn btn-secondary" style="float: right;" [routerLink]="'/admin/product/list'" >Cancel</button>
+                  </div>
+              </div>
+          </div>
+        </div>
+      
+  </div>
+  <div class="col-2">
+  </div>
 </div>
 
-  <!-- Product Addition Confimation Model -->
-  <div class="modal fade" id="additionConfirmation" tabindex="-1" aria-labelledby="additionConfirmationLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Product Addition confirmation</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <p>Confirm Product Addition</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-          <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="submitAddProductForm()">Yes</button>
-        </div>
+<!-- Product Addition Confimation Model -->
+<div class="modal fade" id="additionConfirmation" tabindex="-1" aria-labelledby="additionConfirmationLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Product Addition confirmation</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Confirm Product Addition</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="submitAddProductForm()">Yes</button>
       </div>
     </div>
   </div>
-  
+</div>
