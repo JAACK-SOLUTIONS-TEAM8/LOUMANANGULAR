@@ -20,6 +20,16 @@ export class TeamService {
     return this.dataService.genericCaller("post", "Team/Add", teamData);
   }
 
+  canMarkAttendance(teamId:number)
+  {
+    debugger
+    return this.dataService.genericCaller("get", "Team/CanMarkAttendance?teamId="+teamId, "");
+  }
+  checkValidity(teamData: any) {
+    debugger
+    return this.dataService.genericCaller("post", "Team/CheckValidity", teamData);
+  }
+
   getTeamById(teamId: number) {
     debugger
     return this.dataService.genericCaller("get", `Team/${teamId}`, "");
