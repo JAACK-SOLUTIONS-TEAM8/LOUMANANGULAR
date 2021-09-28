@@ -40,6 +40,7 @@ export class AttendanceComponent implements OnInit {
   getTeamAttendanceData()
   {
     this.teamService.getTeamAtendanceDetail(this.teamId).subscribe(response=>{
+      
       this.teamAttendanceData=response.attendance;
       console.log(this.teamAttendanceData)
     })
