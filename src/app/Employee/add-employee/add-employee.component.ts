@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { CountdownComponent, CountdownConfig } from 'ngx-countdown';
 import { Observable } from 'rxjs';
 import { EmployeeService } from 'src/app/services/employee/employee.service';
+import { TimerConfigService } from 'src/app/services/timer/timer-config.service';
 import { UserService } from 'src/app/services/user/user.service';
 import Swal from 'sweetalert2';
 
@@ -19,12 +20,7 @@ export class AddEmployeeComponent implements OnInit {
   userTypes: any[]=[];
 
   @ViewChild('cd', { static: false }) countdown: CountdownComponent;
-  config:CountdownConfig={
-    demand:false,
-    leftTime:10*60,
-    notify:0,
-    stopTime:0
-  }
+  config:CountdownConfig={}
 
   ngOnInit(): void {
 
@@ -32,6 +28,17 @@ export class AddEmployeeComponent implements OnInit {
     this.getUserTypes();
     if(this.employeeId!=0)
     this.getEmployeeById();
+
+    this.timerService.getTimerConfig().subscribe(config=>{
+
+      this.config={
+        demand:true,
+        leftTime:config.leftTime,
+        notify:0,
+        stopTime:config.stopTime
+      }
+
+    })
   }
 
   employeeData:any;
@@ -51,7 +58,8 @@ export class AddEmployeeComponent implements OnInit {
     private route: ActivatedRoute,
     private employeeService:EmployeeService,
     private userService:UserService,
-    private datePipe:DatePipe
+    private datePipe:DatePipe,
+    private timerService:TimerConfigService
   ) {
      this.route.params.subscribe(params=>{
       this.employeeId=Number(params["id"]);
