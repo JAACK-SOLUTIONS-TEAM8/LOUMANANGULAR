@@ -101,6 +101,11 @@ export class ProductService {
     return this.dataService.genericCaller("post", `Product/Stock/WireOff`, stockData);
   }
 
+  completeStockProduct(stockData: any) {
+    debugger
+    return this.dataService.genericCaller("post", `Product/Stock/Complete`, stockData);
+  }
+
   searchStockProductByName(searchTerm:string)
   {
     return this.dataService.genericCaller("get","Product/Stock/Search?name="+searchTerm,"");
