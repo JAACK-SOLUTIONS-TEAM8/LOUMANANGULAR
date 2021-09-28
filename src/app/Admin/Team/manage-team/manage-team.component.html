@@ -115,7 +115,7 @@
         <div class="row mt-5">
             <div class="col-12">
                 <button type="button" class="btn btn-primary" [disabled]="(teamEmployeeData.length>=teamData.maxEmployees)" style="float: right; margin-left: 5px;" data-bs-toggle="modal" data-bs-target="#additionConfirmation">Add</button>
-                <button type="button" class="btn btn-secondary" style="float: right;" >Cancel</button>
+                <button type="button" class="btn btn-secondary" style="float: right;" [routerLink]="'/admin/team/detail'" >Cancel</button>
             </div>
         </div>
     </div>
