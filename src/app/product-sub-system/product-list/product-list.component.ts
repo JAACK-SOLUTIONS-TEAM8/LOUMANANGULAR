@@ -82,6 +82,15 @@ export class ProductListComponent implements OnInit {
         })
         this.getAllProducts();
       }
+      else{
+        Swal.fire({
+          title: 'Warning!',
+          text: "Cannot delete as product has been ordered",
+          icon: 'warning',
+          confirmButtonText: 'Ok'
+        });
+        return 
+      }
       console.log(response);
     });
   }
