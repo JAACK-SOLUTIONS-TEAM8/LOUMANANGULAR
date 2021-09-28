@@ -26,7 +26,7 @@ export class ClientMeetingSlotsComponent implements OnInit {
 
   ngOnInit(): void {
     this.initilizeForm();
-    this.getAllAdmins();
+    //this.getAllAdmins();
     this.getAllSlots()
     this.searchAdminSlotForm.controls["adminUserId"].patchValue("none")
   }
@@ -61,7 +61,7 @@ export class ClientMeetingSlotsComponent implements OnInit {
     }
     
 
-    this.clientService.searchSlots(Number(this.searchAdminSlotForm.controls["adminUserId"].value),String(this.searchAdminSlotForm.controls["searchDate"].value)).subscribe(response=>{
+    this.clientService.searchSlots(0,String(this.searchAdminSlotForm.controls["searchDate"].value)).subscribe(response=>{
         this.slotData=response.slots;
     })
 
