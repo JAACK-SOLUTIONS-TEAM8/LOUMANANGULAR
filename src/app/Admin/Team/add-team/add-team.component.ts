@@ -123,7 +123,7 @@ export class AddTeamComponent implements OnInit {
     let teamDetail={
       "teamId":Number(this.teamId??0),
        "teamName":String(this.addTeamForm.controls["teamName"].value),
-       "locationId":String(this.addTeamForm.controls["locationId"].value),
+       "locationId":Number(this.addTeamForm.controls["locationId"].value),
       "teamDescription": String(this.addTeamForm.controls["teamDescription"].value),
        "maxEmployees": Number(this.addTeamForm.controls["maxEmployee"].value),
         "startTime":String(this.addTeamForm.controls["startTime"].value),
@@ -156,11 +156,35 @@ export class AddTeamComponent implements OnInit {
   {
     let selectedDay=this.addTeamForm.controls["day"].value;
 
-    console.log(selectedDay)
+    let teamDetail={
+      "teamId":Number(0),
+       "locationId":Number(this.addTeamForm.controls["locationId"].value),
+        "startTime":String(this.addTeamForm.controls["startTime"].value),
+        "endTime":String(this.addTeamForm.controls["endTime"].value),
+        "teamDay":Number(selectedDay.dayId)
+    };
+
+    this.teamService.checkValidity(teamDetail).subscribe(response=>{
+      if(response.statusCode!=200)
+      {
+        Swal.fire({
+          title: 'Error!',
+          text: 'Time clash with other team at same location on same day!',
+          icon: 'error',
+          confirmButtonText: 'Ok'
+        });
+      }
+      else
+      {
+        console.log(selectedDay)
     console.log()
     this.teamDays.push(selectedDay);
     this.daysData.splice(this.daysData.indexOf(selectedDay),1)   
     this.addTeamForm.controls["day"].patchValue("none")
+      }
+    })
+
+    
  
   }
 
