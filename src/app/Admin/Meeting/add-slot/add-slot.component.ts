@@ -16,6 +16,8 @@ export class AddSlotComponent implements OnInit {
   slotId:number;
   slot:any;
 
+  todayDate:string=this.datePipe.transform(new Date(),"yyyy-MM-dd");
+
   constructor(
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
