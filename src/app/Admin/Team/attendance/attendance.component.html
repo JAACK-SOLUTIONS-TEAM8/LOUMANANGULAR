@@ -53,7 +53,7 @@
                                   <td scope="row">
                                     <div class="row form-group">
                                       <div class="col-12">
-                                        <input type="text"  class="form-control" [name]="attendance.initials" [id]="attendance.attendanceId" [(ngModel)]="attendance.reason" >
+                                        <input type="text"  class="form-control" [disabled]="attendance.present" [name]="attendance.initials" [id]="attendance.attendanceId" [(ngModel)]="attendance.reason" >
                                       </div>
                                     </div>
                                   </td>
