@@ -86,15 +86,29 @@ export class AddProductComponent implements OnInit {
     })
      return;
    }
-   let productDetail =
+
+   if(this.productDetailForm.controls['price'].value<0)
    {
+    Swal.fire({
+      title: 'Warning!',
+      text: 'Product Price Should not be negative',
+      icon: 'info',
+      confirmButtonText: 'Ok'
+    })
+     return;
+   }
+
+   let productDetail ={
+   product:{
      "productId":Number(this.productId??0),
      "productTypeId":Number( this.productDetailForm.controls["productTypeId"].value),
       "productSizeId":Number( this.productDetailForm.controls["productSizeId"].value),
       "productName":String( this.productDetailForm.controls["productName"].value),
       "price":Number( this.productDetailForm.controls["price"].value),
       "productImage":String(this.productImage.file)
-    };
+    },
+    userId: Number(JSON.parse(localStorage.getItem('User')).userId)
+  };
    debugger
    console.log(productDetail)
 
