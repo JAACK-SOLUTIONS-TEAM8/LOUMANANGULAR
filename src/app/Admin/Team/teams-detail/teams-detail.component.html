@@ -38,7 +38,7 @@
                         <tbody>
                           <tr *ngFor="let team of teamData">
                             <td scope="row">{{team.teamName}}</td>
-                            <td scope="row">{{team.LocationArea}}</td>
+                            <td scope="row">{{team.locationArea}}</td>
                             <td scope="row">
                               <button type="button" class="btn btn-primary" style="float: right; margin-left: 5px;"(click)="addTeamMembers(team)" >Manage Team Members</button>
                               <button class="btn btn-outline-primary" (click)="editTeam(team)">View</button>

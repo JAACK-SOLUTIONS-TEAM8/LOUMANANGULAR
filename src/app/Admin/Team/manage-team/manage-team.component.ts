@@ -117,6 +117,16 @@ export class ManageTeamComponent implements OnInit {
             this.getTeamEmployees();
           })
         }
+        else
+        {
+          Swal.fire({
+            title: 'Warning!',
+            text: 'Employee is already part of a Team',
+            icon: 'warning',
+            confirmButtonText: 'Ok'
+          })
+          return ;
+        }
       })
     }
   }
@@ -151,7 +161,21 @@ export class ManageTeamComponent implements OnInit {
   
   markAttendance()
   {
-      this.router.navigateByUrl("/admin/team/attendance/"+this.teamId);
+    this.teamService.canMarkAttendance(Number(this.teamId)).subscribe(response=>{
+      if(response.statusCode ==200)
+      {
+        this.router.navigateByUrl("/admin/team/attendance/"+this.teamId);
+
+      }
+      else{
+        Swal.fire({
+          title: 'Info!',
+          text: 'Today is not the working day for this team',
+          icon: 'info',
+          confirmButtonText: 'Ok'
+        })
+      }
+    })
   }
   
 }
