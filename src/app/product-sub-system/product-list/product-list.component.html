@@ -46,7 +46,7 @@
                           <td scope="row">{{product.productSizeDescription}}</td>
                           <td scope="row"> R{{product.price | number:'.1-3'}}</td>
                           <td scope="row">
-                              <button class="btn btn-outline-primary" (click)="editProduct(product)">View</button>
+                              <button class="btn btn-outline-primary" (click)="editProduct(product)">Edit</button>
                               <button class="btn btn-outline-primary"  data-bs-toggle="modal" data-bs-target="#deletionConfirmation" (click)="deleteProduct(product)">Delete</button>
                           </td>
                         </tr>
