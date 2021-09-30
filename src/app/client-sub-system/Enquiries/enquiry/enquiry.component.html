@@ -26,7 +26,6 @@
                         <thead  style="background-color: rgb(103, 186, 241);">
                           <tr>
                             <th scope="col">EnquiryType</th>
-                            <th scope="col">Admin Name</th>
                             <th scope="col">Enquiry Status</th>
                             <th scope="col">Action</th>
                           </tr>
@@ -34,12 +33,11 @@
                         <tbody>
                           <tr *ngFor="let enquiry of enquiryData">
                             <td scope="row">{{enquiry.enquiryType}}</td>
-                            <td scope="row">{{enquiry.adminName}}</td>
                             <td scope="row">{{enquiry.enquiryStatus}}</td>
 
                             <td scope="row">
                               <button class="btn btn-outline-primary" (click)="editEnquiry(enquiry)">{{enquiry.enquiryStatus=='Pending'?'View':'View Response'}}</button>
-                              <button class="btn btn-outline-primary"  data-bs-toggle="modal" data-bs-target="#deletionConfirmation" (click)="deleteEnquiry(enquiry)" >Delete</button>
+                              <button class="btn btn-outline-primary"  data-bs-toggle="modal" data-bs-target="#deletionConfirmation" [disabled]="(enquiry.enquiryStatus=='Responded')" (click)="deleteEnquiry(enquiry)" >Delete</button>
                             </td>
                           </tr>
                         </tbody>
