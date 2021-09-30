@@ -66,7 +66,7 @@ export class AddEnquiryComponent implements OnInit {
         console.log(response)
         this.addEnquiryForm.controls["enquiryTypeId"].patchValue(this.enquiry.enquiryTypeId);
         this.addEnquiryForm.controls["enquiryMessage"].patchValue(this.enquiry.enquiryMessage);
-        this.addEnquiryForm.controls["adminUserId"].patchValue(this.enquiry.adminUserId);
+       // this.addEnquiryForm.controls["adminUserId"].patchValue(this.enquiry.adminUserId);
 
       });
   }
@@ -76,7 +76,7 @@ export class AddEnquiryComponent implements OnInit {
     this.addEnquiryForm=this.formBuilder.group({
       enquiryTypeId:[null,Validators.required],
       enquiryMessage:[null,Validators.required],
-      adminUserId:[null,Validators.required]
+     // adminUserId:[null,Validators.required]
     })
   }
 
@@ -98,7 +98,7 @@ export class AddEnquiryComponent implements OnInit {
       "enquiryTypeId":Number(this.addEnquiryForm.controls["enquiryTypeId"].value),
       "enquiryMessage":String(this.addEnquiryForm.controls["enquiryMessage"].value),
       "clientUserId":Number(clientData.userId),
-      "adminUserId":Number(this.addEnquiryForm.controls["adminUserId"].value),
+     // "adminUserId":Number(this.addEnquiryForm.controls["adminUserId"].value),
 
     };
 debugger
