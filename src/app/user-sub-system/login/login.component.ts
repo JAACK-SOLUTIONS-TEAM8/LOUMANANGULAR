@@ -51,6 +51,13 @@ export class LoginComponent implements OnInit {
     this.authServcie.login(loginData).subscribe(response=>{
       if(response.statusCode==200)
       {
+        localStorage.setItem('isLoggedIn',String(true))
+
+        this.authServcie.isLoggedIn=true;
+        this.authServcie.user=JSON.stringify(response.user);
+
+        this.authServcie.isLoggedInSubject.next(true);
+        this.authServcie.userSubject.next(JSON.stringify(response.user))
         Swal.fire({
           title: 'Succes!',
           text: "Success",
@@ -65,6 +72,9 @@ export class LoginComponent implements OnInit {
       }
       else
       {
+        this.authServcie.isLoggedIn=false;
+        this.authServcie.isLoggedInSubject.next(false);
+
         Swal.fire({
           title: 'Warning!',
           text: "Incorrect Username and password!",
