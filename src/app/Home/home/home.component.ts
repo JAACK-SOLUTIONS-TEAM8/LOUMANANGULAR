@@ -23,10 +23,7 @@ export class HomeComponent implements OnInit {
 
       this.isLoggedIn=localStorage.getItem("User")!=null?true:false;
       this.role=JSON.parse(localStorage.getItem("User"))?.userType;
-      
-
-     if(localStorage.getItem("User")==null)
-      this.router.navigateByUrl("/login");
+    
       
   }
 
