@@ -69,14 +69,14 @@ export class EnquiryService {
   }
 
 
-  getAllAdminEnquiries(adminUserId:number) {
+  getAllAdminEnquiries() {
     debugger
-    return this.dataService.genericCaller("get", `Enquiry/AdminEnquries/${adminUserId}`, "");
+    return this.dataService.genericCaller("get", `Enquiry/AdminEnquries`, "");
   }
 
-  getAllAdminEnquiriesByTypeId(adminUserId:number,enquiryTypeId:number) {
+  getAllAdminEnquiriesByTypeId(enquiryTypeId:number) {
     debugger
-    return this.dataService.genericCaller("get", `Enquiry/AdminEnquries?adminUserId=${adminUserId}&enquiryTypeId=${enquiryTypeId}`, "");
+    return this.dataService.genericCaller("get", `Enquiry/AdminEnquriesById?enquiryTypeId=${enquiryTypeId}`, "");
   }
 
   submitEnquiryResponse(enquiryDetail:any)
