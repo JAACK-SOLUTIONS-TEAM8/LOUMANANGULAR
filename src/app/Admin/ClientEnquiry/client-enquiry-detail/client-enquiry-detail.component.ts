@@ -1,93 +1,98 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { EnquiryService } from 'src/app/services/enquiry/enquiry.service';
 import Swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-client-enquiry-detail',
-  templateUrl: './client-enquiry-detail.component.html',
-  styleUrls: ['./client-enquiry-detail.component.css']
+  selector: 'app-client-enquiry',
+  templateUrl: './client-enquiry.component.html',
+  styleUrls: ['./client-enquiry.component.css']
 })
-export class ClientEnquiryDetailComponent implements OnInit {
+export class ClientEnquiryComponent implements OnInit {
 
-  enquiryId:number;
-  enquiryData:any={};
-
-  responseForm:FormGroup;
-
+  enquiryTypeForm:FormGroup;
+  enquiryData:any[]=[]
+  selectedEnquiry:any;
+  searchTerm:string;
+  enquiryTypesData:any[]=[];
   constructor(
-    private route:ActivatedRoute,
     private enquiryService:EnquiryService,
-    private formBuilder:FormBuilder,
-    private router:Router
-  ) {
-    this.route.params.subscribe(params=>{
-      this.enquiryId=params["id"]
-      this.getEnquiryWithResponseById();
-    });
-   }
+    private router:Router,
+    private formBuilder:FormBuilder
+  ) { }
 
   ngOnInit(): void {
+    this.getAllAdminEnquiry();
+    this.getAllEnquiryTypes();
     this.initilizeForm();
   }
 
 
   initilizeForm()
   {
-    this.responseForm=this.formBuilder.group({
-      enquiryResponseMessage:[null]
+    this.enquiryTypeForm=this.formBuilder.group({
+      enquiryTypeId:[null]
     });
-
+    this.enquiryTypeForm.controls["enquiryTypeId"].patchValue("none")
   }
 
-  getEnquiryWithResponseById()
+  getAllAdminEnquiry()
   {
-    debugger
-    this.enquiryService.getEnquiryWithResponseById(Number(this.enquiryId)).subscribe(response=>{
-      this.enquiryData=response.enquiry;
-      if(Number(this.enquiryData.enquiryResponseId)!=0)
-      {
-        debugger
-        this.responseForm.controls["enquiryResponseMessage"].patchValue(this.enquiryData.enquiryResponseMessage)
-      }
-      console.log(this.enquiryData)
-    })
+    this.enquiryService.getAllAdminEnquiries().subscribe(response=>{
+        this.enquiryData=response.enquiries;
+    });
   }
 
-  submitEnquiryResponse()
+  reponseEnquiry(enquiry:any)
   {
-    if(this.responseForm.invalid)
+      this.router.navigateByUrl(`admin/enquiry/view/${enquiry.enquiryId}`)
+  }
+
+  searchByName()
+  {
+    if(this.searchTerm=="" || this.searchTerm==null)
     {
       Swal.fire({
         title: 'Warning!',
-        text: 'Provide All the Fields!!',
+        text: 'search bar field is empty',
         icon: 'info',
         confirmButtonText: 'Ok'
-      });
+      })
     }
-    let responseDetail={
-      "enquiryResponseId":Number(this.enquiryData.enquiryResponseId),
-      "enquiryResponseMessage":String(this.responseForm.controls["enquiryResponseMessage"].value),
-      "enquiryId":Number(this.enquiryId)
-    };
-
-    debugger
-    this.enquiryService.submitEnquiryResponse(responseDetail).subscribe(response=>{
-      if(response.statusCode==200)
+    this.enquiryService.searchEnquiryTypeByName(this.searchTerm).subscribe(response=>{
+      if(response.enquiries.length!=null&&response.enquiries.length!=0)
+        this.enquiryData = response.enquiries;
+      else
       {
         Swal.fire({
-          title: 'Warning!',
-          text: 'response submitted successfuly!!',
+          title: 'Info!',
+          text: 'No search result found!!',
           icon: 'info',
           confirmButtonText: 'Ok'
-        }).then(()=>{
-          this.router.navigateByUrl("/admin/enquiry/detail")
-
-        });
+        })
       }
     });
+  }
 
+  getAllEnquiryTypes()
+  {
+    this.enquiryService.getAllEnquiryTypes().subscribe(response=>{
+      this.enquiryTypesData=response.enquiryTypes;
+    });
+  }
+
+  enquiryTypeSelected()
+  {
+    if(String(this.enquiryTypeForm.controls["enquiryTypeId"].value)=="none")
+    {
+      this.getAllAdminEnquiry();
+      return;
+    }
+    this.enquiryService.getAllAdminEnquiriesByTypeId(Number(this.enquiryTypeForm.controls["enquiryTypeId"].value)).subscribe(response=>{
+      console.log(response)
+      this.enquiryData=response.enquiries;
+    });
   }
 
 }
