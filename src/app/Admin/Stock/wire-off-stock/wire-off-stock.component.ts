@@ -35,7 +35,8 @@ export class WireOffStockComponent implements OnInit {
       this.productDetailForm.controls["price"].patchValue(this.product.price);
       this.productDetailForm.controls["productTypeId"].patchValue(this.product.productTypeName);
       this.productDetailForm.controls["productSizeId"].patchValue(this.product.productSizeDescription);
-      this.productDetailForm.controls["productQuantity"].patchValue(this.product.productQuantity);
+      this.productDetailForm.controls["productQuantity"].patchValue(0);
+      this.productDetailForm.controls["productExistingQuantity"].patchValue(this.product.productQuantity);
 
     });
   }
@@ -67,6 +68,7 @@ export class WireOffStockComponent implements OnInit {
       productTypeId: [null,Validators.required],
       productSizeId: [null,Validators.required],
       productQuantity: [null,Validators.required],
+      productExistingQuantity: [null,Validators.required],
 
     });
   }
@@ -83,6 +85,28 @@ export class WireOffStockComponent implements OnInit {
     })
      return;
    }
+
+   if(this.productDetailForm.controls['productQuantity'].value <0)
+   {
+    Swal.fire({
+      title: 'Warning!',
+      text: 'Product quantity should be a positive number',
+      icon: 'error',
+      confirmButtonText: 'Ok'
+    })
+     return;
+   }
+   else if(this.productDetailForm.controls['productQuantity'].value>this.product.productQuantity)
+   {
+    Swal.fire({
+      title: 'Warning!',
+      text: 'Product quantity should be a less than or equal to '+this.product.productQuantity,
+      icon: 'warning',
+      confirmButtonText: 'Ok'
+    })
+     return;
+   }
+
    let stockDetail =
    {
      "stockId":Number(this.stockId??0),
