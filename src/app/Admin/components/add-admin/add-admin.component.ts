@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CountdownComponent, CountdownConfig } from 'ngx-countdown';
 import { AdminService } from 'src/app/services/admin/admin.service';
+import { TimerConfigService } from 'src/app/services/timer/timer-config.service';
 import { UserService } from 'src/app/services/user/user.service';
 import Swal from 'sweetalert2';
 
@@ -19,6 +20,7 @@ export class AddAdminComponent implements OnInit {
     private route: ActivatedRoute,
     private userService: UserService,
     private adminService: AdminService,
+    private timerService:TimerConfigService,
     private router: Router) {
     this.route.params.subscribe(param => {
       this.adminId = param["id"];
@@ -27,12 +29,7 @@ export class AddAdminComponent implements OnInit {
   }
 
   @ViewChild('cd', { static: false }) countdown: CountdownComponent;
-  config:CountdownConfig={
-    demand:false,
-    leftTime:600,
-    notify:0,
-    stopTime:0
-  }
+  config:CountdownConfig={};
 
 
   profileDetailForm: FormGroup;
@@ -47,6 +44,7 @@ export class AddAdminComponent implements OnInit {
 
   adminData: any = {};
 
+  timerConfig:any;
 
 
   ngOnInit(): void {
@@ -58,6 +56,18 @@ export class AddAdminComponent implements OnInit {
     setTimeout(()=>{
       this.countdown.begin();
     },1000)
+
+
+    this.timerService.getTimerConfig().subscribe(config=>{
+
+      this.config={
+        demand:true,
+        leftTime:config.leftTime,
+        notify:0,
+        stopTime:config.stopTime
+      }
+
+    })
   }
 
   initilizeForm() {
