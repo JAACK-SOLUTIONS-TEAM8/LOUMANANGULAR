@@ -38,10 +38,17 @@
                                   <input type="text" class="form-control" readonly="readonly" formControlName="productSizeId">
                                 </div>
                               </div>
+                              <div class="row form-group">
+                                <div class="col-lg-6 col-md-4 col-sm-8 col-12">
+                                  <label >Current Quantity:</label>
+                                  <input type="text" class="form-control" readonly="readonly" formControlName="productExistingQuantity">
+                                </div>
+                              </div>
+
                                 <div class="row form-group">
                                   <div class="col-lg-6 col-md-4 col-sm-8 col-12">
                                       <label >Quantity:</label>
-                                      <input type="number" class="form-control"  formControlName="productQuantity">
+                                      <input type="number" class="form-control"  formControlName="productQuantity" [readonly]="product.productQuantity === 0">
                                   </div>
                                 </div>    
                           </form>
@@ -72,7 +79,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <p>Confirm Stock Write Off Addition</p>
+        <p>Confirm Stock Write Off</p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
