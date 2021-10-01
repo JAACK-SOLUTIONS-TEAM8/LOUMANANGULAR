@@ -35,6 +35,11 @@ export class StockDetailComponent implements OnInit {
       this.router.navigateByUrl(`admin/stock/wireoff/${product.stockId}`)
   }
 
+  completeStockProduct(product:any)
+  {
+      this.router.navigateByUrl(`admin/stock/complete/${product.stockId}`)
+  }
+
   deleteProduct(product:any)
   {
     this.selectedProduct=product;
