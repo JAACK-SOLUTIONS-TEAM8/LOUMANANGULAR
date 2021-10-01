@@ -12,7 +12,7 @@ import Swal from 'sweetalert2';
 export class AddLocationComponent implements OnInit {
 
   addLocationForm: FormGroup;
-
+  provinces:any;
   locationId: number;
   location:any;
   constructor(
@@ -28,8 +28,11 @@ export class AddLocationComponent implements OnInit {
 
   ngOnInit(): void {
     this.initilizeForm();
+    this.getAllProvinces();
     if(this.locationId!=0)
     this.getLocationById();
+
+    this.addLocationForm.controls['province'].patchValue("none")
   }
 
   getLocationById() {
@@ -38,6 +41,12 @@ export class AddLocationComponent implements OnInit {
         this.addLocationForm.controls["locationArea"].patchValue(this.location.locationArea);
         this.addLocationForm.controls["province"].patchValue(this.location.locationProvince);
     });
+  }
+
+  getAllProvinces(){
+    this.locationService.getAllProvinces().subscribe(response=>{
+      this.provinces=response.provinces;
+    })
   }
 
   initilizeForm() {
@@ -49,7 +58,7 @@ export class AddLocationComponent implements OnInit {
 
   submitAddLocationForm() {
 
-    if(this.addLocationForm.invalid)
+    if(this.addLocationForm.invalid && this.addLocationForm.controls['province'].value !="none" && this.addLocationForm.controls['province'].value !=null)
     {
       Swal.fire({
         title: 'Info!',
@@ -60,11 +69,13 @@ export class AddLocationComponent implements OnInit {
       return 
     }
 
-    let locationDetail={
+    let locationDetail={location:{
       "locationId":Number(this.locationId!=0?this.location.locationId:0),
       "locationArea":String(this.addLocationForm.controls["locationArea"].value),
       "locationProvince":String(this.addLocationForm.controls["province"].value)
-    };
+    },
+    userId:Number(JSON.parse(localStorage.getItem('User')).userId)  
+  };
 
     this.locationService.addLocation(locationDetail).subscribe(response=>{
       if(response.statusCode==200)
@@ -78,6 +89,7 @@ export class AddLocationComponent implements OnInit {
           this.router.navigateByUrl("/admin/location/detail")
         })
       }
+      
     });
 
   }
