@@ -42,16 +42,28 @@ export class LocationDetailComponent implements OnInit {
 
   confirmDeleteion()
   {
-    this.locationService.deleteLocation(this.selectedLocation.locationId).subscribe(reponse=>{
+    this.locationService.deleteLocation({locationId:Number(this.selectedLocation.locationId),userId:Number(JSON.parse(localStorage.getItem('User')).userId) }).subscribe(reponse=>{
       if(reponse.statusCode ==200)
       {
+        Swal.fire({
+          title: 'Success!',
+          text: 'locatoin deleted successfully',
+          icon: 'success',
+          confirmButtonText: 'Ok'
+        })
         console.log("locatoin deleted successfully")
         this.getAllLocations();
       }
       else
       {
-        console.log("locatoin deletion failed")
-        this.getAllLocations();
+        Swal.fire({
+          title: 'Warning!',
+          text: 'Inactive!',
+          icon: 'error',
+          confirmButtonText: 'Ok'
+        }).then(()=>{
+          this.getAllLocations();
+        })
       }
 
     });
