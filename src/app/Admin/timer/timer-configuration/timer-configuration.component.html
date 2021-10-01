@@ -1,0 +1,41 @@
+
+<div class="card">
+    <div  class="card-header text-center">
+      <h3>Timer Configuration</h3>
+    </div>
+    <div class="card-body">
+      
+
+        <div class="row">
+            <div class="card">
+                <div  class="card-header ">
+                  <h5>Timer Configuration</h5>
+                </div>
+                <div class="card-body">
+                    <form [formGroup]="configForm">
+                      <div class="row form-group">
+                        <div class="col-lg-6 col-md-4 col-sm-8 col-12">
+                            <label >Left Time:</label>
+                            <input type="number" class="form-control" placeholder="Left Time" formControlName="leftTime">
+                        </div>
+                      </div>
+                          <div class="row form-group">
+                            <div class="col-lg-6 col-md-4 col-sm-8 col-12">
+                                <label >Stop Time:</label>
+                                <input type="number" class="form-control" placeholder="Stop Time" formControlName="stopTime">
+                            </div>
+                          </div>
+                    </form>
+                </div>
+              </div>
+        </div>
+
+        <div class="row mt-5">
+            <div class="col-12">
+                <button type="button" class="btn btn-primary" style="float: right; margin-left: 5px;" (click)="updateTimerConfig()">{{enquiryTypeId==0?'Save':'Update'}}</button>
+                <button type="button" class="btn btn-secondary" style="float: right;" [routerLink]="'/admin/enquiry-type-detail'" >Cancel</button>
+            </div>
+        </div>
+    </div>
+  </div>
+
