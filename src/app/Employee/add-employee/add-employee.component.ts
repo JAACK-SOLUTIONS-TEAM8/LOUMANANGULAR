@@ -3,11 +3,13 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CountdownComponent, CountdownConfig } from 'ngx-countdown';
-import { Observable } from 'rxjs';
+import { Observable,Subject } from 'rxjs';
 import { EmployeeService } from 'src/app/services/employee/employee.service';
 import { TimerConfigService } from 'src/app/services/timer/timer-config.service';
 import { UserService } from 'src/app/services/user/user.service';
 import Swal from 'sweetalert2';
+import {WebcamImage} from 'ngx-webcam';
+
 
 declare var $: any;
 
@@ -18,9 +20,29 @@ declare var $: any;
 })
 export class AddEmployeeComponent implements OnInit {
   userTypes: any[]=[];
+  public webcamImage: WebcamImage = null;
+     private trigger: Subject<void> = new Subject<void>();
+   triggerSnapshot(): void {
+    this.trigger.next();
+   }
+   handleImage(webcamImage: WebcamImage): void {
+    console.info('received webcam image', webcamImage);
+    this.webcamImage = webcamImage;
+   }
+  
+   public get triggerObservable(): Observable<void> {
+    return this.trigger.asObservable();
+   }
 
   @ViewChild('cd', { static: false }) countdown: CountdownComponent;
-  config:CountdownConfig={}
+  config:CountdownConfig={
+    demand:true,
+    leftTime:Number(JSON.parse(localStorage.getItem("timerConfig")).leftTime),
+    notify:0,
+    stopTime:0
+
+  };
+
 
   ngOnInit(): void {
 
@@ -28,17 +50,11 @@ export class AddEmployeeComponent implements OnInit {
     this.getUserTypes();
     if(this.employeeId!=0)
     this.getEmployeeById();
+    
+    setTimeout(()=>{
+      this.countdown.begin();
+    },1000)
 
-    this.timerService.getTimerConfig().subscribe(config=>{
-
-      this.config={
-        demand:true,
-        leftTime:config.leftTime,
-        notify:0,
-        stopTime:config.stopTime
-      }
-
-    })
   }
 
   employeeData:any;
