@@ -14,7 +14,10 @@
             <div class="row form-group">
               <div class="col-lg-6 col-md-4 col-sm-8 col-12">
                 <label>Location Area:</label>
-                <input type="text" class="form-control" placeholder="area" formControlName="locationArea">
+                <select name="" id="" class="form-control" formControlName="province">
+                  <option value="none">--Select Province--</option>
+                  <option [value]="province.provinceName" *ngFor="let province of provinces">{{province.provinceName}}</option>
+                </select>
               </div>
             </div>
             <div class="row form-group">
