@@ -82,5 +82,4 @@ export class TeamService {
     return this.dataService.genericCaller("post","Team/MarkAttendance",attendanceDetail);
   }
 
-
 }
