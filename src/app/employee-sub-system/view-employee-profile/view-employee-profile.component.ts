@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import {Subject, Observable } from 'rxjs';
 import { EmployeeService } from 'src/app/services/employee/employee.service';
 import { TeamService } from 'src/app/services/team/team.service';
 import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-view-employee-profile',
@@ -21,6 +22,7 @@ export class ViewEmployeeProfileComponent implements OnInit {
 
   employeeImage:any={}
   teamEmployeeData: any[]=[];
+  
 
   constructor(
     private employeeService:EmployeeService,
@@ -161,7 +163,6 @@ readImageAsBase64(file: any): Observable<any> {
  });
  return observerable;
 }
-
 
 
 }

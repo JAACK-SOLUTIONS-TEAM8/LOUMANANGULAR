@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, VERSION } from '@angular/core';
 import { Router } from '@angular/router';
+import { NgxQrcodeElementTypes, NgxQrcodeErrorCorrectionLevels } from 'ngx-qrcode2';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { CartService } from 'src/app/services/cart/cart.service';
 
@@ -9,6 +10,11 @@ import { CartService } from 'src/app/services/cart/cart.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  title = 'Codes'
+  name = 'Angular ' + VERSION.major;
+  elementType = NgxQrcodeElementTypes.URL;
+  value = 'https://www.google.com/maps/place/Louman+Eloff/@-26.142645,28.5864626,17z/data=!3m1!4b1!4m5!3m4!1s0x1e953223779562c7:0xdacf1a50fc8cf2f3!8m2!3d-26.142645!4d28.5886513';
+  correctionlevel = NgxQrcodeErrorCorrectionLevels.HIGH;
 
   isLoggedIn:boolean;
   itemCount:number

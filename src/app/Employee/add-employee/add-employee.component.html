@@ -85,6 +85,16 @@
                           class="fas fa-upload mg-l-10"></i></button>
               </div>
               <div class="col-lg-8 col-md-6 col-sm-5 col-12">
+              <webcam [height]="500" [width]="500" [trigger]="triggerObservable" (imageCapture)="handleImage($event)"></webcam>
+                <!-- Button Takes Photo -->
+                <button class="btn btn-warning" (click)="triggerSnapshot();">Take Image</button>
+                <!-- Snapshot Div where image will be shown -->
+                <div class="snapshot" *ngIf="webcamImage">
+                  <h2>Preview:</h2>
+                  <img [src]="webcamImage.imageAsDataUrl"/>
+                </div>
+            </div>
+              <div class="col-lg-8 col-md-6 col-sm-5 col-12">
                   <!-- <img style="height:15rem; width: 15rem; float: rigth;" [src]="mandiImage.file" > -->
                   <img style="height:15rem; width: 15rem; float: rigth;" [src]="employeeImage.file"
                       *ngIf="employeeId==0 || employeeImage.file!=null">
