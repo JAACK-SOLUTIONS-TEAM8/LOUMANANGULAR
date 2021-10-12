@@ -29,6 +29,11 @@ export class AuthService {
     return this.dataService.genericCaller("get", "Auth/Logout/"+userId, "");
   }
 
+  verify(data:any) {
+    debugger
+    return this.dataService.genericCaller("post", "Auth/VerifyCode", data);
+  }
+
   resetPasswordInitial(userData: any) {
     debugger
     return this.dataService.genericCaller("post", "Auth/ResetPassword", userData);
