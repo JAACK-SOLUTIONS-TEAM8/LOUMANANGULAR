@@ -24,7 +24,13 @@ export class AddClientComponent implements OnInit {
 
   @ViewChild('cd', { static: false }) countdown: CountdownComponent;
   
-  config:CountdownConfig={}
+  config:CountdownConfig={
+    demand:true,
+    leftTime:Number(JSON.parse(localStorage.getItem("timerConfig")).leftTime),
+    notify:0,
+    stopTime:0
+
+  }
 
 
   constructor(
@@ -49,17 +55,6 @@ export class AddClientComponent implements OnInit {
     setTimeout(()=>{
       this.countdown.begin();
     },1000)
-
-    this.timerService.getTimerConfig().subscribe(config=>{
-
-      this.config={
-        demand:true,
-        leftTime:config.leftTime,
-        notify:0,
-        stopTime:config.stopTime
-      }
-
-    })
   }
 
   
