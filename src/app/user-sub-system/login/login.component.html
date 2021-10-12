@@ -17,15 +17,32 @@
                     <div class="row form-group">
                       <div class=" col-12">
                           <label >Username:</label>
-                          <input type="text" class="form-control" placeholder="username" formControlName="userName">
+                          <input type="text" class="form-control" placeholder="username" formControlName="userName" [disabled]="isAuthenticated">
                       </div>
                     </div>
                     <div class="row form-group">
                       <div class=" col-12">
                           <label >Password:</label>
-                          <input type="password" class="form-control" placeholder="Password" formControlName="password">
+                          <input type="password" class="form-control" placeholder="Password" formControlName="password" [disabled]="isAuthenticated">
                       </div>
                     </div>
+                    <div class="row mt-5">
+                        <div class="col-4">
+                            <button type="button" class="btn btn-primary" [disabled]="isAuthenticated" (click)="login()">Submit</button>
+                        </div>
+                    </div>
+                    <div class="row form-group mt-5" *ngIf="isAuthenticated">
+                        <div class=" col-12">
+                            <label > Confirmation code :</label>
+                            <input type="text" name="verificationCode" class="form-control" placeholder="verification code" formControlName="code">
+                        </div>
+                    </div>
+                    <div class="row mt-5" *ngIf="isAuthenticated">
+                        <div class="col-4">
+                            <button type="button" class="btn btn-primary" (click)="verifyCode()">Confirm</button>
+                        </div>
+                    </div>
+
                 </form>
         
             </div>
