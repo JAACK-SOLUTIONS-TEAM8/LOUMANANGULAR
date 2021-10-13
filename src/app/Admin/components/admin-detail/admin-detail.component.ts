@@ -79,7 +79,7 @@ export class AdminDetailComponent implements OnInit {
       if(response.statusCode==200)
       {
         Swal.fire({
-          title: 'Warning!',
+          title: 'Success!',
           text: 'admin deleted successfully',
           icon: 'success',
           confirmButtonText: 'Ok'
@@ -98,6 +98,9 @@ export class AdminDetailComponent implements OnInit {
     this.selectedAdmin=admin;
   }
   
-
+  viewAdminRole(admin:any)
+  {
+    this.router.navigateByUrl(`/admin/manage-roles/${admin.userId}`);
+  }
 
 }

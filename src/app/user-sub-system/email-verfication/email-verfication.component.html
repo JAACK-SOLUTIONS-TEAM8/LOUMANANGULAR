@@ -1,0 +1,40 @@
+
+<div class="row">
+    <div class="col-8">
+    </div>
+    <div class="col-20">
+        
+<div class="card mt-5">
+    <div  class="card-header text-center">
+      <h3>Email Confirmation</h3>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-2">
+            </div>
+            <div class="col-8">
+                <form>
+                    <div class="row form-group">
+                      <div class=" col-12">
+                          <label >Please Confirmation code here:</label>
+                          <input type="text" name="verificationCode" class="form-control" placeholder="verification code" [(ngModel)]="code">
+                      </div>
+                    </div>
+                </form>
+        
+            </div>
+            <div class="col-2">
+            </div>
+        </div>
+        <div class="row mt-5">
+            <div class="col-4">
+                <button type="button" class="btn btn-primary" (click)="verifyCode()" >Submit</button>
+            </div>
+        </div>
+    </div>
+  </div>
+
+    </div>
+    <div class="col-2">
+    </div>
+</div>

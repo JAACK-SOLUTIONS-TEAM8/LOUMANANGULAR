@@ -6,6 +6,7 @@ import { AdminService } from 'src/app/services/admin/admin.service';
 import { TimerConfigService } from 'src/app/services/timer/timer-config.service';
 import { UserService } from 'src/app/services/user/user.service';
 import Swal from 'sweetalert2';
+import {  passwordMatcher } from '../../validators';
 
 declare var $:any;
 @Component({
@@ -25,11 +26,17 @@ export class AddAdminComponent implements OnInit {
     this.route.params.subscribe(param => {
       this.adminId = param["id"];
     });
-    
+
   }
 
   @ViewChild('cd', { static: false }) countdown: CountdownComponent;
-  config:CountdownConfig={};
+  config:CountdownConfig={
+    demand:true,
+    leftTime:Number(JSON.parse(localStorage.getItem("timerConfig")).leftTime),
+    notify:0,
+    stopTime:0
+
+  };
 
 
   profileDetailForm: FormGroup;
@@ -53,37 +60,29 @@ export class AddAdminComponent implements OnInit {
     if (this.adminId != 0)
       this.getAdminById();
 
-    setTimeout(()=>{
-      this.countdown.begin();
-    },1000)
+      console.log(Number(JSON.parse(localStorage.getItem("timerConfig")).leftTime));
+            setTimeout(()=>{
+              this.countdown.begin();
+            },1000)
 
-
-    this.timerService.getTimerConfig().subscribe(config=>{
-
-      this.config={
-        demand:true,
-        leftTime:config.leftTime,
-        notify:0,
-        stopTime:config.stopTime
-      }
-
-    })
   }
 
   initilizeForm() {
     this.profileDetailForm = this.fromBuilder.group({
-      userName: [null,Validators.required],
-      password: [null,Validators.required],
+      userName: [null,[Validators.required,Validators.maxLength(50), Validators.minLength(5)]],
+      password: [null,[Validators.required,Validators.maxLength(8), Validators.minLength(4)]],
       confirmPassword: [null,Validators.required]
-    });
+    },{ validators: passwordMatcher });
 
     this.adminDetailForm = this.fromBuilder.group({
-      initials: [null,Validators.required],
-      surname: [null,Validators.required],
+      initials: [null,[Validators.required,Validators.maxLength(50), Validators.minLength(3)]],
+      surname: [null,[Validators.required,Validators.maxLength(50), Validators.minLength(5)]],
       userTypeId: [null,Validators.required],
-      idNumber: [null,Validators.required],
-      email: [null,Validators.required]
+      idNumber: [null,[Validators.required,Validators.minLength(13),Validators.maxLength(13)]],
+      email: [null, [Validators.required, Validators.email]]
     });
+
+    
   }
 
   getUserTypes() {
@@ -146,7 +145,7 @@ export class AddAdminComponent implements OnInit {
 
     let adminDetail =
     {
-      "adminUserId":  Number(0),
+      "adminUserId":  Number(this.adminId==0?0:this.adminData.userId),
       "adminId": Number(this.adminId ?? 0),
       "userName": String(this.profileDetailForm.controls["userName"].value),
       "password":  String(this.profileDetailForm.controls["password"].value),
