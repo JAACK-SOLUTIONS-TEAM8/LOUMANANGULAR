@@ -21,7 +21,7 @@
     "@fortawesome/fontawesome-free": "^5.15.4",
     "@videogular/ngx-videogular": "^4.1.0",
     "bootstrap": "^5.1.0",
-    "chart.js": "^3.5.1",
+    "chart.js": "^2.9.4",
     "chokidar": "^3.5.2",
     "html2pdf-jspdf2": "^0.1.2",
     "jquery": "^3.6.0",

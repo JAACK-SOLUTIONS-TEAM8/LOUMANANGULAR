@@ -3,7 +3,7 @@ import { OrderService } from 'src/app/services/order/order.service';
 import { ProductService } from 'src/app/services/product/product.service';
 import html2PDF from 'jspdf-html2canvas';
 
-import { ChartOptions, ChartType, ChartDataset } from 'chart.js';
+import { ChartOptions, ChartType, ChartDataSets } from 'chart.js';
 import { Label } from 'ng2-charts';
 
 
@@ -23,7 +23,7 @@ export class MonthlySalesReportComponent implements OnInit {
   public barChartType: ChartType = 'bar';
   public barChartLegend = true;
 
-  public barChartData: ChartDataset[] = [];
+  public barChartData: ChartDataSets[] = [];
 
   productData:any[]=[]
   dateData:any;
