@@ -13,7 +13,8 @@ export class AppComponent {
   isLoggedIn:boolean;
   itemCount:number
   role:string;
-  user:any
+  user:any;
+  roles:any[]=[];
   constructor(
     private router:Router,
     private cartService:CartService,
@@ -24,26 +25,56 @@ export class AppComponent {
 }
 
 initilization()
-  {
-    this.itemCount=this.cartService.getItemCountInCart();
+{ debugger
+  this.itemCount=this.cartService.getItemCountInCart();
 
-    this.isLoggedIn=localStorage.getItem("User")!=null?true:false;
-    this.role=JSON.parse(localStorage.getItem("User"))?.userType;
-    
-    this.user=JSON.parse(localStorage.getItem("User"));
-    debugger
-   if(localStorage.getItem("User")==null)
-    this.router.navigateByUrl("/login");
+  this.authService.isLoggedIn$.subscribe(value=>{
+    this.isLoggedIn=value;
+  });
 
+  this.authService.user$.subscribe(value=>{
+    this.user=JSON.parse(value);
+    this.role=JSON.parse(value)?.userType
+  });
+
+  this.authService.userRoles$.subscribe(roles=>
+    {
+      this.roles=roles;
+      console.log("==================================Roles====================================");
+      console.log(this.roles);
+      console.log("==========================================================================");
+
+    });
+
+    this.roles=JSON.parse(localStorage.getItem("UserRoles"))?.roles;
+  this.isLoggedIn=Boolean(localStorage.getItem("isLoggedIn"));
+  this.user=JSON.parse(localStorage.getItem("User"));
+  this.role=JSON.parse(localStorage.getItem("User"))?.userType;
+  console.log("==================================Roles from local storage====================================");
+  console.log(this.roles);
+  console.log("==========================================================================");
+
+  this
+
+      debugger
+ if(this.user==null)
+ {
+   localStorage.clear();
+  this.router.navigateByUrl("/home");
+ }
+
+}
+
+  ngOnInit(): void {
+    this.initilization();
   }
-
-  ngOnInit(): void {}
 
   logout()
   {
      this.authService.logout(Number(JSON.parse(localStorage.getItem("User")).userId)).subscribe(response=>{})
     localStorage.removeItem("User");
     this.cartService.clearCart();
-    this.router.navigateByUrl("/login");
+    localStorage.clear();
+    this.router.navigateByUrl("/home");
   }
 }

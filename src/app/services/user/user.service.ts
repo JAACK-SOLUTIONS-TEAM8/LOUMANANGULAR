@@ -20,4 +20,14 @@ export class UserService {
     return this.dataService.genericCaller("get", "User/Audit/Search?name="+name, "");
   }
 
+
+  getAllUserRoles(userId:number) {
+    debugger
+    return this.dataService.genericCaller("get", `User/Roles/${userId}`, "");
+  }
+  AddUserRoles(roleDetail:any) {
+    debugger
+    return this.dataService.genericCaller("post", `User/Roles/Add`, roleDetail);
+  }
+
 }

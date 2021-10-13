@@ -18,6 +18,20 @@ export class AdminService {
     return this.dataService.genericCaller("post", "Admin/Add", adminData);
   }
 
+  getAllRoles() {
+    debugger
+    return this.dataService.genericCaller("get", "Admin/Roles", "");
+  }
+
+  addRole(roleData: any) {
+    debugger
+    return this.dataService.genericCaller("post", "Admin/Roles/Add", roleData);
+  }
+  getRoleById(roleId: number) {
+    debugger
+    return this.dataService.genericCaller("get", `Admin/Roles/${roleId}`, "");
+  }
+
   getAdminById(adminId: number) {
     debugger
     return this.dataService.genericCaller("get", `Admin/${adminId}`, "");

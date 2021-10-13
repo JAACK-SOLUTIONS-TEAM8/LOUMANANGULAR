@@ -9,11 +9,16 @@ export class AuthService {
   isLoggedIn:boolean=false;
   user:string=null;
 
+  roles:any[]=[]
+
   isLoggedInSubject:BehaviorSubject<boolean>=new BehaviorSubject<boolean>(this.isLoggedIn);
   isLoggedIn$:Observable<boolean>=this.isLoggedInSubject.asObservable();
 
   userSubject:BehaviorSubject<string>=new BehaviorSubject<string>(this.user);
   user$:Observable<string>=this.userSubject.asObservable();
+
+  userRolesSubject:BehaviorSubject<any[]>=new BehaviorSubject<any[]>(this.roles);
+  userRoles$:Observable<any[]>=this.userRolesSubject.asObservable();
 
   constructor(
     private dataService:DataService

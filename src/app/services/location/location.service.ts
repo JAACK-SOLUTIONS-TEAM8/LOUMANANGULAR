@@ -9,10 +9,15 @@ export class LocationService {
   constructor(
     private dataService:DataService
   ) { }
-
+  
   getAllLocations() {
     debugger
     return this.dataService.genericCaller("get", "Location/All", "");
+  }
+
+  getAllProvinces() {
+    debugger
+    return this.dataService.genericCaller("get", "Location/Provinces", "");
   }
 
   addLocation(locationData: any) {
@@ -25,9 +30,9 @@ export class LocationService {
     return this.dataService.genericCaller("get", `Location/${locationId}`, "");
   }
 
-  deleteLocation(locationId: number) {
+  deleteLocation(location: any) {
     debugger
-    return this.dataService.genericCaller("get", `Location/Delete/${locationId}`, "");
+    return this.dataService.genericCaller("post", `Location/Delete`, location);
   }
 
   searchLocationByName(searchTerm:string)

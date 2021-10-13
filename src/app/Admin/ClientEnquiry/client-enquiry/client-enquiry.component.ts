@@ -39,8 +39,7 @@ export class ClientEnquiryComponent implements OnInit {
 
   getAllAdminEnquiry()
   {
-    var adminData=JSON.parse(localStorage.getItem("User"));
-    this.enquiryService.getAllAdminEnquiries(Number(adminData.userId)).subscribe(response=>{
+    this.enquiryService.getAllAdminEnquiries().subscribe(response=>{
         this.enquiryData=response.enquiries;
     });
   }
@@ -90,7 +89,7 @@ export class ClientEnquiryComponent implements OnInit {
       this.getAllAdminEnquiry();
       return;
     }
-    this.enquiryService.getAllAdminEnquiriesByTypeId(Number(JSON.parse(localStorage.getItem("User")).userId), Number(this.enquiryTypeForm.controls["enquiryTypeId"].value)).subscribe(response=>{
+    this.enquiryService.getAllAdminEnquiriesByTypeId(Number(this.enquiryTypeForm.controls["enquiryTypeId"].value)).subscribe(response=>{
       console.log(response)
       this.enquiryData=response.enquiries;
     });
