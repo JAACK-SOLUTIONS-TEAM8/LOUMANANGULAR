@@ -1,115 +1,119 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container-fluid">
-      <a class="navbar-brand" href="#">Louman</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
-          aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNavDropdown">
-          <ul class="navbar-nav">
-              <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" [routerLink]="'/home'" href="#">Home</a>
-              </li>
-              <li class="nav-item" *ngIf="isLoggedIn">
-                  <a class="nav-link" href="#" (click)="logout()">Logout</a>
-              </li>
-              <li class="nav-item" *ngIf="!isLoggedIn">
-                  <a class="nav-link" style="cursor: pointer;" [routerLink]="'/login'">LogIn</a>
-              </li>
-              <!-- <li class="nav-item" *ngIf="isLoggedIn">
-                  <a class="nav-link" href="#" [routerLink]="'/client/cart'">Cart: <span><b>{{itemCount}}</b> </span></a>
-              </li> -->
-              <li class="nav-item" *ngIf="isLoggedIn">
-                  <p  class="nav-link"><b>Role: </b>{{role}}</p>
-              </li>
+<nav class="navbar navbar-dark bg-primary">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">LOUMAN</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" [routerLink]="'/home'" href="#">Home</a>
+                </li>
+                <li class="nav-item" *ngIf="isLoggedIn">
+                    <a class="nav-link" href="#" (click)="logout()">Logout</a>
+                </li>
+                <li class="nav-item" *ngIf="!isLoggedIn">
+                    <a class="nav-link" style="cursor: pointer;" [routerLink]="'/login'">Login</a>
+                </li>
+                <!-- <li class="nav-item" *ngIf="isLoggedIn">
+                    <a class="nav-link" href="#" [routerLink]="'/client/cart'">Cart: <span><b>{{itemCount}}</b> </span></a>
+                </li> -->
+                <li class="nav-item" *ngIf="isLoggedIn">
+                    <p  class="nav-link"><b>Role: </b>{{role}}</p>
+                </li>
+  
+            </ul>
+        </div>
+    </div>
+  </nav>
+  <div class="row">
+    <div class="col-lg-2">
+        <div class="flex-shrink-0 p-3 bg-white" style="width: 280px;">
+            <a href="/" class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
+                <svg class="bi me-2" width="30" height="24">
+                    <use xlink:href="#bootstrap" />
+                </svg>
+            </a>
+            <ul class="list-unstyled ps-0" *ngIf="isLoggedIn">
+                <li class="mb-1" *ngIf="role=='Admin'">
+                    <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
+                        data-bs-target="#home-collapse" aria-expanded="true">
+                        Features
+                    </button>
+                    <div class="collapse show" id="home-collapse">
+                        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                            <li><a [routerLink]="'/admin/detail'" class="link-dark rounded"  *ngIf="roles.includes('super admin')">Admins Detail</a></li>
+                            <li><a [routerLink]="'/client/list'" class="link-dark rounded" *ngIf="roles.includes('receptionist')   || roles.includes('super admin')">Client Detail</a></li>
+                            <li><a [routerLink]="'/employee/detail'" class="link-dark rounded" *ngIf="roles.includes('receptionist')  || roles.includes('super admin')" >Employee Detail</a></li>
+                            <li><a href="#" class="link-dark rounded" [routerLink]="'/admin/team/detail'" *ngIf="roles.includes('super admin')">Teams</a></li>
+                            <li><a href="#" class="link-dark rounded" [routerLink]="'/admin/team/attendanceHistory'" *ngIf="roles.includes('super admin')">Team Attendance History</a></li>
+                            <li><a href="#" class="link-dark rounded" [routerLink]="'/admin/orders/all'" *ngIf="roles.includes('Customer Success Specialist ') || roles.includes('customer success specialist ') || roles.includes('super admin')">Orders</a></li>
+                            <li><a [routerLink]="'/order/deliveryType/detail'" class="link-dark rounded" *ngIf="roles.includes('super admin')">Delivery Type</a></li>
+                            <li><a href="#" class="link-dark rounded" [routerLink]="'/admin/location/detail'" *ngIf="roles.includes('super admin')">Locations</a></li>
+                            <li><a href="#" class="link-dark rounded" [routerLink]="'/admin/meeting/slot-detail'" *ngIf="roles.includes('super admin')">slot Detail</a></li>
+                            <li><a href="#" class="link-dark rounded" [routerLink]="'/admin/meeting/detail'" *ngIf="roles.includes('super admin')">Booked Slots</a></li>
+                            <li><a href="#" class="link-dark rounded" [routerLink]="'/admin/enquiry/detail'" *ngIf="roles.includes('Customer Success Specialist ') || roles.includes('customer success specialist ') || roles.includes('super admin')">Enquiries</a></li>
+                            <li><a href="#" class="link-dark rounded" [routerLink]="'/admin/product/list'" *ngIf="roles.includes('stock manager') || roles.includes('Stock Manager') || roles.includes('Receptionist')">Products</a></li>
+                            <li><a href="#" class="link-dark rounded" [routerLink]="'/admin/product/size/detail'" *ngIf="roles.includes('stock manager') || roles.includes('Stock Manager') || roles.includes('super admin')">Add Product Size</a></li>
+                            <li><a href="#" class="link-dark rounded" [routerLink]="'/admin/product/type/detail'" *ngIf="roles.includes('stock manager') || roles.includes('Stock Manager') || roles.includes('super admin')">Add Products Type</a></li>
+                            <li><a href="#" class="link-dark rounded" [routerLink]="'/admin/stock/detail'" *ngIf="roles.includes('stock manager') || roles.includes('Stock Manager') || roles.includes('super admin')">Stock</a></li>
+                            <li><a href="#" class="link-dark rounded" [routerLink]="'/admin/audit'" *ngIf="roles.includes('super admin')">Audit</a></li>
+                            <li><a [routerLink]="'/admin/enquiry-type-detail'" class="link-dark rounded" *ngIf="roles.includes('Customer Success Specialist ') || roles.includes('customer success specialist ') || roles.includes('super admin')">Enquery Type</a></li>
+                            <li><a [routerLink]="'/admin/timer-config'" class="link-dark rounded" *ngIf="roles.includes('super admin')">Configure Timer</a></li>
+                            <li><a [routerLink]="'/admin/roles'" class="link-dark rounded" *ngIf="roles.includes('super admin')">Manage Roles</a></li>
 
-          </ul>
-      </div>
+                        </ul>
+                    </div>
+                </li>
+                <li class="mb-1" *ngIf="role=='Admin' && roles.includes('super admin')">
+                    <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
+                        data-bs-target="#dashboard-collapse" aria-expanded="false">
+                        Reports
+                    </button>
+                    <div class="collapse" id="dashboard-collapse">
+                        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                            <li><a [routerLink]="'/admin/report/monthly-stock'" class="link-dark rounded">Monthly Stock Report</a></li>
+                            <li><a [routerLink]="'/admin/report/monthly-sales'" class="link-dark rounded">Monthly Sales Report</a></li>
+                            <li><a [routerLink]="'/admin/report/registration-report'" class="link-dark rounded">Monthly Registration Report</a></li>
+                            <li><a [routerLink]="'/admin/report/half-yearly-employee-report'" class="link-dark rounded">Half Yearly Employee Report</a></li>
+                            <li><a [routerLink]="'/admin/report/client-report'" class="link-dark rounded">Client Report</a></li>
+                            <li><a [routerLink]="'/admin/report/attendance-report'" class="link-dark rounded">Attendance Report</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="mb-1" *ngIf="role=='Employee'">
+                    <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
+                        data-bs-target="#dashboard-collapse" aria-expanded="false">
+                        Features
+                    </button>
+                    <div class="collapse" id="dashboard-collapse">
+                        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                            <li><a [routerLink]="'/employee/viewProfile/'+user.userId" class="link-dark rounded">Profile</a></li>
+                            <!-- <li><a href="#" class="link-dark rounded">Teams</a></li> -->
+                        </ul>
+                    </div>
+                </li>
+                <li class="mb-1" *ngIf="role=='Client'">
+                    <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
+                        data-bs-target="#orders-collapse" aria-expanded="false">
+                        Features
+                    </button>
+                    <div class="collapse" id="orders-collapse">
+                        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                            <li><a href="#" class="link-dark rounded" [routerLink]="'/client/meeting/slots'" >Slots</a></li>
+                            <li><a href="#" class="link-dark rounded" [routerLink]="'/client/meeting/detail'">Booked Slots</a></li>
+                            <li><a href="#" class="link-dark rounded" [routerLink]="'/client/enquiry/detail'">Enquiries</a></li>
+                            <li><a href="#" class="link-dark rounded" [routerLink]="'/client/product/list'">Products</a></li>
+                            <li><a href="#" class="link-dark rounded" [routerLink]="'/client/orders/history'">Orders</a></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="col-lg-10">
+        <router-outlet></router-outlet>
+    </div>
   </div>
-</nav>
-<div class="row">
-  <div class="col-lg-2">
-      <div class="flex-shrink-0 p-3 bg-white" style="width: 280px;">
-          <a href="/" class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
-              <svg class="bi me-2" width="30" height="24">
-                  <use xlink:href="#bootstrap" />
-              </svg>
-          </a>
-          <ul class="list-unstyled ps-0" *ngIf="isLoggedIn">
-              <li class="mb-1" *ngIf="role=='Admin'">
-                  <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
-                      data-bs-target="#home-collapse" aria-expanded="true">
-                      Features
-                  </button>
-                  <div class="collapse show" id="home-collapse">
-                      <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                          <li><a [routerLink]="'/admin/detail'" class="link-dark rounded">Admin Details</a></li>
-                          <li><a [routerLink]="'/client/list'" class="link-dark rounded">Client Details</a></li>
-                          <li><a [routerLink]="'/employee/detail'" class="link-dark rounded">Employee Details</a></li>
-                          <li><a href="#" class="link-dark rounded" [routerLink]="'/admin/team/detail'">Teams</a></li>
-                          <li><a href="#" class="link-dark rounded" [routerLink]="'/admin/team/attendanceHistory'">Team Attendance History</a></li>
-                          <li><a href="#" class="link-dark rounded" [routerLink]="'/admin/orders/all'">Orders</a></li>
-                          <li><a [routerLink]="'/order/deliveryType/detail'" class="link-dark rounded">Delivery Types</a></li>
-                          <li><a href="#" class="link-dark rounded" [routerLink]="'/admin/location/detail'">Locations</a></li>
-                          <li><a href="#" class="link-dark rounded" [routerLink]="'/admin/meeting/slot-detail'">Slot Details</a></li>
-                          <li><a href="#" class="link-dark rounded" [routerLink]="'/admin/meeting/detail'">Booked Slots</a></li>
-                          <li><a href="#" class="link-dark rounded" [routerLink]="'/admin/enquiry/detail'">Enquiries</a></li>
-                          <li><a href="#" class="link-dark rounded" [routerLink]="'/admin/product/list'">Products</a></li>
-                          <li><a href="#" class="link-dark rounded" [routerLink]="'/admin/product/size/detail'">Add Product Size</a></li>
-                          <li><a href="#" class="link-dark rounded" [routerLink]="'/admin/product/type/detail'">Add Product Category</a></li>
-                          <li><a href="#" class="link-dark rounded" [routerLink]="'/admin/stock/detail'">Stock</a></li>
-                          <li><a href="#" class="link-dark rounded" [routerLink]="'/admin/audit'">Audit</a></li>
-                          <li><a [routerLink]="'/admin/enquiry-type-detail'" class="link-dark rounded">Enquiry Type</a></li>
-                      </ul>
-                  </div>
-              </li>
-              <li class="mb-1" *ngIf="role=='Admin'">
-                  <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
-                      data-bs-target="#dashboard-collapse" aria-expanded="false">
-                      Reports
-                  </button>
-                  <div class="collapse" id="dashboard-collapse">
-                      <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                          <li><a [routerLink]="'/admin/report/monthly-stock'" class="link-dark rounded">Monthly Stock Report</a></li>
-                          <li><a [routerLink]="'/admin/report/monthly-sales'" class="link-dark rounded">Monthly Sales Report</a></li>
-                          <li><a [routerLink]="'/admin/report/registration-report'" class="link-dark rounded">Monthly Registration Report</a></li>
-                          <li><a [routerLink]="'/admin/report/half-yearly-employee-report'" class="link-dark rounded">Half Yearly Employee Report</a></li>
-                          <li><a [routerLink]="'/admin/report/client-report'" class="link-dark rounded">Client Report</a></li>
-                          <li><a [routerLink]="'/admin/report/attendance-report'" class="link-dark rounded">Attendance Report</a></li>
-                      </ul>
-                  </div>
-              </li>
-              <li class="mb-1" *ngIf="role=='Employee'">
-                  <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
-                      data-bs-target="#dashboard-collapse" aria-expanded="false">
-                      Features
-                  </button>
-                  <div class="collapse" id="dashboard-collapse">
-                      <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                          <li><a [routerLink]="'/employee/viewProfile/'+user.userId" class="link-dark rounded">Profile</a></li>
-                          <!-- <li><a href="#" class="link-dark rounded">Teams</a></li> -->
-                      </ul>
-                  </div>
-              </li>
-              <li class="mb-1" *ngIf="role=='Client'">
-                  <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
-                      data-bs-target="#orders-collapse" aria-expanded="false">
-                      Features
-                  </button>
-                  <div class="collapse" id="orders-collapse">
-                      <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                          <li><a href="#" class="link-dark rounded" [routerLink]="'/client/meeting/slots'" >Slots</a></li>
-                          <li><a href="#" class="link-dark rounded" [routerLink]="'/client/meeting/detail'">Booked Slots</a></li>
-                          <li><a href="#" class="link-dark rounded" [routerLink]="'/client/enquiry/detail'">Enquiries</a></li>
-                          <li><a href="#" class="link-dark rounded" [routerLink]="'/client/product/list'">Products</a></li>
-                          <li><a href="#" class="link-dark rounded" [routerLink]="'/client/orders/history'">Orders</a></li>
-                      </ul>
-                  </div>
-              </li>
-          </ul>
-      </div>
-  </div>
-  <div class="col-lg-10">
-      <router-outlet></router-outlet>
-  </div>
-</div>
+  

@@ -14,13 +14,42 @@
                       <div class="row form-group">
                         <div class="col-lg-6 col-md-4 col-sm-8 col-12">
                             <label >Team Name:</label>
-                            <input type="text" class="form-control" formControlName="teamName" placeholder="teamname">
+                            <input type="text" 
+                            class="form-control" 
+                            formControlName="teamName" 
+                            placeholder="teamname"
+                            [ngClass]="{'is-invalid': (addTeamForm.get('teamName')?.touched ||
+                            addTeamForm.get('teamName')?.dirty) &&
+                                            !addTeamForm.get('teamName')?.valid }">
+                                            <span class="invalid-feedback">
+                                              <span *ngIf="addTeamForm.get('teamName')?.errors?.required">
+                                                Please enter your team name.
+                                              </span>
+                                              <span *ngIf="addTeamForm.get('teamName')?.errors?.maxlength || addTeamForm.get('teamName')?.errors?.minlength">
+                                                The team name must be greater than 20 and less than 50 characters.
+                                              </span>
+                                            </span>
                         </div>
                       </div>
                       <div class="row form-group">
                         <div class="col-lg-6 col-md-4 col-sm-8 col-12">
                             <label >Description:</label>
-                            <textarea cols="10" rows="5" class="form-control" formControlName="teamDescription"></textarea>
+                            <textarea cols="10" rows="5" 
+                            class="form-control" 
+                            formControlName="teamDescription"
+                            [ngClass]="{'is-invalid': (addTeamForm.get('teamDescription')?.touched ||
+                            addTeamForm.get('teamDescription')?.dirty) &&
+                                            !addTeamForm.get('teamDescription')?.valid }">
+                          </textarea>
+                            
+                                            <span class="invalid-feedback">
+                                              <span *ngIf="addTeamForm.get('teamDescription')?.errors?.required">
+                                                Please enter team description.
+                                              </span>
+                                              <span *ngIf="addTeamForm.get('teamDescription')?.errors?.maxlength || addTeamForm.get('teamDescription')?.errors?.minlength">
+                                                The team description must be greater than 20 and less than 50 characters.
+                                              </span>
+                                            </span>
                         </div>
                       </div>
                       <div class="row form-group">
@@ -35,20 +64,51 @@
                       <div class="row form-group">
                         <div class="col-lg-6 col-md-4 col-sm-8 col-12">
                             <label >Maximum Employees:</label>
-                            <input type="number" class="form-control" value="0" formControlName="maxEmployee">
+                            <input type="number" 
+                            class="form-control" 
+                            value="0" formControlName="maxEmployee"
+                            [ngClass]="{'is-invalid': (addTeamForm.get('maxEmployee')?.touched ||
+                            addTeamForm.get('maxEmployee')?.dirty) &&
+                                            !addTeamForm.get('maxEmployee')?.valid }">
+                                            <span class="invalid-feedback">
+                                              <span *ngIf="addTeamForm.get('maxEmployee')?.errors?.required">
+                                                Please enter number of employees.
+                                              </span>
+                                            </span>
                         </div>
                       </div>
 
                       <div class="row form-group">
                         <div class="col-lg-6 col-md-4 col-sm-8 col-12">
                             <label >Start Time:</label>
-                            <input type="time" class="form-control" formControlName="startTime">
+                            <input type="time" 
+                                class="form-control" 
+                                formControlName="startTime"
+                                [ngClass]="{'is-invalid': (addTeamForm.get('startTime')?.touched ||
+                            addTeamForm.get('startTime')?.dirty) &&
+                                            !addTeamForm.get('startTime')?.valid }">
+                                            <span class="invalid-feedback">
+                                              <span *ngIf="addTeamForm.get('startTime')?.errors?.required">
+                                                Please enter Team Start Time.
+                                              </span>
+                                            </span>
                         </div>
                       </div>
                       <div class="row form-group">
                         <div class="col-lg-6 col-md-4 col-sm-8 col-12">
                             <label >End Time</label>
-                            <input type="time" class="form-control" value="0" formControlName="endTime">
+                            <input type="time" 
+                                class="form-control" 
+                                value="0" 
+                                formControlName="endTime"
+                                [ngClass]="{'is-invalid': (addTeamForm.get('endTime')?.touched ||
+                            addTeamForm.get('endTime')?.dirty) &&
+                                            !addTeamForm.get('endTime')?.valid }">
+                                            <span class="invalid-feedback">
+                                              <span *ngIf="addTeamForm.get('endTime')?.errors?.required">
+                                                Please enter Team End Time.
+                                              </span>
+                                            </span>
                         </div>
                       </div>
                       <div class="row form-group mt-3">
@@ -89,7 +149,7 @@
 
         <div class="row mt-5">
             <div class="col-12">
-                <button type="button" class="btn btn-primary" style="float: right; margin-left: 5px;" data-bs-toggle="modal" data-bs-target="#additionConfirmation">{{teamId==0?'Save':'Update'}}</button>
+                <button type="button" [disabled]="!addTeamForm.valid" class="btn btn-primary" style="float: right; margin-left: 5px;" data-bs-toggle="modal" data-bs-target="#additionConfirmation">{{teamId==0?'Save':'Update'}}</button>
                 <button type="button" class="btn btn-secondary" style="float: right;" [routerLink]="'/admin/team/detail'" >Cancel</button>
             </div>
         </div>

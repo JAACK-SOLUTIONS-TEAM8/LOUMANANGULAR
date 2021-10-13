@@ -96,7 +96,7 @@ export class AddSlotComponent implements OnInit {
       {
         Swal.fire({
           title: 'Error!',
-          text: 'slot adding failed!',
+          text: 'slot added failed!',
           icon: 'success',
           confirmButtonText: 'Ok'
         })

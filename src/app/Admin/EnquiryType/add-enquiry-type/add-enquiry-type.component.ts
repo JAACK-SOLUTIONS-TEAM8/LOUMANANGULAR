@@ -35,7 +35,7 @@ export class AddEnquiryTypeComponent implements OnInit {
 
   initilizeForm() {
     this.addEnquiryTypeForm = this.formBuilder.group({
-      enquiryTypeDescription:[null,Validators.required]
+      enquiryTypeDescription:[null,[Validators.required,Validators.minLength(8),Validators.maxLength(10)]]
     });
   }
 

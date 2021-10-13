@@ -16,7 +16,21 @@
                           <div class="row form-group">
                             <div class="col-lg-6 col-md-4 col-sm-8 col-12">
                                 <label >Name:</label>
-                                <input type="text" class="form-control" placeholder="enquiry type name" formControlName="enquiryTypeDescription">
+                                <input type="text" 
+                                        class="form-control" 
+                                        placeholder="enquiry type name" 
+                                        formControlName="enquiryTypeDescription"
+                                        [ngClass]="{'is-invalid': (addEnquiryTypeForm.get('enquiryTypeDescription')?.touched ||
+                                        addEnquiryTypeForm.get('enquiryTypeDescription')?.dirty) &&
+                                                                      !addEnquiryTypeForm.get('enquiryTypeDescription')?.valid }">
+                                                                      <span class="invalid-feedback">
+                                                                        <span *ngIf="addEnquiryTypeForm.get('enquiryTypeDescription')?.errors?.required">
+                                                                          Please Enter Enquiry Type.
+                                                                        </span>
+                                                                        <span *ngIf="addEnquiryTypeForm.get('enquiryTypeDescription')?.errors?.maxlength || addEnquiryTypeForm.get('enquiryTypeDescription')?.errors?.minlength">
+                                                                          The Enquiry Type must be greater than 8 and less than 10 characters.
+                                                                        </span>
+                                                                      </span>
                             </div>
                           </div>
                     </form>

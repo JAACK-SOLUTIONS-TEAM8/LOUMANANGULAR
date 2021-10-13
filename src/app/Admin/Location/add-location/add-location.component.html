@@ -14,10 +14,21 @@
             <div class="row form-group">
               <div class="col-lg-6 col-md-4 col-sm-8 col-12">
                 <label>Location Area:</label>
-                <select name="" id="" class="form-control" formControlName="province">
-                  <option value="none">--Select Province--</option>
-                  <option [value]="province.provinceName" *ngFor="let province of provinces">{{province.provinceName}}</option>
-                </select>
+                <input type="text" 
+                      class="form-control" 
+                      placeholder="area" 
+                      formControlName="locationArea"
+                      [ngClass]="{'is-invalid': (addLocationForm.get('locationArea')?.touched ||
+                      addLocationForm.get('description')?.dirty) &&
+                                                                !addLocationForm.get('locationArea')?.valid }">
+                                                                <span class="invalid-feedback">
+                                                                  <span *ngIf="addLocationForm.get('locationArea')?.errors?.required">
+                                                                    Please enter Location Area.
+                                                                  </span>
+                                                                  <span *ngIf="addLocationForm.get('locationArea')?.errors?.maxlength || addLocationForm.get('locationArea')?.errors?.minlength">
+                                                                    The Location Area must be greater than 10 and less than 50 characters.
+                                                                  </span>
+                                                                </span>
               </div>
             </div>
             <div class="row form-group">
@@ -38,7 +49,7 @@
     <div class="row mt-5">
       <div class="col-12">
         <button type="button" class="btn btn-primary" style="float: right; margin-left: 5px;"
-        data-bs-toggle="modal" data-bs-target="#additionConfirmation">{{locationId==0?'Save':'Update'}}</button>
+        data-bs-toggle="modal" [disabled]="!addLocationForm.valid" data-bs-target="#additionConfirmation">{{locationId==0?'Save':'Update'}}</button>
         <button type="button" class="btn btn-secondary" style="float: right;" [routerLink]="'/admin/location/detail'">Cancel</button>
       </div>
     </div>

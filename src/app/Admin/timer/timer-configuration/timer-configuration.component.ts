@@ -73,7 +73,8 @@ export class TimerConfigurationComponent implements OnInit {
     this.timerService.setTimerConfig(timerConfig).subscribe(response => {
       if (response.statusCode == 200) {
 
-        
+        localStorage.setItem("timerConfig",JSON.stringify(timerConfig));
+
           Swal.fire({
             title: 'Success!',
             text: 'Timer Configuration updated successfully!',

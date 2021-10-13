@@ -51,7 +51,7 @@ export class AddLocationComponent implements OnInit {
 
   initilizeForm() {
     this.addLocationForm = this.formBuilder.group({
-      locationArea: [null,Validators.required],
+      locationArea: [null,[Validators.required,Validators.minLength(15),Validators.maxLength(50)]],
       province: [null,Validators.required]
     });
   }
