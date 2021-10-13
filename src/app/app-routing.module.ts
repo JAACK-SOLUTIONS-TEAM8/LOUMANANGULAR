@@ -61,12 +61,22 @@ import { MonthlySalesReportComponent } from './report-sub-system/monthly-sales-r
 import { MonthlyStockReportComponent } from './report-sub-system/monthly-stock-report/monthly-stock-report.component';
 import { OrderHistoryComponent } from './client-sub-system/order-history/order-history.component';
 import { OrderDetailComponent } from './client-sub-system/order-detail/order-detail.component';
+import { CompleteStockComponent } from './Admin/Stock/complete-stock/complete-stock.component';
+import { TimerConfigurationComponent } from './Admin/timer/timer-configuration/timer-configuration.component';
+import { EmailVerficationComponent } from './user-sub-system/email-verfication/email-verfication.component';
+import { RolesDetailComponent } from './Admin/Role/roles-detail/roles-detail.component';
+import { AddRoleComponent } from './Admin/Role/add-role/add-role.component';
+import { UserRoleComponent } from './Admin/components/user-role/user-role.component';
 
 const routes: Routes = [
 
   {
     path: "login",
     component: LoginComponent
+  },
+  {
+    path:'verify',
+    component:EmailVerficationComponent
   },
   {
     path:"signup",
@@ -188,8 +198,24 @@ const routes: Routes = [
     canActivate:[IsLoggedInGuard],
     children: [
       {
+        path:'manage-roles/:id',
+        component:UserRoleComponent
+      },
+      {
+        path:'roles',
+        component:RolesDetailComponent
+      },
+      {
+        path:'add-role/:id',
+        component:AddRoleComponent
+      },
+      {
         path:"audit",
         component:AuditComponent
+      },
+      {
+        path:'timer-config',
+        component:TimerConfigurationComponent
       },
       {
         path: "detail",
@@ -245,6 +271,10 @@ const routes: Routes = [
       },{
         path: "wire-off-stock",
         component: WireOffStockComponent
+      },
+      {
+        path: "complete-stock",
+        component: CompleteStockComponent
       },
       {
         path:"report",
@@ -412,6 +442,11 @@ const routes: Routes = [
           path:"wireoff/:id",
           component:WireOffStockComponent
         }
+        ,
+        {
+          path:"complete/:id",
+          component:CompleteStockComponent
+        }
       ]
      }
     ]
@@ -453,11 +488,13 @@ const routes: Routes = [
   },
   {
     path: "home",
-    canActivate:[IsLoggedInGuard],
     component: HomeComponent
   },
-  
-
+  {
+    path:'',
+    redirectTo:'home',
+    pathMatch:'full'
+  }
 
 ];
 
