@@ -49,7 +49,6 @@ import { ClientMeetingSlotsComponent } from './client-sub-system/meetings/client
 import { EnquiryComponent } from './client-sub-system/Enquiries/enquiry/enquiry.component';
 import { AddEnquiryComponent } from './client-sub-system/Enquiries/add-enquiry/add-enquiry.component';
 import { ClientEnquiryComponent } from './Admin/ClientEnquiry/client-enquiry/client-enquiry.component';
-import { EnquiryResponseComponent } from './Admin/ClientEnquiry/enquiry-response/enquiry-response.component';
 import { ClientEnquiryDetailComponent } from './Admin/ClientEnquiry/client-enquiry-detail/client-enquiry-detail.component';
 import { ProductTypeDetailComponent } from './product-sub-system/product-type-detail/product-type-detail.component';
 import { ProductSizeDetailComponent } from './product-sub-system/product-size-detail/product-size-detail.component';
@@ -72,6 +71,17 @@ import { AddDeliveryTypeComponent } from './order-sub-system/add-delivery-type/a
 import { CheckoutComponent } from './order-sub-system/checkout/checkout/checkout.component';
 import { InvoiceComponent } from './order-sub-system/invoice/invoice/invoice.component';
 import { CountdownModule } from 'ngx-countdown';
+import { CompleteStockComponent } from './Admin/Stock/complete-stock/complete-stock.component';
+import { TimerConfigurationComponent } from './Admin/timer/timer-configuration/timer-configuration.component';
+import { ChartsModule } from 'ng2-charts';
+import { EmailVerficationComponent } from './user-sub-system/email-verfication/email-verfication.component';
+import {WebcamModule} from 'ngx-webcam';
+import { NgxQRCodeModule } from 'ngx-qrcode2';
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { AddRoleComponent } from './Admin/Role/add-role/add-role.component';
+import { RolesDetailComponent } from './Admin/Role/roles-detail/roles-detail.component';
+import { UserRoleComponent } from './Admin/components/user-role/user-role.component';
+
 
 
 @NgModule({
@@ -125,7 +135,6 @@ import { CountdownModule } from 'ngx-countdown';
     ClientMeetingSlotsComponent,
     EnquiryComponent,
     AddEnquiryComponent,
-    EnquiryResponseComponent,
     ClientEnquiryDetailComponent,
     ProductTypeDetailComponent,
     ProductSizeDetailComponent,
@@ -142,6 +151,12 @@ import { CountdownModule } from 'ngx-countdown';
     ClientSignUpComponent,
     OrderDetailComponent,
     OrderHistoryComponent,
+    CompleteStockComponent,
+    TimerConfigurationComponent,
+    EmailVerficationComponent,
+    AddRoleComponent,
+    RolesDetailComponent,
+    UserRoleComponent,
    
     
   ],
@@ -153,9 +168,14 @@ import { CountdownModule } from 'ngx-countdown';
     ReactiveFormsModule,
     Ng2SearchPipeModule,
     CommonModule,
-    CountdownModule
+    CountdownModule,
+    ChartsModule,
+    WebcamModule,
+    NgxQRCodeModule,
+    BrowserAnimationsModule
     ],
-  providers: [    DatePipe
+  providers: [    
+    DatePipe
   ],
   bootstrap: [AppComponent]
 })
