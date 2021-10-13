@@ -17,19 +17,63 @@
             <div class="row form-group">
               <div class="col-lg-6 col-md-4 col-sm-8 col-12">
                 <label>Username:</label>
-                <input type="text" class="form-control" formControlName="userName" placeholder="username">
+                <input type="text" 
+                      class="form-control" 
+                      formControlName="userName" 
+                      placeholder="username"
+                      [ngClass]="{'is-invalid': (profileDetailForm.get('userName')?.touched ||
+                profileDetailForm.get('userName')?.dirty) &&
+                                            !profileDetailForm.get('userName')?.valid }">
+                                            <span class="invalid-feedback">
+                                              <span *ngIf="profileDetailForm.get('userName')?.errors?.required">
+                                                Please enter your username.
+                                              </span>
+                                              <span *ngIf="profileDetailForm.get('userName')?.errors?.maxlength || profileDetailForm.get('userName')?.errors?.minlength">
+                                                The user name must be greater than 5 and less than 50 characters.
+                                              </span>
+                                            </span>
               </div>
             </div>
             <div class="row form-group">
               <div class="col-lg-6 col-md-4 col-sm-8 col-12">
                 <label>Password:</label>
-                <input type="password" class="form-control" formControlName="password" placeholder="username">
+                <input type="password" 
+                        class="form-control" 
+                        formControlName="password" 
+                        placeholder="password"
+                        [ngClass]="{'is-invalid': (profileDetailForm.get('password')?.touched ||
+                profileDetailForm.get('password')?.dirty) &&
+                                            !profileDetailForm.get('password')?.valid }">
+                                            <span class="invalid-feedback">
+                                              <span *ngIf="profileDetailForm.get('password')?.errors?.required">
+                                                Enter your password
+                                              </span>
+                                              <span *ngIf="profileDetailForm.get('password')?.errors?.maxlength || profileDetailForm.get('password')?.errors?.minlength">
+                                                The password must be greater than 4 and less than 8 characters.
+                                              </span>
+                                              
+                                            </span>
               </div>
             </div>
             <div class="row form-group">
               <div class="col-lg-6 col-md-4 col-sm-8 col-12">
                 <label>Confirm Password:</label>
-                <input type="password" class="form-control" formControlName="confirmPassword" placeholder="username">
+                <input type="password" 
+                class="form-control" 
+                formControlName="confirmPassword" 
+                placeholder="Confirm password"
+                [ngClass]="{'is-invalid': (profileDetailForm.get('confirmPassword')?.touched ||
+                                            profileDetailForm.get('confirmPassword')?.dirty) &&
+                                            (!profileDetailForm.get('confirmPassword')?.valid ||profileDetailForm?.errors?.match )}">
+                                            <span class="invalid-feedback">
+                                              <span *ngIf="profileDetailForm.get('confirmPassword')?.errors?.required">
+                                                Please confirm your password.
+                                              </span>
+                                              <br>
+                                              <span *ngIf="profileDetailForm?.errors?.match">
+                                                The confirmation does not match the password.
+                                              </span>
+                                            </span>
               </div>
             </div>
           </form>
@@ -56,25 +100,81 @@
             <div class="row form-group">
               <div class="col-lg-6 col-md-4 col-sm-8 col-12">
                 <label>Name:</label>
-                <input type="text" class="form-control" formControlName="initials" placeholder="initials">
+                <input type="text" 
+                      class="form-control" 
+                      formControlName="initials" 
+                      placeholder="name"
+                      [ngClass]="{'is-invalid': (employeeDetailForm.get('initials')?.touched ||
+                      employeeDetailForm.get('initials')?.dirty) &&
+                                            !employeeDetailForm.get('initials')?.valid }">
+                                            <span class="invalid-feedback">
+                                              <span *ngIf="employeeDetailForm.get('initials')?.errors?.required">
+                                                Please enter your name.
+                                              </span>
+                                              <span *ngIf="employeeDetailForm.get('initials')?.errors?.maxlength || employeeDetailForm.get('initials')?.errors?.minlength">
+                                                The name must be greater than 3 and less than 50 characters.
+                                              </span>
+                                            </span>
               </div>
             </div>
             <div class="row form-group">
               <div class="col-lg-6 col-md-4 col-sm-8 col-12">
                 <label>Surname:</label>
-                <input type="text" class="form-control" formControlName="surname" placeholder="surname">
+                <input type="text" 
+                      class="form-control" 
+                      formControlName="surname" 
+                      placeholder="surname"
+                      [ngClass]="{'is-invalid': (employeeDetailForm.get('surname')?.touched ||
+                      employeeDetailForm.get('surname')?.dirty) &&
+                                                  !employeeDetailForm.get('surname')?.valid }">
+                                                  <span class="invalid-feedback">
+                                                    <span *ngIf="employeeDetailForm.get('surname')?.errors?.required">
+                                                      Please enter Surname.
+                                                    </span>
+                                                    <span *ngIf="employeeDetailForm.get('surname')?.errors?.maxlength || employeeDetailForm.get('surname')?.errors?.minlength">
+                                                      The name must be greater than 5 and less than 50 characters.
+                                                    </span>
+                                                  </span>
               </div>
             </div>
             <div class="row form-group">
               <div class="col-lg-6 col-md-4 col-sm-8 col-12">
                 <label>Email Address:</label>
-                <input type="email" class="form-control" formControlName="email" placeholder="email">
+                <input type="email" 
+                    class="form-control" 
+                    formControlName="email" 
+                    placeholder="email"
+                    [ngClass]="{'is-invalid': (employeeDetailForm.get('email')?.touched ||
+                    employeeDetailForm.get('email')?.dirty) &&
+                                            !employeeDetailForm.get('email')?.valid }">
+                                            <span class="invalid-feedback">
+                                              <span *ngIf="employeeDetailForm.get('email')?.errors?.required">
+                                                Please your email address.
+                                              </span>
+                                              <span *ngIf="employeeDetailForm.get('email')?.errors?.email">
+                                                Enter a Valid Email
+                                              </span>
+                                            </span>
               </div>
             </div>
             <div class="row form-group">
               <div class="col-lg-6 col-md-4 col-sm-8 col-12">
                 <label>ID Number:</label>
-                <input type="text" class="form-control" formControlName="idNumber" placeholder="Id number">
+                <input type="text" 
+                class="form-control" 
+                formControlName="idNumber"
+                 placeholder="Id number"
+                 [ngClass]="{'is-invalid': (employeeDetailForm.get('idNumber')?.touched ||
+                 employeeDetailForm.get('idNumber')?.dirty) &&
+                                            !employeeDetailForm.get('idNumber')?.valid }">
+                                            <span class="invalid-feedback">
+                                              <span *ngIf="employeeDetailForm.get('idNumber')?.errors?.required">
+                                                Please Enter Id Number.
+                                              </span>
+                                              <span *ngIf="employeeDetailForm.get('idNumber')?.errors?.maxlength || employeeDetailForm.get('idNumber')?.errors?.minlength">
+                                                Id Number should be of 13 characters
+                                              </span>
+                                            </span>
               </div>
             </div>
             <div class="row form-group mt-5 mb-5">
@@ -127,7 +227,17 @@
             <div class="row form-group">
               <div class="col-lg-6 col-md-4 col-sm-8 col-12">
                 <label>Commencement date of employment:</label>
-                <input type="date" class="form-control" formControlName="commenceDate">
+                <input type="date" 
+                class="form-control" 
+                formControlName="commenceDate"
+                [ngClass]="{'is-invalid': (employeeEmployeementDetailForm.get('commenceDate')?.touched ||
+                employeeEmployeementDetailForm.get('commenceDate')?.dirty) &&
+                                            !employeeEmployeementDetailForm.get('commenceDate')?.valid }">
+                                            <span class="invalid-feedback">
+                                              <span *ngIf="employeeEmployeementDetailForm.get('commenceDate')?.errors?.required">
+                                                Please enter Commence date.
+                                              </span>
+                                            </span>
               </div>
             </div>
             <div class="row form-group" *ngIf="employeeId!=0">
@@ -151,7 +261,7 @@
     <div class="row mt-5">
       <div class="col-12">
         <button type="button" class="btn btn-primary" style="float: right; margin-left: 5px;"
-        data-bs-toggle="modal" data-bs-target="#additionConfirmation">{{employeeId==0?'Save':'Update'}}</button>
+        data-bs-toggle="modal" data-bs-target="#additionConfirmation" [disabled]="!profileDetailForm.valid || !employeeDetailForm.valid || !employeeEmployeementDetailForm.valid">{{employeeId==0?'Save':'Update'}}</button>
         <button type="button" class="btn btn-secondary" style="float: right;" [routerLink]="'/employee/detail'">Cancel</button>
       </div>
     </div>

@@ -51,7 +51,7 @@ export class ProductSizeDetailComponent implements OnInit {
         Swal.fire({
           title: 'Success!',
           text: "Product Size deleted successfully!",
-          icon: 'success',
+          icon: 'info',
           confirmButtonText: 'Ok'
         })
         this.getAllProductSizes();

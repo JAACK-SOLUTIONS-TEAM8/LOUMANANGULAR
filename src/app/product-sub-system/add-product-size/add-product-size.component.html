@@ -15,7 +15,18 @@
                                     <div class="col-lg-6 col-md-4 col-sm-8 col-12">
                                         <label>Product Size Description:</label>
                                         <input type="text" class="form-control" placeholder="product name"
-                                            formControlName="productSizeDescription">
+                                            formControlName="productSizeDescription"
+                                            [ngClass]="{'is-invalid': (productSizeForm.get('productSizeDescription')?.touched ||
+                                            productSizeForm.get('productSizeDescription')?.dirty) &&
+                                                                      !productSizeForm.get('productSizeDescription')?.valid }">
+                                                                      <span class="invalid-feedback">
+                                                                        <span *ngIf="productSizeForm.get('productSizeDescription')?.errors?.required">
+                                                                          Please Enter product size.
+                                                                        </span>
+                                                                        <span *ngIf="productSizeForm.get('productSizeDescription')?.errors?.maxlength || productSizeForm.get('productSizeDescription')?.errors?.minlength">
+                                                                          The product size must be greater than 10 and less than 50 characters.
+                                                                        </span>
+                                                                      </span>
                                     </div>
                                 </div>
                             </form>
@@ -24,7 +35,7 @@
                         <div class="row mt-5">
                             <div class="col-12">
                                 <button type="button" class="btn btn-primary" style="float: right; margin-left: 5px;"
-                                data-bs-toggle="modal" data-bs-target="#additionConfirmation">{{productSizeId==0?'Save':'Update'}}</button>
+                                data-bs-toggle="modal" [disabled]="!productSizeForm.valid" data-bs-target="#additionConfirmation">{{productSizeId==0?'Save':'Update'}}</button>
                                 <button type="button" class="btn btn-secondary" style="float: right;" [routerLink]="'/admin/product/size/detail'">Cancel</button>
                             </div>
                         </div>

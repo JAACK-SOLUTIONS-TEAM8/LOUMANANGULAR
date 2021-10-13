@@ -16,7 +16,7 @@
                         <th scope="col">Order Id</th>
                         <th scope="col">Client Name</th>
                         <th scope="col">Created Date</th>
-                        <th scope="col">Total</th>
+                        <th scope="col">Total(R)</th>
                         <th scope="col">Order Status</th>
                         <th scope="col">Actions</th>
                       </tr>
@@ -26,7 +26,7 @@
                         <td scope="row">{{order.orderId}}</td>
                         <td scope="row">{{order.clientName}}</td>
                         <td scope="row">{{order.createdDate | date:'medium'}}</td>
-                        <td scope="row">{{order.total}}</td>
+                        <td scope="row"> R{{order.total}}</td>
                         <td scope="row">{{order.orderStatus}}</td>
                         <td scope="row">
                           <button class="btn btn-primary" (click)="getOrderDetail(order)">View Detail</button>

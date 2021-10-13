@@ -61,7 +61,7 @@
                         <td scope="row">{{product.product.productName}}</td>
                         <td scope="row">{{product.product.productTypeName}}</td>
                         <td scope="row">{{product.product.productSizeDescription}}</td>
-                          <td scope="row">R{{product.product.price | number:'.1-3'}}</td>
+                        <td scope="row">R{{product.product.price | number:'.1-3'}}</td>
                         <td scope="row">{{product.quantity}}</td>
                       </tr>
                     </tbody>
@@ -70,12 +70,12 @@
               <div class="card-body mt-3">
                 <div class="row">
                     <div class="col-lg-6">
-                         <h5>Discount:</h5>R{{orderData?.discount | number:'.1-3'}}
+                        <h5>Discount:</h5>R{{orderData?.discount | number:'.1-3'}}
                     </div>
                 </div>
                 <div class="row">
                   <div class="col-lg-6">
-                       <h5>Total:</h5>R{{orderData?.total | number:'.1-3'}}
+                      <h5>Total:</h5>R{{orderData?.total | number:'.1-3'}}
                   </div>
               </div>
             </div>    
@@ -86,7 +86,7 @@
       <div class=" row mt-5">
         <div class="card">
             <div class="card-header ">
-              <h5>Delivery Type</h5>{{orderData?.deliveryType}}
+              <h5>Delivry Type</h5>{{orderData?.deliveryType}}
             </div>
           </div>
       </div>
@@ -96,7 +96,7 @@
       <div class=" row mt-5" >
         <div class="card">
             <div class="card-header ">
-              <h5>Payment Type</h5>{{orderData?.paymentType}}
+              <h5>Payment Type Type</h5>{{orderData?.paymentType}}
             </div>
           </div>
       </div>

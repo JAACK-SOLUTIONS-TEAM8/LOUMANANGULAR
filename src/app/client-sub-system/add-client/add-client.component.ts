@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CountdownComponent, CountdownConfig } from 'ngx-countdown';
+import {  passwordMatcher, streetNumberValidator } from 'src/app/Admin/validators';
 import { ClientService } from 'src/app/services/client/client.service';
 import { TimerConfigService } from 'src/app/services/timer/timer-config.service';
 import { UserService } from 'src/app/services/user/user.service';
@@ -61,24 +62,24 @@ export class AddClientComponent implements OnInit {
 
   initilizeForm() {
     this.profileDetailForm = this.formBuilder.group({
-      userName: [null,Validators.required],
-      password: [null,Validators.required],
+      userName: [null,[Validators.required,Validators.minLength(5),Validators.maxLength(50)]],
+      password: [null,[Validators.required,Validators.minLength(4),Validators.maxLength(8)]],
       confirmPassword: [null,Validators.required]
-    });
+    },{ validators: passwordMatcher });
 
     this.clientDetailForm = this.formBuilder.group({
-      initials: [null,Validators.required],
-      surname: [null,Validators.required],
+      initials: [null,[Validators.required,Validators.minLength(5),Validators.maxLength(50)]],
+      surname: [null,[Validators.required,Validators.minLength(5),Validators.maxLength(50)]],
       userTypeId: [null,Validators.required],
-      idNumber: [null,Validators.required],
-      email: [null,Validators.required]
+      idNumber: [null,[Validators.required,Validators.minLength(13),Validators.maxLength(13)]],
+      email: [null,[Validators.required,Validators.email]]
     });
 
     this.addressDetailForm = this.formBuilder.group({
-      streetName: [null,Validators.required],
-      streetNumber: [null,Validators.required],
-      cityName: [null,Validators.required],
-      cityCode: [null,Validators.required]
+      streetName: [null,[Validators.required,Validators.minLength(10),Validators.maxLength(100)]],
+      streetNumber: [null,[Validators.required,streetNumberValidator]],
+      cityName: [null,[Validators.required,Validators.minLength(5),Validators.maxLength(50)]],
+      cityCode: [null,[Validators.required,,streetNumberValidator]]
     });
   }
 

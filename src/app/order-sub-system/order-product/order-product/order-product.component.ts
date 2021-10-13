@@ -47,39 +47,34 @@ export class OrderProductComponent implements OnInit {
   }
 
 
-  // searchByName()
-  // {
-  //   if(this.searchTerm=="" || this.searchTerm==null)
-  //   {
-  //     Swal.fire({
-  //       title: 'Warning!',
-  //       text: "search bar field is empty!",
-  //       icon: 'info',
-  //       confirmButtonText: 'Ok'
-  //     })
-  //     return
-  //   }
+  searchByName()
+  {
+    if(this.searchTerm=="" || this.searchTerm==null)
+    {
+      Swal.fire({
+        title: 'Warning!',
+        text: "search bar field is empty!",
+        icon: 'info',
+        confirmButtonText: 'Ok'
+      })
+      return
+    }
 
-  //   this.productData.forEach(product=>{
-  //     let index=this.productData.findIndex(p=>!(p.productName.startsWith(this.searchTerm)));
-      
-  //   })
-
-  //   this.productService.searchProductByName(this.searchTerm).subscribe(response=>{
-  //     if(response.enquiryTypes.length!=null&&response.enquiryTypes.length!=0)
-  //       this.productData = response.enquiryTypes;
-  //     else
-  //     {
-  //       Swal.fire({
-  //         title: 'Warning!',
-  //         text: "No search result found!",
-  //         icon: 'info',
-  //         confirmButtonText: 'Ok'
-  //       })
-  //       return
-  //     }
-  //   });
-  // }
+    this.productService.searchProductByName(this.searchTerm).subscribe(response=>{
+      if(response.products.length!=null&&response.products.length!=0)
+        this.productData = response.products;
+      else
+      {
+        Swal.fire({
+          title: 'Warning!',
+          text: "No search result found!",
+          icon: 'info',
+          confirmButtonText: 'Ok'
+        })
+        return
+      }
+    });
+  }
 
   filterByType(type:any)
   {
@@ -103,8 +98,8 @@ export class OrderProductComponent implements OnInit {
 
   confirmAddToCart()
   { 
-    
-    if(this.productQuantity==null || this.productQuantity==0)
+    debugger
+    if(this.productQuantity==null || this.productQuantity==0 || this.productQuantity <0)
     {
       Swal.fire({
         title: 'Warning!',
@@ -115,12 +110,12 @@ export class OrderProductComponent implements OnInit {
       return;
     }
 var stockQuantity=0;
-var orderedQuantity=this.productQuantity;
+
     this.productService.checkProductQuantityInStock(this.selectedProduct.productId).subscribe(response=>{
      stockQuantity= response.quantity;
      console.log("stock quantity"+stockQuantity)
-     if(Number(stockQuantity) < Number(orderedQuantity))
-     {
+     if(Number(stockQuantity) < Number(this.productQuantity))
+     { 
       Swal.fire({
         title: 'Warning!',
         text: "Not Enough quantity in the stock!",
@@ -136,16 +131,16 @@ var orderedQuantity=this.productQuantity;
         text: "Product Added to the Cart!",
         icon: 'success',
         confirmButtonText: 'Ok'
+      }).then(()=>{
+        var orderedQuantity=this.productQuantity;
+        var cartProducts=this.cartService.getProductsFromShoppingCart();
+      cartProducts.push({product:this.selectedProduct,quantity:orderedQuantity});
+      this.cartService.addPrductToShoppingCart(cartProducts);
+        console.log(orderedQuantity)
+        this.productQuantity=0;
       })
     }
-    })
-
-    var cartProducts=this.cartService.getProductsFromShoppingCart();
-    cartProducts.push({product:this.selectedProduct,quantity:this.productQuantity});
-    this.cartService.addPrductToShoppingCart(cartProducts);
-
-    console.log(cartProducts)
-    this.productQuantity=0;
+    });
 
   }
 

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { CartService } from 'src/app/services/cart/cart.service';
 import Swal from 'sweetalert2';
 
@@ -14,7 +15,8 @@ export class ShoppingCartComponent implements OnInit {
  productCount:number=0;
 
   constructor(
-    private cartService:CartService
+    private cartService:CartService,
+    private router:Router
   ) { }
 
   ngOnInit(): void {
@@ -37,7 +39,11 @@ export class ShoppingCartComponent implements OnInit {
       text: "Cart is Cleared",
       icon: 'info',
       confirmButtonText: 'Ok'
+    }).then(()=>{
+      this.productCount=0;
+      this.router.navigateByUrl('/client/product/list')
     })
+
   }
 
   removeFromCart(product:any)
@@ -55,6 +61,8 @@ export class ShoppingCartComponent implements OnInit {
       text: "Product Removed from Cart",
       icon: 'success',
       confirmButtonText: 'Ok'
+    }).then(()=>{
+      this.productCount=this.cartService.getItemCountInCart();
     })
   }
 }

@@ -116,6 +116,11 @@ export class LoginComponent implements OnInit {
         this.authServcie.isLoggedIn=true;
         this.authServcie.user=JSON.stringify(response.status.user);
 
+        this.authServcie.roles=response.status.user.userRoles
+        this.authService.userRolesSubject.next(response.status.user.userRoles);
+        localStorage.setItem("UserRoles",JSON.stringify({roles:response.status.user.userRoles}));
+
+
         this.authServcie.isLoggedInSubject.next(true);
         this.authServcie.userSubject.next(JSON.stringify(response.status.user))
 

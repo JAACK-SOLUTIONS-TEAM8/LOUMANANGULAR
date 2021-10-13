@@ -9,6 +9,7 @@ import { TimerConfigService } from 'src/app/services/timer/timer-config.service'
 import { UserService } from 'src/app/services/user/user.service';
 import Swal from 'sweetalert2';
 import {WebcamImage} from 'ngx-webcam';
+import { passwordMatcher } from 'src/app/Admin/validators';
 
 
 declare var $: any;
@@ -90,17 +91,17 @@ export class AddEmployeeComponent implements OnInit {
   initilizeFrom() {
 
     this.profileDetailForm = this.formBuilder.group({
-      userName: [null,Validators.required],
-      password: [null,Validators.required],
+      userName: [null,[Validators.required,Validators.minLength(5),Validators.maxLength(50)]],
+      password: [null,[Validators.required,Validators.minLength(4),Validators.maxLength(8)]],
       confirmPassword: [null,Validators.required]
-    });
+    },{validator:passwordMatcher});
 
     this.employeeDetailForm = this.formBuilder.group({
-      initials: [null,Validators.required],
-      surname: [null,Validators.required],
+      initials: [null,[Validators.required,Validators.minLength(3),Validators.maxLength(50)]],
+      surname: [null,[Validators.required,Validators.minLength(5),Validators.maxLength(50)]],
       userTypeId: [null,Validators.required],
-      idNumber: [null,Validators.required],
-      email: [null,Validators.required]
+      idNumber: [null,[Validators.required,Validators.minLength(13),Validators.maxLength(13)]],
+      email: [null,[Validators.required,Validators.email]]
     });
 
     this.employeeDetailForm.controls["userTypeId"].patchValue("none")

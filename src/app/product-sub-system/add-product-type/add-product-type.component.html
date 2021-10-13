@@ -16,8 +16,20 @@
                                 <div class="row form-group">
                                     <div class="col-lg-6 col-md-4 col-sm-8 col-12">
                                         <label>Product Type Name:</label>
-                                        <input type="text" class="form-control" placeholder="Product Type Name"
-                                            formControlName="productTypeName">
+                                        <input type="text" class="form-control" 
+                                        placeholder="Product Type Name"
+                                            formControlName="productTypeName"
+                                            [ngClass]="{'is-invalid': (productTypeForm.get('productTypeName')?.touched ||
+                                            productTypeForm.get('productTypeName')?.dirty) &&
+                                                                      !productTypeForm.get('productTypeName')?.valid }">
+                                                                      <span class="invalid-feedback">
+                                                                        <span *ngIf="productTypeForm.get('productTypeName')?.errors?.required">
+                                                                          Please enter product type.
+                                                                        </span>
+                                                                        <span *ngIf="productTypeForm.get('productTypeName')?.errors?.maxlength || productTypeForm.get('productTypeName')?.errors?.minlength">
+                                                                          The product type must be greater than 10 and less than 50 characters.
+                                                                        </span>
+                                                                      </span>
                                     </div>
                                 </div>
                             </form>
@@ -26,7 +38,7 @@
                         <div class="row mt-5">
                             <div class="col-12">
                                 <button type="button" class="btn btn-primary" style="float: right; margin-left: 5px;"
-                                data-bs-toggle="modal" data-bs-target="#additionConfirmation">{{productTypeId==0?'Save':'Update'}}</button>
+                                data-bs-toggle="modal" [disabled]="!productTypeForm.valid" data-bs-target="#additionConfirmation">{{productTypeId==0?'Save':'Update'}}</button>
                                 <button type="button" class="btn btn-secondary" style="float: right;" [routerLink]="'/admin/product/type/detail'">Cancel</button>
                             </div>
                         </div>
@@ -43,15 +55,11 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" *ngIf="productTypeId==0">Product Type Addition confirmation</h5>
-          <h5 class="modal-title" *ngIf="productTypeId!=0">Product Type Edit confirmation</h5>
-
+          <h5 class="modal-title">Product Type Addition confirmation</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <p *ngIf="productTypeId==0">Confirm Product Type Addition</p>
-          <p *ngIf="productTypeId!=0">Confirm Product Type Edit</p>
-
+          <p>Confirm Product Type Addition</p>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>

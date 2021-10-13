@@ -13,11 +13,6 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-lg-6">
-                            <h5>Admin Name:</h5>{{enquiryData?.adminName}}
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-6">
                             <h5>Enquiry Type</h5>{{enquiryData?.enquiryType}}
                         </div>
                     </div>
@@ -43,7 +38,7 @@
                       </div>
                       <div class="row mt-5">
                         <div class="col-12">
-                            <button type="button" class="btn btn-primary" style="float: right; margin-left: 5px;" data-bs-toggle="modal" data-bs-target="#additionConfirmation">Back</button>
+                            <button type="button" class="btn btn-primary" style="float: right; margin-left: 5px;" (click)="goBack()">Back</button>
                         </div>
                     </div>                    
         </div>

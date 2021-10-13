@@ -15,7 +15,21 @@
                           <div class="row form-group">
                             <div class="col-lg-6 col-md-4 col-sm-8 col-12">
                                 <label >Name:</label>
-                                <input type="text" class="form-control" placeholder="Delivery Type" formControlName="description">
+                                <input type="text" 
+                                    class="form-control" 
+                                    placeholder="Delivery Type" 
+                                    formControlName="description"
+                                    [ngClass]="{'is-invalid': (addDeliveryTypeForm.get('description')?.touched ||
+                                    addDeliveryTypeForm.get('description')?.dirty) &&
+                                                                !addDeliveryTypeForm.get('description')?.valid }">
+                                                                <span class="invalid-feedback">
+                                                                  <span *ngIf="addDeliveryTypeForm.get('description')?.errors?.required">
+                                                                    Please enter Delivery Type.
+                                                                  </span>
+                                                                  <span *ngIf="addDeliveryTypeForm.get('description')?.errors?.maxlength || addDeliveryTypeForm.get('description')?.errors?.minlength">
+                                                                    The Delivery Type  must be greater than 15 and less than 50 characters.
+                                                                  </span>
+                                                                </span>
                             </div>
                           </div>
                     </form>
@@ -25,7 +39,7 @@
 
         <div class="row mt-5">
             <div class="col-12">
-                <button type="button" class="btn btn-primary" style="float: right; margin-left: 5px;" data-bs-toggle="modal" data-bs-target="#additionConfirmation">{{deliveryTypeId==0?'Save':'Update'}}</button>
+                <button type="button" [disabled]="!addDeliveryTypeForm.valid" class="btn btn-primary" style="float: right; margin-left: 5px;" data-bs-toggle="modal" data-bs-target="#additionConfirmation">{{deliveryTypeId==0?'Save':'Update'}}</button>
                 <button type="button" class="btn btn-secondary" style="float: right;"[routerLink]="'/order/deliveryType/detail'" >Cancel</button>
             </div>
         </div>

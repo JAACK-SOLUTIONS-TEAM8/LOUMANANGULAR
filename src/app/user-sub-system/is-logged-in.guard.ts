@@ -19,8 +19,9 @@ export class IsLoggedInGuard implements CanActivate {
 
       var user=localStorage.getItem("User");
       if(user==null || user == undefined)
-      {
-        this.router.navigateByUrl("/login")
+      {      localStorage.clear();
+
+        this.router.navigateByUrl("/home")
         return false;
       }
 

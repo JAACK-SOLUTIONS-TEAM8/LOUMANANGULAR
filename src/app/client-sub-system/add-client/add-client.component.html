@@ -17,19 +17,63 @@
             <div class="row form-group">
               <div class="col-lg-6 col-md-4 col-sm-8 col-12">
                 <label>Username:</label>
-                <input type="text" class="form-control" placeholder="username" formControlName="userName">
+                <input type="text" 
+                      class="form-control" 
+                      placeholder="username" 
+                      formControlName="userName"
+                      [ngClass]="{'is-invalid': (profileDetailForm.get('userName')?.touched ||
+                profileDetailForm.get('userName')?.dirty) &&
+                                            !profileDetailForm.get('userName')?.valid }">
+                                            <span class="invalid-feedback">
+                                              <span *ngIf="profileDetailForm.get('userName')?.errors?.required">
+                                                Please enter your username.
+                                              </span>
+                                              <span *ngIf="profileDetailForm.get('userName')?.errors?.maxlength || profileDetailForm.get('userName')?.errors?.minlength">
+                                                The user name must be greater than 5 and less than 50 characters.
+                                              </span>
+                                            </span>
               </div>
             </div>
             <div class="row form-group">
               <div class="col-lg-6 col-md-4 col-sm-8 col-12">
                 <label>Password:</label>
-                <input type="password" class="form-control" placeholder="username" formControlName="password">
+                <input type="password" 
+                      class="form-control" 
+                      placeholder="username" 
+                      formControlName="password"
+                      [ngClass]="{'is-invalid': (profileDetailForm.get('password')?.touched ||
+                profileDetailForm.get('password')?.dirty) &&
+                                            !profileDetailForm.get('password')?.valid }">
+                                            <span class="invalid-feedback">
+                                              <span *ngIf="profileDetailForm.get('password')?.errors?.required">
+                                                Enter your password
+                                              </span>
+                                              <span *ngIf="profileDetailForm.get('password')?.errors?.maxlength || profileDetailForm.get('password')?.errors?.minlength">
+                                                The password must be greater than 4 and less than 8 characters.
+                                              </span>
+                                              
+                                            </span>
               </div>
             </div>
             <div class="row form-group">
               <div class="col-lg-6 col-md-4 col-sm-8 col-12">
                 <label>Confirm Password:</label>
-                <input type="password" class="form-control" placeholder="username" formControlName="confirmPassword">
+                <input type="password" 
+                      class="form-control" 
+                      placeholder="Confirm Password" 
+                      formControlName="confirmPassword"
+                      [ngClass]="{'is-invalid': (profileDetailForm.get('confirmPassword')?.touched ||
+                                            profileDetailForm.get('confirmPassword')?.dirty) &&
+                                            (!profileDetailForm.get('confirmPassword')?.valid ||profileDetailForm?.errors?.match )}">
+                                            <span class="invalid-feedback">
+                                              <span *ngIf="profileDetailForm.get('confirmPassword')?.errors?.required">
+                                                Please confirm your password.
+                                              </span>
+                                              <br>
+                                              <span *ngIf="profileDetailForm?.errors?.match">
+                                                The confirmation does not match the password.
+                                              </span>
+                                            </span>
               </div>
             </div>
           </form>
@@ -56,25 +100,81 @@
             <div class="row form-group">
               <div class="col-lg-6 col-md-4 col-sm-8 col-12">
                 <label>Name:</label>
-                <input type="text" class="form-control" placeholder="initials" formControlName="initials">
+                <input type="text" 
+                        class="form-control" 
+                        placeholder="name" 
+                        formControlName="initials"
+                        [ngClass]="{'is-invalid': (clientDetailForm.get('initials')?.touched ||
+                        clientDetailForm.get('initials')?.dirty) &&
+                                            !clientDetailForm.get('initials')?.valid }">
+                                            <span class="invalid-feedback">
+                                              <span *ngIf="clientDetailForm.get('initials')?.errors?.required">
+                                                Please enter your name.
+                                              </span>
+                                              <span *ngIf="clientDetailForm.get('initials')?.errors?.maxlength || clientDetailForm.get('initials')?.errors?.minlength">
+                                                The name must be greater than 3 and less than 50 characters.
+                                              </span>
+                                            </span>
               </div>
             </div>
             <div class="row form-group">
               <div class="col-lg-6 col-md-4 col-sm-8 col-12">
                 <label>Surname:</label>
-                <input type="text" class="form-control" placeholder="surname" formControlName="surname">
+                <input type="text" 
+                      class="form-control" 
+                      placeholder="surname" 
+                      formControlName="surname"
+                      [ngClass]="{'is-invalid': (clientDetailForm.get('surname')?.touched ||
+                      clientDetailForm.get('surname')?.dirty) &&
+                                            !clientDetailForm.get('surname')?.valid }">
+                                            <span class="invalid-feedback">
+                                              <span *ngIf="clientDetailForm.get('surname')?.errors?.required">
+                                                Please enter Surname.
+                                              </span>
+                                              <span *ngIf="clientDetailForm.get('surname')?.errors?.maxlength || clientDetailForm.get('surname')?.errors?.minlength">
+                                                The name must be greater than 5 and less than 50 characters.
+                                              </span>
+                                            </span>
               </div>
             </div>
             <div class=" row form-group">
                 <div class="col-lg-6 col-md-4 col-sm-8 col-12">
                   <label>Email Address:</label>
-                  <input type="email" class="form-control" placeholder="email" formControlName="email">
+                  <input type="email" 
+                        class="form-control" 
+                        placeholder="email" 
+                        formControlName="email"
+                        [ngClass]="{'is-invalid': (clientDetailForm.get('email')?.touched ||
+                        clientDetailForm.get('email')?.dirty) &&
+                                            !clientDetailForm.get('email')?.valid }">
+                                            <span class="invalid-feedback">
+                                              <span *ngIf="clientDetailForm.get('email')?.errors?.required">
+                                                Please your email address.
+                                              </span>
+                                              <span *ngIf="clientDetailForm.get('email')?.errors?.email">
+                                                Enter a Valid Email
+                                              </span>
+                                            </span>
                 </div>
               </div>
               <div class=" row form-group">
                   <div class="col-lg-6 col-md-4 col-sm-8 col-12">
                     <label>ID Number:</label>
-                    <input type="text" class="form-control" placeholder="Id number" formControlName="idNumber">
+                    <input type="text" 
+                            class="form-control"
+                             placeholder="Id number" 
+                             formControlName="idNumber"
+                             [ngClass]="{'is-invalid': (clientDetailForm.get('idNumber')?.touched ||
+                             clientDetailForm.get('idNumber')?.dirty) &&
+                                            !clientDetailForm.get('idNumber')?.valid }">
+                                            <span class="invalid-feedback">
+                                              <span *ngIf="clientDetailForm.get('idNumber')?.errors?.required">
+                                                Please Enter Id Number.
+                                              </span>
+                                              <span *ngIf="clientDetailForm.get('idNumber')?.errors?.maxlength || clientDetailForm.get('idNumber')?.errors?.minlength">
+                                                Id Number should be of 13 characters
+                                              </span>
+                                            </span>
                 </div>
               </div>
           </form>
@@ -92,25 +192,81 @@
                           <div class="row form-group">
                             <div class="col-lg-6 col-md-4 col-sm-8 col-12">
                               <label>Street Name:</label>
-                              <input type="text" class="form-control" placeholder="street name" formControlName="streetName">
+                              <input type="text" 
+                                      class="form-control" 
+                                      placeholder="street name" 
+                                      formControlName="streetName"
+                                      [ngClass]="{'is-invalid': (addressDetailForm.get('streetName')?.touched ||
+                                      addressDetailForm.get('streetName')?.dirty) &&
+                                            !addressDetailForm.get('streetName')?.valid }">
+                                            <span class="invalid-feedback">
+                                              <span *ngIf="addressDetailForm.get('streetName')?.errors?.required">
+                                                Please enter street name.
+                                              </span>
+                                              <span *ngIf="addressDetailForm.get('streetName')?.errors?.maxlength || addressDetailForm.get('streetName')?.errors?.minlength">
+                                                The street name must be greater than 10 and less than 100 characters.
+                                              </span>
+                                            </span>
                             </div>
                           </div>
                           <div class=" row form-group">
                               <div class="col-lg-6 col-md-4 col-sm-8 col-12">
                                 <label>Street Number:</label>
-                                <input type="number" class="form-control" placeholder="street number" formControlName="streetNumber">
+                                <input type="number" 
+                                class="form-control" 
+                                placeholder="street number" 
+                                formControlName="streetNumber"
+                                [ngClass]="{'is-invalid': (addressDetailForm.get('streetNumber')?.touched ||
+                                addressDetailForm.get('streetNumber')?.dirty) &&
+                                           (!addressDetailForm.get('streetNumber')?.valid || addressDetailForm.get('streetNumber')?.errors?.street) }">
+                                            <span class="invalid-feedback">
+                                              <span *ngIf="addressDetailForm.get('streetNumber')?.errors?.required">
+                                                Please enter street number.
+                                              </span>
+                                              <span *ngIf="addressDetailForm.get('streetNumber')?.errors?.street">
+                                                The street number must be of 4 characters.
+                                              </span>
+                                            </span>
                               </div>
                             </div>
                             <div class=" row form-group">
                                 <div class="col-lg-6 col-md-4 col-sm-8 col-12">
                                   <label>City Name:</label>
-                                  <input type="text" class="form-control" placeholder="city name" formControlName="cityName">
+                                  <input type="text" 
+                                        class="form-control" 
+                                        placeholder="city name" 
+                                        formControlName="cityName"
+                                        [ngClass]="{'is-invalid': (addressDetailForm.get('cityName')?.touched ||
+                                        addressDetailForm.get('cityName')?.dirty) &&
+                                            !addressDetailForm.get('cityName')?.valid }">
+                                            <span class="invalid-feedback">
+                                              <span *ngIf="addressDetailForm.get('cityName')?.errors?.required">
+                                                Please enter city name.
+                                              </span>
+                                              <span *ngIf="addressDetailForm.get('cityName')?.errors?.maxlength || addressDetailForm.get('cityName')?.errors?.minlength">
+                                                The city name must be greater than 5 and less than 50 characters.
+                                              </span>
+                                            </span>
                                 </div>
                               </div>
                               <div class=" row form-group">
                                   <div class="col-lg-6 col-md-4 col-sm-8 col-12">
                                     <label>City Code:</label>
-                                    <input type="text" class="form-control" placeholder="city code" formControlName="cityCode">
+                                    <input type="text" 
+                                        class="form-control" 
+                                        placeholder="city code" 
+                                        formControlName="cityCode"
+                                        [ngClass]="{'is-invalid': (addressDetailForm.get('cityCode')?.touched ||
+                                        addressDetailForm.get('cityCode')?.dirty) &&
+                                            (!addressDetailForm.get('cityCode')?.valid || addressDetailForm.get('streetNumber')?.errors?.street)}">
+                                            <span class="invalid-feedback">
+                                              <span *ngIf="addressDetailForm.get('cityCode')?.errors?.required">
+                                                Please enter city code.
+                                              </span>
+                                              <span *ngIf="addressDetailForm.get('streetNumber')?.errors?.street">
+                                                The city name must be of 4 characters.
+                                              </span>
+                                            </span>
                                   </div>
                                 </div>
                         </form>
@@ -121,7 +277,7 @@
 
     <div class=" row mt-5">
       <div class="col-12">
-        <button type="button" class="btn btn-primary" style="float: right; margin-left: 5px;" data-bs-toggle="modal" data-bs-target="#additionConfirmation">{{clientId==0?'Save':'Update'}}</button>
+        <button type="button" class="btn btn-primary" style="float: right; margin-left: 5px;" data-bs-toggle="modal" data-bs-target="#additionConfirmation" [disabled]="!profileDetailForm.valid || !clientDetailForm.valid || !addressDetailForm.valid">{{clientId==0?'Save':'Update'}}</button>
         <button type="button" class="btn btn-secondary" style="float: right;"[routerLink]="'/client/list'" >Cancel</button>
       </div>
     </div>

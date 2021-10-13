@@ -31,9 +31,9 @@
                         </thead>
                         <tbody>
                           <tr *ngFor="let Type of productTypeData">
-                            <td scope="row">{{Type.productTypeName}}</td>
+                            <td scope="row">{{Type.productTypeName}}</td> 
                             <td scope="row">
-                              <button class="btn btn-outline-primary" (click)="editProductType(Type)">View</button>
+                              <button class="btn btn-outline-primary" (click)="editProductType(Type)">Update</button>
                               <button class="btn btn-outline-primary"  data-bs-toggle="modal" data-bs-target="#deletionConfirmation" (click)="deleteProductSize(Type)" >Delete</button>
                             </td>
                           </tr>

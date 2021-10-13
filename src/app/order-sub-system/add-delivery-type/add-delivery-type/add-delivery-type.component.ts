@@ -35,7 +35,7 @@ export class AddDeliveryTypeComponent implements OnInit {
 
   initilizeForm() {
     this.addDeliveryTypeForm = this.formBuilder.group({
-      description:[null,Validators.required]
+      description:[null,[Validators.required,Validators.minLength(15),Validators.maxLength(50)]]
     });
   }
 

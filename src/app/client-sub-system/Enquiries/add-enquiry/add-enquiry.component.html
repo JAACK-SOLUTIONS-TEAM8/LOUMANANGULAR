@@ -46,7 +46,7 @@
 
         <div class="row mt-5">
             <div class="col-12">
-                <button type="button" class="btn btn-primary" style="float: right; margin-left: 5px;" data-bs-toggle="modal" data-bs-target="#additionConfirmation">{{enquiryId==0?'Save':'Update'}}</button>
+                <button type="button" [disabled]="!addEnquiryForm.valid" class="btn btn-primary" style="float: right; margin-left: 5px;" data-bs-toggle="modal" data-bs-target="#additionConfirmation">{{enquiryId==0?'Save':'Update'}}</button>
                 <button type="button" class="btn btn-secondary" style="float: right;" [routerLink]="'/client/enquiry/detail'" >Cancel</button>
             </div>
         </div>

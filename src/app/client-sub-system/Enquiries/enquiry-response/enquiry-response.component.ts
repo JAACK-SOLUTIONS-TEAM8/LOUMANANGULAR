@@ -39,5 +39,9 @@ export class EnquiryResponseComponent implements OnInit {
     })
   }
 
+  goBack()
+  {
+    this.router.navigateByUrl("/client/enquiry/detail")
+  }
 
 }

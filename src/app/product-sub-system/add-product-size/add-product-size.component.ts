@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProductService } from 'src/app/services/product/product.service';
 import Swal from 'sweetalert2';
@@ -45,7 +45,7 @@ export class AddProductSizeComponent implements OnInit {
 
   initilizeForm() {
     this.productSizeForm = this.formBuilder.group({
-      productSizeDescription: [null,]
+      productSizeDescription: [null,[Validators.required,Validators.minLength(15),Validators.maxLength(50)]]
     });
   }
 

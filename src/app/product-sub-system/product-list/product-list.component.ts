@@ -85,7 +85,7 @@ export class ProductListComponent implements OnInit {
       else{
         Swal.fire({
           title: 'Warning!',
-          text: "Cannot delete as product has been ordered",
+          text: "Inactive",
           icon: 'warning',
           confirmButtonText: 'Ok'
         });
