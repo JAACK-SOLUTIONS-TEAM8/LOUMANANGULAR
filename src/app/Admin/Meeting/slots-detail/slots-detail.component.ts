@@ -57,7 +57,7 @@ export class SlotsDetailComponent implements OnInit {
       Swal.fire({
         title: 'Error!',
         text: 'No search result found!',
-        icon: 'success',
+        icon: 'info',
         confirmButtonText: 'Ok'
       });
     }

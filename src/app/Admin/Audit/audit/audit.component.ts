@@ -46,7 +46,7 @@ export class AuditComponent implements OnInit {
           Swal.fire({
             title: 'Warning!',
             text: "search bar field is empty",
-            icon: 'info',
+            icon: 'warning',
             confirmButtonText: 'Ok'
           })
         }

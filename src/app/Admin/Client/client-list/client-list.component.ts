@@ -59,7 +59,7 @@ export class ClientListComponent implements OnInit {
         Swal.fire({
           title: 'Warning!',
           text: 'No search result found!',
-          icon: 'error',
+          icon: 'info',
           confirmButtonText: 'Ok'
         });
       }

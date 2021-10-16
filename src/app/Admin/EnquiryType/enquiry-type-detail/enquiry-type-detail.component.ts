@@ -58,7 +58,7 @@ export class EnquiryTypeDetailComponent implements OnInit {
       else
       {
         Swal.fire({
-          title: 'Warninf!',
+          title: 'Warning!',
           text: 'No search result found!',
           icon: 'info',
           confirmButtonText: 'Ok'
@@ -75,7 +75,7 @@ export class EnquiryTypeDetailComponent implements OnInit {
         Swal.fire({
           title: 'Success!',
           text: 'Enquiry Type deleted successfully!',
-          icon: 'info',
+          icon: 'success',
           confirmButtonText: 'Ok'
         });
         this.getAllEnquiryTypes();

@@ -158,7 +158,7 @@ role:string="client";
         Swal.fire({
           title: 'Success!',
           text: "Order Submitted Successfully!",
-          icon: 'info',
+          icon: 'success',
           confirmButtonText: 'Ok'
         }).then(()=>{
           this.cartServive.clearCart();
