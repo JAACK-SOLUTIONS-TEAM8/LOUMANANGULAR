@@ -81,6 +81,11 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { AddRoleComponent } from './Admin/Role/add-role/add-role.component';
 import { RolesDetailComponent } from './Admin/Role/roles-detail/roles-detail.component';
 import { UserRoleComponent } from './Admin/components/user-role/user-role.component';
+import { AddFeatureComponent } from './Admin/features/add-feature/add-feature.component';
+import { FeatureDetailComponent } from './Admin/features/feature-detail/feature-detail.component';
+import { RoleFeatureComponent } from './Admin/components/role-feature/role-feature.component';
+import { MonthlyTransactionalReportComponent } from './report-sub-system/monthly-transactional-report/monthly-transactional-report.component';
+import { ManagementReportComponent } from './report-sub-system/management-report/management-report.component';
 
 
 
@@ -157,6 +162,11 @@ import { UserRoleComponent } from './Admin/components/user-role/user-role.compon
     AddRoleComponent,
     RolesDetailComponent,
     UserRoleComponent,
+    AddFeatureComponent,
+    FeatureDetailComponent,
+    RoleFeatureComponent,
+    MonthlyTransactionalReportComponent,
+    ManagementReportComponent,
    
     
   ],

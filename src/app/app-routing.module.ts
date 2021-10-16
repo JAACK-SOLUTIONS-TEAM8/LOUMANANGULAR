@@ -67,6 +67,11 @@ import { EmailVerficationComponent } from './user-sub-system/email-verfication/e
 import { RolesDetailComponent } from './Admin/Role/roles-detail/roles-detail.component';
 import { AddRoleComponent } from './Admin/Role/add-role/add-role.component';
 import { UserRoleComponent } from './Admin/components/user-role/user-role.component';
+import { FeatureDetailComponent } from './Admin/features/feature-detail/feature-detail.component';
+import { AddFeatureComponent } from './Admin/features/add-feature/add-feature.component';
+import { RoleFeatureComponent } from './Admin/components/role-feature/role-feature.component';
+import { MonthlyTransactionalReportComponent } from './report-sub-system/monthly-transactional-report/monthly-transactional-report.component';
+import { ManagementReportComponent } from './report-sub-system/management-report/management-report.component';
 
 const routes: Routes = [
 
@@ -210,6 +215,18 @@ const routes: Routes = [
         component:AddRoleComponent
       },
       {
+        path:'features',
+        component:FeatureDetailComponent
+      },
+      {
+        path:'add-feature/:id',
+        component:AddFeatureComponent
+      },
+      {
+        path:'manage-features/:id',
+        component:RoleFeatureComponent
+      },
+      {
         path:"audit",
         component:AuditComponent
       },
@@ -304,6 +321,15 @@ const routes: Routes = [
           {
             path:"attendance-report",
             component:AttendanceReportComponent
+          }
+          ,
+          {
+            path:"transactional-report",
+            component:MonthlyTransactionalReportComponent
+          },
+          {
+            path:"management-report",
+            component:ManagementReportComponent
           }
         ]
       }

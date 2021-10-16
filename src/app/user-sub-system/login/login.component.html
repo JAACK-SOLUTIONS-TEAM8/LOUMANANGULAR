@@ -26,14 +26,11 @@
                           <input type="password" class="form-control" placeholder="Password" formControlName="password" [disabled]="isAuthenticated">
                       </div>
                     </div>
-                    <div class="row mt-5">
-                        <div class="col-4">
-                            <button type="button" class="btn btn-primary" [disabled]="isAuthenticated" (click)="login()">Submit</button>
-                        </div>
-                    </div>
+                    
+                    
                     <div class="row form-group mt-5" *ngIf="isAuthenticated">
                         <div class=" col-12">
-                            <label > Confirmation code :</label>
+                            <label > Confirmation code:</label>
                             <input type="text" name="verificationCode" class="form-control" placeholder="verification code" formControlName="code">
                         </div>
                     </div>

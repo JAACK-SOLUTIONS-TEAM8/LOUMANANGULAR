@@ -121,4 +121,13 @@ export class ProductService {
     return this.dataService.genericCaller("get","Product/Stock/MonthlyReport?dateInfo="+dateInfo,"");
   }
 
+  getMonthlyTransactionalReport(dateInfo:string)
+  {
+    return this.dataService.genericCaller("get","Product/TransactionalReport?dateInfo="+dateInfo,"");
+  }
+  getManagementReport()
+  {
+    return this.dataService.genericCaller("get","Product/ManagementReport","");
+  }
+
 }

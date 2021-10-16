@@ -30,4 +30,13 @@ export class UserService {
     return this.dataService.genericCaller("post", `User/Roles/Add`, roleDetail);
   }
 
+  getAllRoleReatures(roleId:number) {
+    debugger
+    return this.dataService.genericCaller("get", `User/Features/${roleId}`, "");
+  }
+  AddRoleFeature(featureDetail:any) {
+    debugger
+    return this.dataService.genericCaller("post", `User/Features/Add`, featureDetail);
+  }
+
 }

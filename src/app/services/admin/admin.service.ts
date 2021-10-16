@@ -32,6 +32,20 @@ export class AdminService {
     return this.dataService.genericCaller("get", `Admin/Roles/${roleId}`, "");
   }
 
+  getAllFeatures() {
+    debugger
+    return this.dataService.genericCaller("get", "Admin/Features", "");
+  }
+
+  addFeature(featureData: any) {
+    debugger
+    return this.dataService.genericCaller("post", "Admin/Features/Add", featureData);
+  }
+  getFeatureeById(featureId: number) {
+    debugger
+    return this.dataService.genericCaller("get", `Admin/Features/${featureId}`, "");
+  }
+
   getAdminById(adminId: number) {
     debugger
     return this.dataService.genericCaller("get", `Admin/${adminId}`, "");

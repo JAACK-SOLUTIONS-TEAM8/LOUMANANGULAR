@@ -43,30 +43,32 @@
                     </button>
                     <div class="collapse show" id="home-collapse">
                         <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                            <li><a [routerLink]="'/admin/detail'" class="link-dark rounded"  *ngIf="roles.includes('super admin')">Admins Detail</a></li>
-                            <li><a [routerLink]="'/client/list'" class="link-dark rounded" *ngIf="roles.includes('receptionist')   || roles.includes('super admin')">Client Detail</a></li>
-                            <li><a [routerLink]="'/employee/detail'" class="link-dark rounded" *ngIf="roles.includes('receptionist')  || roles.includes('super admin')" >Employee Detail</a></li>
-                            <li><a href="#" class="link-dark rounded" [routerLink]="'/admin/team/detail'" *ngIf="roles.includes('super admin')">Teams</a></li>
-                            <li><a href="#" class="link-dark rounded" [routerLink]="'/admin/team/attendanceHistory'" *ngIf="roles.includes('super admin')">Team Attendance History</a></li>
-                            <li><a href="#" class="link-dark rounded" [routerLink]="'/admin/orders/all'" *ngIf="roles.includes('Customer Success Specialist ') || roles.includes('customer success specialist ') || roles.includes('super admin')">Orders</a></li>
-                            <li><a [routerLink]="'/order/deliveryType/detail'" class="link-dark rounded" *ngIf="roles.includes('super admin')">Delivery Type</a></li>
-                            <li><a href="#" class="link-dark rounded" [routerLink]="'/admin/location/detail'" *ngIf="roles.includes('super admin')">Locations</a></li>
-                            <li><a href="#" class="link-dark rounded" [routerLink]="'/admin/meeting/slot-detail'" *ngIf="roles.includes('super admin')">slot Detail</a></li>
-                            <li><a href="#" class="link-dark rounded" [routerLink]="'/admin/meeting/detail'" *ngIf="roles.includes('super admin')">Booked Slots</a></li>
-                            <li><a href="#" class="link-dark rounded" [routerLink]="'/admin/enquiry/detail'" *ngIf="roles.includes('Customer Success Specialist ') || roles.includes('customer success specialist ') || roles.includes('super admin')">Enquiries</a></li>
-                            <li><a href="#" class="link-dark rounded" [routerLink]="'/admin/product/list'" *ngIf="roles.includes('stock manager') || roles.includes('Stock Manager') || roles.includes('Receptionist')">Products</a></li>
-                            <li><a href="#" class="link-dark rounded" [routerLink]="'/admin/product/size/detail'" *ngIf="roles.includes('stock manager') || roles.includes('Stock Manager') || roles.includes('super admin')">Add Product Size</a></li>
-                            <li><a href="#" class="link-dark rounded" [routerLink]="'/admin/product/type/detail'" *ngIf="roles.includes('stock manager') || roles.includes('Stock Manager') || roles.includes('super admin')">Add Products Type</a></li>
-                            <li><a href="#" class="link-dark rounded" [routerLink]="'/admin/stock/detail'" *ngIf="roles.includes('stock manager') || roles.includes('Stock Manager') || roles.includes('super admin')">Stock</a></li>
-                            <li><a href="#" class="link-dark rounded" [routerLink]="'/admin/audit'" *ngIf="roles.includes('super admin')">Audit</a></li>
-                            <li><a [routerLink]="'/admin/enquiry-type-detail'" class="link-dark rounded" *ngIf="roles.includes('Customer Success Specialist ') || roles.includes('customer success specialist ') || roles.includes('super admin')">Enquery Type</a></li>
-                            <li><a [routerLink]="'/admin/timer-config'" class="link-dark rounded" *ngIf="roles.includes('super admin')">Configure Timer</a></li>
-                            <li><a [routerLink]="'/admin/roles'" class="link-dark rounded" *ngIf="roles.includes('super admin')">Manage Roles</a></li>
+                            <li><a [routerLink]="'/admin/detail'" class="link-dark rounded"  *ngIf="roles.includes('admin management')">Admins Detail</a></li>
+                            <li><a [routerLink]="'/client/list'" class="link-dark rounded" *ngIf="roles.includes('client management')">Client Detail</a></li>
+                            <li><a [routerLink]="'/employee/detail'" class="link-dark rounded" *ngIf="roles.includes('employee management')" >Employee Detail</a></li>
+                            <li><a href="#" class="link-dark rounded" [routerLink]="'/admin/team/detail'" *ngIf="roles.includes('team management')">Teams</a></li>
+                            <li><a href="#" class="link-dark rounded" [routerLink]="'/admin/team/attendanceHistory'" *ngIf="roles.includes('team attendance management')">Team Attendance History</a></li>
+                            <li><a href="#" class="link-dark rounded" [routerLink]="'/admin/orders/all'" *ngIf="roles.includes('order management')">Orders</a></li>
+                            <li><a [routerLink]="'/order/deliveryType/detail'" class="link-dark rounded" *ngIf="roles.includes('delivery type management')">Delivery Type</a></li>
+                            <li><a href="#" class="link-dark rounded" [routerLink]="'/admin/location/detail'" *ngIf="roles.includes('location management')">Locations</a></li>
+                            <li><a href="#" class="link-dark rounded" [routerLink]="'/admin/meeting/slot-detail'" *ngIf="roles.includes('slot management')">slot Detail</a></li>
+                            <li><a href="#" class="link-dark rounded" [routerLink]="'/admin/meeting/detail'" *ngIf="roles.includes('booked slot management')">Booked Slots</a></li>
+                            <li><a href="#" class="link-dark rounded" [routerLink]="'/admin/enquiry/detail'" *ngIf="roles.includes('enquiry management')">Enquiries</a></li>
+                            <li><a href="#" class="link-dark rounded" [routerLink]="'/admin/product/list'" *ngIf="roles.includes('product management')">Products</a></li>
+                            <li><a href="#" class="link-dark rounded" [routerLink]="'/admin/product/size/detail'" *ngIf="roles.includes('product size management')">Add Product Size</a></li>
+                            <li><a href="#" class="link-dark rounded" [routerLink]="'/admin/product/type/detail'" *ngIf="roles.includes('product type management')">Add Products Type</a></li>
+                            <li><a href="#" class="link-dark rounded" [routerLink]="'/admin/stock/detail'" *ngIf="roles.includes('stock management')">Stock</a></li>
+                            <li><a href="#" class="link-dark rounded" [routerLink]="'/admin/audit'" *ngIf="roles.includes('audit management')">Audit</a></li>
+                            <li><a [routerLink]="'/admin/enquiry-type-detail'" class="link-dark rounded" *ngIf="roles.includes('enquiry type management')">Enquery Type</a></li>
+                            <li><a [routerLink]="'/admin/timer-config'" class="link-dark rounded" *ngIf="roles.includes('timer management')">Configure Timer</a></li>
+                            <li><a [routerLink]="'/admin/roles'" class="link-dark rounded" *ngIf="roles.includes('role management')">Manage Roles</a></li>
+                            <li><a [routerLink]="'/admin/features'" class="link-dark rounded" 
+                                *ngIf="roles.includes('feature management')">Manage Features</a></li>
 
                         </ul>
                     </div>
                 </li>
-                <li class="mb-1" *ngIf="role=='Admin' && roles.includes('super admin')">
+                <li class="mb-1" *ngIf="role=='Admin' && roles.includes('report management')">
                     <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
                         data-bs-target="#dashboard-collapse" aria-expanded="false">
                         Reports
@@ -79,6 +81,9 @@
                             <li><a [routerLink]="'/admin/report/half-yearly-employee-report'" class="link-dark rounded">Half Yearly Employee Report</a></li>
                             <li><a [routerLink]="'/admin/report/client-report'" class="link-dark rounded">Client Report</a></li>
                             <li><a [routerLink]="'/admin/report/attendance-report'" class="link-dark rounded">Attendance Report</a></li>
+                            <li><a [routerLink]="'/admin/report/transactional-report'" class="link-dark rounded">Monthly Product Sales report</a></li>
+                            <li><a [routerLink]="'/admin/report/management-report'" class="link-dark rounded">Management Report Report</a></li>
+
                         </ul>
                     </div>
                 </li>

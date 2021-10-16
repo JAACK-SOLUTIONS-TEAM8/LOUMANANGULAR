@@ -1,0 +1,52 @@
+<div class="row mt-5">
+    <div class="col-12">
+        <div  class="card-header text-center">
+            <h3>Role Feature</h3>
+        </div>
+          <div class="card-body">
+
+            <div class="row mt-5 mb-5">
+                <div class="col-2">
+                </div>
+              <div class="col-8">
+    
+                  <div class="card">
+                      <div class="card-body">
+                        <div class="row">
+                          <table class="table">
+                              <thead  style="background-color: rgb(103, 186, 241);">
+                                <tr>
+                                  <th scope="col">Feature Name</th>
+                                  <th scope="col">Actions</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr *ngFor="let feature of rolesFeaturesData">
+                                  <td scope="row">{{feature.featureName}}</td>
+                                  <td scope="row">
+                                    <div class="form-check">
+                                      <input class="form-check-input" type="checkbox" [name]="feature.featureId" [id]="feature.featureId" [checked]="feature.isRoleFeature"  (change)="addFeature(feature)">
+                                    </div>
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                        </div>
+                      </div>
+                    </div>
+      
+              </div>
+              <div class="col-2">
+      
+              </div>
+      
+            </div>
+            <div class="row mt-5">
+              <div class="col-12">
+                <button type="button" class="btn btn-secondary" style="float: right;" [routerLink]="'/admin/roles'" >Done</button>
+              </div>
+            </div>        
+          </div>
+    </div>
+  </div>
+
