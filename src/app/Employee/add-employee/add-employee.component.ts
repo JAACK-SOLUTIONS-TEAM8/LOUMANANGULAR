@@ -21,9 +21,13 @@ declare var $: any;
 })
 export class AddEmployeeComponent implements OnInit {
   userTypes: any[]=[];
+
+  imageSource:string="file";
+
   public webcamImage: WebcamImage = null;
      private trigger: Subject<void> = new Subject<void>();
    triggerSnapshot(): void {
+     this.imageSource="camera";
     this.trigger.next();
    }
    handleImage(webcamImage: WebcamImage): void {
@@ -96,12 +100,25 @@ export class AddEmployeeComponent implements OnInit {
       confirmPassword: [null,Validators.required]
     },{validator:passwordMatcher});
 
+    if(this.employeeId!=0)
+    {
+      this.profileDetailForm.removeValidators([passwordMatcher]);
+      this.profileDetailForm.controls['password'].clearValidators();
+      this.profileDetailForm.controls['password'].updateValueAndValidity()
+
+      this.profileDetailForm.controls['confirmPassword'].clearValidators();
+      this.profileDetailForm.controls['confirmPassword'].updateValueAndValidity()
+
+    }
+
     this.employeeDetailForm = this.formBuilder.group({
       initials: [null,[Validators.required,Validators.minLength(3),Validators.maxLength(50)]],
       surname: [null,[Validators.required,Validators.minLength(5),Validators.maxLength(50)]],
       userTypeId: [null,Validators.required],
       idNumber: [null,[Validators.required,Validators.minLength(13),Validators.maxLength(13)]],
-      email: [null,[Validators.required,Validators.email]]
+      email: [null,[Validators.required,Validators.email]],
+      cellNumber: [null,[Validators.required]]
+
     });
 
     this.employeeDetailForm.controls["userTypeId"].patchValue("none")
@@ -135,12 +152,23 @@ export class AddEmployeeComponent implements OnInit {
       this.employeeDetailForm.controls["userTypeId"].patchValue(response.employee.userTypeId);
       this.employeeDetailForm.controls["idNumber"].patchValue(response.employee.idNumber);
       this.employeeDetailForm.controls["email"].patchValue(response.employee.email);
+      this.employeeDetailForm.controls["cellNumber"].patchValue(response.employee.cellNumber);
+
       this.employeeEmployeementDetailForm.controls["commenceDate"].patchValue(this.datePipe.transform(response.employee.commenceDate,"yyyy-MM-dd"));
       this.employeeEmployeementDetailForm.controls["terminationDate"].patchValue(this.datePipe.transform(response.employee.terminationDate,"yyyy-MM-dd"));
       this.employeeEmployeementDetailForm.controls["terminationReason"].patchValue(response.employee.terminationReason);
       this.employeeImage.file=response.employee.image
       this.employeeDocument.file=response.employee.document
 
+     
+      this.profileDetailForm.markAllAsTouched();
+      this.profileDetailForm.updateValueAndValidity();
+
+      this.employeeDetailForm.markAllAsTouched();
+      this.employeeDetailForm.updateValueAndValidity();
+
+      this.employeeEmployeementDetailForm.markAllAsTouched();
+      this.employeeEmployeementDetailForm.updateValueAndValidity();
     });
   }
 
@@ -166,6 +194,16 @@ export class AddEmployeeComponent implements OnInit {
       console.log("provide all the required fields values!");
       return;
     }
+    else if(this.employeeDetailForm.controls["userTypeId"].value=="none")
+    {
+      Swal.fire({
+        title: 'Warning!',
+        text: 'Select user type',
+        icon: 'error',
+        confirmButtonText: 'Ok'
+      })
+      return;
+    }
     debugger
     let employeeDetail =
     {
@@ -173,13 +211,13 @@ export class AddEmployeeComponent implements OnInit {
       "employeeId": Number(this.employeeData!=null?this.employeeData.employeeId:0),
       "userName": String(this.profileDetailForm.controls["userName"].value),
       "password":  String(this.profileDetailForm.controls["password"].value),
-      "userTypeId": Number(this.employeeDetailForm.controls["userTypeId"].value ?? 0),
+      "userTypeId": Number(this.employeeDetailForm.controls["userTypeId"].value=="none" ? 0:this.employeeDetailForm.controls["userTypeId"].value),
       "initials":  String(this.employeeDetailForm.controls["initials"].value),
       "surname":  String(this.employeeDetailForm.controls["surname"].value),
       "email":  String(this.employeeDetailForm.controls["email"].value),
       "idNumber":  String(this.employeeDetailForm.controls["idNumber"].value),
-      "cellNumber": String(""),
-      "image":String(this.employeeImage.file),
+      "cellNumber": String(this.employeeDetailForm.controls["cellNumber"].value),
+      "image":String(this.imageSource=="file"?this.employeeImage.file: this.webcamImage.imageAsDataUrl),
       "document":String(this.employeeDocument.file),
       "addressId":null,
       "teamId":Number(this.employeeData!=null?this.employeeData.teamId:0),
@@ -191,7 +229,7 @@ export class AddEmployeeComponent implements OnInit {
     debugger
     console.log(employeeDetail)
 
-    this.employeeService.addEmployee(employeeDetail).subscribe(response => {
+    this.employeeService.addEmployee({userId: Number(this.employeeData!=null?this.employeeData.userId:0) ,employee:employeeDetail} ).subscribe(response => {
       if (response.statusCode == 200) 
       {
         Swal.fire({
@@ -211,6 +249,8 @@ export class AddEmployeeComponent implements OnInit {
   }
 
   uploadImage(event: any) {
+    this.imageSource="file";
+
     console.log(event.target.files)
    debugger
    this.readImageAsBase64(event.target.files[0]).subscribe(imageBase64 => {
@@ -242,7 +282,7 @@ handleEvent(event:any)
   {
     if(event.action=="done")
     {
-      this.router.navigateByUrl("/client/list");
+      this.router.navigateByUrl("/employee/detail");
     }
     console.log(event);
   }
