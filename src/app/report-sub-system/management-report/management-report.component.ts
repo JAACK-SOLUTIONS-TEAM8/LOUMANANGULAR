@@ -28,7 +28,7 @@ export class ManagementReportComponent implements OnInit {
    
     this.productService.getManagementReport().subscribe(response=>{
       this.productData=response.products;
-
+      console.log(this.productData);
 
     })
     debugger

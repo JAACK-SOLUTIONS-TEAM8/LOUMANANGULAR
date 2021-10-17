@@ -138,6 +138,12 @@ var stockQuantity=0;
       this.cartService.addPrductToShoppingCart(cartProducts);
         console.log(orderedQuantity)
         this.productQuantity=0;
+        this.productData.forEach(p=>{
+          if(this.selectedProduct.productId===p.productId)
+          {
+            p.productQuantity=p.productQuantity-orderedQuantity;
+          }
+        })
       })
     }
     });

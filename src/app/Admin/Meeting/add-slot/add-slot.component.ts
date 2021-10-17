@@ -17,7 +17,6 @@ export class AddSlotComponent implements OnInit {
   slot:any;
 
   todayDate:string=this.datePipe.transform(new Date(),"yyyy-MM-dd");
-
   constructor(
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
@@ -49,7 +48,7 @@ export class AddSlotComponent implements OnInit {
   initilizeForms() {
     this.addSlotForm = this.formBuilder.group({
       date: [null,Validators.required],
-      startTime: [null,Validators.required],
+      startTime: [null,[Validators.required]],
       endTime: [null,Validators.required]
     });
   }
@@ -58,6 +57,7 @@ export class AddSlotComponent implements OnInit {
   addSlot() {
 
     let data={...this.addSlotForm.value}
+
     debugger
     if(this.addSlotForm.invalid)
     {
@@ -70,7 +70,6 @@ export class AddSlotComponent implements OnInit {
       return;
     }
 
-   
 
     let slotDetail={
         "slotId":Number(this.slotId??0),

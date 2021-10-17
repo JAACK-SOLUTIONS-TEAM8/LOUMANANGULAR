@@ -1,6 +1,6 @@
 <div class="card" >
     <div class="card-header text-center">
-      <h3>Monthly Transactional  Report </h3>
+      <h3>Six Month  Report </h3>
     </div>
     <div class="card-body" id="report">
       <div class="row mt-5 mb-5">
@@ -9,23 +9,24 @@
         <div class="col-10">
   
             
-            <div class="card" *ngFor="let month in productData">
-                <div class="card-header text-center">
-                    <h3>month.monthName Transactional  Report </h3>
+            <div class="card mt-3 mb-3" *ngFor="let month of productData">
+                <div class="card-header text-center ">
+                    <h3>{{month?.monthName}} Transactional  Report </h3>
                   </div>
                 <div class="card-body">
                   <div class="row">
                     <table class="table">
                       <thead  style="background-color: rgb(103, 186, 241);">
                         <tr>
-                          <th scope="col">Product Name</th>
-                          <th scope="col">Average Sold Price</th>
+                          <th scope="col">Info</th>
+                          <th scope="col">Monthly Average Sale</th>
+
                         </tr>
                       </thead>
                       <tbody>
-                        <tr *ngFor="let product of month.soldProducts">
-                          <td scope="row">{{product.productName}}</td>
-                          <td scope="row">{{(product.totalSoldPrice)/product.quantitySold}}</td>
+                        <tr >
+                          <td scope="row">Monthly Average</td>
+                          <td scope="row">{{month?.monthAverage}}</td>
                         </tr>
                       </tbody>
                     </table>
@@ -42,7 +43,7 @@
     </div>
     <div class="row">
       <div class="co-12">
-        <button class="btn btn-primary" (click)="downloadPDF()" style="float: right;" [disabled]="productData.length==0">Download Report</button>
+        <button class="btn btn-primary" (click)="downloadPDF()" style="float: right;" [disabled]="productData?.length==0">Download Report</button>
       </div>
     </div>
   </div>

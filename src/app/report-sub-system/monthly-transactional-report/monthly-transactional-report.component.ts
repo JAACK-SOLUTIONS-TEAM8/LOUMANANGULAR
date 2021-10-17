@@ -11,7 +11,7 @@ import { Label } from 'ng2-charts';
 })
 export class MonthlyTransactionalReportComponent implements OnInit {
 
-  productData:any[]=[]
+  productData:any;
   public barChartOptions: ChartOptions = {
     responsive: true,
   };
@@ -46,7 +46,7 @@ export class MonthlyTransactionalReportComponent implements OnInit {
       this.barChartLabels=[];
       let soldQuantities:number[]=[];
       
-      this.productData.forEach(p=>{
+      response.products?.soldProducts.forEach(p=>{
         soldQuantities.push(p.totalSoldPrice);
         this.barChartLabels.push(p.productName)
       });
