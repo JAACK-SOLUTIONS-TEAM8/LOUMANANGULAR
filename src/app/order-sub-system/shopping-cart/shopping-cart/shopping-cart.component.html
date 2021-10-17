@@ -20,7 +20,7 @@
                                 <h5 class="card-title">{{product.product.productName}}</h5>
                                 <p class="card-text"><b>Type: </b>{{product.product.productTypeName}}</p>
                                 <p class="card-text"><b>Size: </b>{{product.product.productSizeDescription}}</p>
-                                <p class="card-text"><b>Price: </b> R{{product.product.price | number:'.1-3'}}</p>
+                                <p class="card-text"><b>Price: </b> R{{product.product.price | number:'.2-4'}}</p>
                                 <p class="card-text"><b>Quantity in Stock: </b>{{product.product.productQuantity}}</p>
                                 <p class="card-text"><b>Ordered Quantity: </b>{{product.quantity}}</p>
                                 <a href="#" class="btn btn-primary" (click)="removeFromCart(product.product)" data-bs-toggle="modal" data-bs-target="#removeConfirmation">Remove from Cart</a>

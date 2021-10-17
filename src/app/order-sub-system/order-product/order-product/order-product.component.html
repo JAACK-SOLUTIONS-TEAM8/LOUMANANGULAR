@@ -17,7 +17,7 @@
       </div>
       <div class="row">
         <div class="col-12">
-          <p>Provide your discount message here</p>
+          <p>Orders over R500 get a discount!</p>
         </div>
       </div>
       <div class="row mt-5 mb-5">
@@ -46,7 +46,7 @@
                               <h5 class="card-title">{{product.productName}}</h5>
                               <p class="card-text"><b>Type: </b>{{product.productTypeName}}</p>
                               <p class="card-text"><b>Size: </b>{{product.productSizeDescription}}</p>
-                              <p class="card-text"><b>Price: </b>  R{{product.price | number:'.1-3'}}</p>
+                              <p class="card-text"><b>Price: </b>  R{{product.price | number:'.2-4'}}</p>
                               <p class="card-text"><b> Quantity in Stock: </b>  {{product.productQuantity}}</p>
 
                               <a href="#" class="btn btn-primary" (click)="addToCart(product)" data-bs-toggle="modal" data-bs-target="#additionConfirmation">Add To Cart</a>
