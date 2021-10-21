@@ -29,10 +29,14 @@ export class RolesDetailComponent implements OnInit {
         this.rolesData=response.roles;
     });
   }
-
   editRole(role:any)
   {
       this.router.navigateByUrl(`admin/add-role/${role.roleId}`)
+  }
+
+  manageRoleFeatures(role:any)
+  {
+    this.router.navigateByUrl(`admin/manage-features/${role.roleId}`);
   }
 
 }

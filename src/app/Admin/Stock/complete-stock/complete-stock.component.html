@@ -5,7 +5,7 @@
     <div class="col-8">
         <div class="card">
             <div  class="card-header text-center">
-              <h3>Write Off Stock</h3>
+              <h3>Do Stock Take</h3>
             </div>
             <div class="card-body">
               
@@ -58,7 +58,7 @@
         
                 <div class="row mt-5">
                     <div class="col-12">
-                        <button type="button" class="btn btn-primary" style="float: right; margin-left: 5px;"data-bs-toggle="modal" data-bs-target="#additionConfirmation">{{stockId==0?'Save':'Complete'}}</button>
+                        <button type="button" class="btn btn-primary" style="float: right; margin-left: 5px;"data-bs-toggle="modal" data-bs-target="#additionConfirmation">{{stockId==0?'Save':'Do Stock Take'}}</button>
                         <button type="button" class="btn btn-secondary" style="float: right;" [routerLink]="'/admin/stock/detail'">Cancel</button>
                     </div>
                 </div>
@@ -75,11 +75,11 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title">Stock Write Off confirmation</h5>
+          <h5 class="modal-title">Confirm  Stock Take</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <p>Confirm Complete Stock</p>
+          <p>Are you sure you want to do the stock for this product?</p>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
