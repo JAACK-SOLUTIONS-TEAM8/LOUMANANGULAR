@@ -79,7 +79,9 @@ export class AddAdminComponent implements OnInit {
       surname: [null,[Validators.required,Validators.maxLength(50), Validators.minLength(5)]],
       userTypeId: [null,Validators.required],
       idNumber: [null,[Validators.required,Validators.minLength(13),Validators.maxLength(13)]],
-      email: [null, [Validators.required, Validators.email]]
+      email: [null, [Validators.required, Validators.email]],
+      cellNumber: [null, [Validators.required]]
+
     });
 
     
@@ -88,6 +90,9 @@ export class AddAdminComponent implements OnInit {
   getUserTypes() {
     this.userService.getUserTypes().subscribe(types => {
       this.userTypes = types.userTypes;
+      let admin=this.userTypes.find(user=>user.userTypeDescription=="Admin")
+      this.adminDetailForm.controls["userTypeId"].patchValue(Number(admin.userTypeId))
+
     });
   }
 
@@ -104,6 +109,8 @@ export class AddAdminComponent implements OnInit {
       this.adminDetailForm.controls["surname"].patchValue(this.adminData.surname);
       this.adminDetailForm.controls["initials"].patchValue(this.adminData.initials);
       this.adminDetailForm.controls["email"].patchValue(this.adminData.email);
+      this.adminDetailForm.controls["cellNumber"].patchValue(this.adminData.cellNumber);
+
       this.adminDetailForm.controls["idNumber"].patchValue(this.adminData.idNumber);
     });
   }
@@ -154,7 +161,7 @@ export class AddAdminComponent implements OnInit {
       "surname":  String(this.adminDetailForm.controls["surname"].value),
       "email":  String(this.adminDetailForm.controls["email"].value),
       "idNumber":  String(this.adminDetailForm.controls["idNumber"].value),
-      "cellNumber": String( "")
+      "cellNumber": String(this.adminDetailForm.controls["cellNumber"].value),
     };
     debugger
     console.log(adminDetail)

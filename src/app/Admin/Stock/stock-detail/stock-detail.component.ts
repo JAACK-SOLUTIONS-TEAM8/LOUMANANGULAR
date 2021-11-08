@@ -40,6 +40,11 @@ export class StockDetailComponent implements OnInit {
       this.router.navigateByUrl(`admin/stock/complete/${product.stockId}`)
   }
 
+  captureStockProduct(product:any)
+  {
+      this.router.navigateByUrl(`admin/stock/capture/${product.stockId}`)
+  }
+
   deleteProduct(product:any)
   {
     this.selectedProduct=product;

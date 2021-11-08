@@ -88,15 +88,7 @@
         </div>
         <div class="card-body">
           <form [formGroup]="employeeDetailForm">
-            <div class="row form-group">
-              <div class="col-lg-6 col-md-4 col-sm-8 col-12">
-                <label>User Type:</label>
-                <select name="" id="" class="form-control" formControlName="userTypeId">
-                  <option value="none">--Select User Type--</option>
-                  <option [value]="userType.userTypeId" *ngFor="let userType of userTypes">{{userType.userTypeDescription}}</option>
-                </select>
-              </div>
-            </div>
+            
             <div class="row form-group">
               <div class="col-lg-6 col-md-4 col-sm-8 col-12">
                 <label>Name:</label>
@@ -232,6 +224,12 @@
                 <h4 style="height:15rem; width: 15rem; float: rigth;" *ngIf="employeeId==0 || employeeDocument.file!=null">{{employeeDocument.fileName}}</h4>
             </div>
         </div> 
+        <div class="row form-group" style="visibility: hidden;">
+          <div class="col-lg-6 col-md-4 col-sm-8 col-12">
+            <label>UserType:</label>
+            <input type="number" value="2" class="form-control" placeholder="User Type" formControlName="userTypeId">
+          </div>
+        </div>
           </form>
         </div>
       </div>

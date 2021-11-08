@@ -8,25 +8,56 @@
                 <div class="col-lg-6 col-md-4 col-sm-8 col-12">
                     <label>Date:</label>
                     <input type="date" class="form-control" formControlName="date" [min]="todayDate">
+                    
                 </div>
+                
             </div>
             <div class="row form-group">
                 <div class="col-lg-6 col-md-4 col-sm-8 col-12">
                     <label>Start Time:</label>
-                    <input type="time"  class="form-control" formControlName="startTime">
+                    <input type="time"  
+                    class="form-control" 
+                    formControlName="startTime"
+                    (change)="startTimeChanges($event)"
+                    [ngClass]="{'is-invalid': (addSlotForm.get('startTime')?.touched || 
+                    addSlotForm.get('startTime')?.dirty)  &&
+                                            !addSlotForm.get('startTime')?.valid || invalidStartTime }">
+                                            <span class="invalid-feedback">
+                                              <span *ngIf="addSlotForm.get('startTime')?.errors?.required">
+                                                Please select start time
+                                              </span>
+                                              <span *ngIf="invalidStartTime">
+                                                The time you selected has been passed
+                                              </span>
+                                            </span>
                 </div>
             </div>
             <div class="row form-group">
                 <div class="col-lg-6 col-md-4 col-sm-8 col-12">
                     <label>End Time</label>
-                    <input type="time" class="form-control" formControlName="endTime">
+                    <input type="time" 
+                    class="form-control" 
+                    (change)="endTimeChanges($event)"
+                    [disabled]="invalidStartTime"
+                    formControlName="endTime"
+                    [ngClass]="{'is-invalid': (addSlotForm.get('endTime')?.touched ||
+                    addSlotForm.get('endTime')?.dirty) &&
+                                            !addSlotForm.get('endTime')?.valid  || invalidEndTime }">
+                                            <span class="invalid-feedback">
+                                              <span *ngIf="addSlotForm.get('endTime')?.errors?.required">
+                                                Please Select end time.
+                                              </span>
+                                              <span *ngIf="invalidEndTime">
+                                                The end time should be greater than start time
+                                              </span>
+                                            </span>
                 </div>
             </div>
 
         </form>
         <div class="row mt-5">
             <div class="col-12">
-                <button type="button" class="btn btn-primary" style="float: right; margin-left: 5px;" data-bs-toggle="modal" data-bs-target="#additionConfirmation">{{slotId==0?'Save':'Update'}}</button>
+                <button type="button" [disabled]="invalidStartTime || invalidEndTime" class="btn btn-primary" style="float: right; margin-left: 5px;" data-bs-toggle="modal" data-bs-target="#additionConfirmation">{{slotId==0?'Save':'Update'}}</button>
                 <button type="button" class="btn btn-secondary" style="float: right;" [routerLink]="'/admin/meeting/slot-detail'" >Cancel</button>
             </div>
         </div>

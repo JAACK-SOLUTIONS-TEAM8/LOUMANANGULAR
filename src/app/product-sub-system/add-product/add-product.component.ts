@@ -20,6 +20,7 @@ export class AddProductComponent implements OnInit {
   productImage:any={}
 
   imageUrl:string=""
+  isVatIncluded:boolean=false;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -40,7 +41,8 @@ export class AddProductComponent implements OnInit {
       this.productDetailForm.controls["productTypeId"].patchValue(this.product.productTypeId);
       this.productDetailForm.controls["productSizeId"].patchValue(this.product.productSizeId);
       this.productImage.file=this.product.productImage
-  
+      this.isVatIncluded=Boolean(this.product.isVatIncluded);
+
     });
   }
 
@@ -105,7 +107,9 @@ export class AddProductComponent implements OnInit {
       "productSizeId":Number( this.productDetailForm.controls["productSizeId"].value),
       "productName":String( this.productDetailForm.controls["productName"].value),
       "price":Number( this.productDetailForm.controls["price"].value),
-      "productImage":String(this.productImage.file)
+      "productImage":String(this.productImage.file),
+      "isVatIncluded":Boolean(this.isVatIncluded)
+
     },
     userId: Number(JSON.parse(localStorage.getItem('User')).userId)
   };
@@ -148,6 +152,17 @@ readImageAsBase64(file: any): Observable<any> {
     }
   });
   return observerable;
+}
+
+vatChange(event:any)
+{
+    if(event.target.checked)
+    {
+      this.isVatIncluded=true;
+    }
+    else{
+      this.isVatIncluded=false;
+    }
 }
 
 }

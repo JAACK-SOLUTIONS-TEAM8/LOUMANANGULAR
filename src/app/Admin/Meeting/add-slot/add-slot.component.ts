@@ -17,6 +17,15 @@ export class AddSlotComponent implements OnInit {
   slot:any;
 
   todayDate:string=this.datePipe.transform(new Date(),"yyyy-MM-dd");
+
+  isSelectedStartTime:boolean=false;
+  startTimeSelected:string[]=[];
+  endTimeSelected:string[]=[];
+
+  invalidStartTime:boolean=false;
+  invalidEndTime:boolean=false;
+  date:Date=new Date()
+
   constructor(
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
@@ -83,15 +92,24 @@ export class AddSlotComponent implements OnInit {
       if(response.statusCode==200)
       {
         Swal.fire({
-          title: 'Error!',
-          text: this.slotId==0?'slot added successfully!!':'slot Updated successfully!!',
+          title: 'Success!',
+          text: this.slotId==0?'Slot added successfully!!':'slot Updated successfully!!',
           icon: 'success',
           confirmButtonText: 'Ok'
         }).then(()=>{
           this.router.navigateByUrl("/admin/meeting/slot-detail");
         })
       }
-      else
+      else if(response.statusCode==404)
+      {
+        Swal.fire({
+          title: 'Warning!',
+          text: 'Slot time overlapping with existing slot',
+          icon: 'warning',
+          confirmButtonText: 'Ok'
+        })
+      }
+      else 
       {
         Swal.fire({
           title: 'Error!',
@@ -103,6 +121,44 @@ export class AddSlotComponent implements OnInit {
       }
     });
   }
+
+
+  startTimeChanges(timeEvent:any)
+  {
+     this.startTimeSelected=timeEvent.target.value.split(':');
+
+
+    console.log(this.startTimeSelected);
+
+    if((Number(this.startTimeSelected[0]) < this.date.getHours())&& (new Date(this.addSlotForm.controls['date'].value).getDate()===this.date.getDate()))
+    {
+      this.invalidStartTime=true;
+      console.log("start time already passed!");
+    }
+    else
+    {
+      this.isSelectedStartTime=true;
+      this.invalidStartTime=false
+    }
+  }
+
+
+  endTimeChanges(timeEvent:any)
+  {
+    this.endTimeSelected=timeEvent.target.value.split(':');
+
+    console.log(this.endTimeSelected);
+
+  if(Number(this.endTimeSelected[0]) <= Number(this.startTimeSelected[0]))
+  {
+    this.invalidEndTime=true;
+    console.log("end time should be more than the starting time");
+  }
+  else
+  {
+    this.invalidEndTime=false;
+  }
+}
 
 }
 

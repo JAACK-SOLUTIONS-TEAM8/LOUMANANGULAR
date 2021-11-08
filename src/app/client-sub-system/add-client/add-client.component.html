@@ -88,15 +88,7 @@
         </div>
         <div class="card-body">
           <form [formGroup]="clientDetailForm">
-            <div class="row form-group">
-              <div class="col-lg-6 col-md-4 col-sm-8 col-12">
-                <label>User Type:</label>
-                <select name="" id="" class="form-control" formControlName="userTypeId">
-                  <option value="none">--Select User Type--</option>
-                  <option [value]="type.userTypeId" *ngFor="let type of userTypes">{{type.userTypeDescription}}</option>
-                </select>
-              </div>
-            </div>
+            
             <div class="row form-group">
               <div class="col-lg-6 col-md-4 col-sm-8 col-12">
                 <label>Name:</label>
@@ -158,6 +150,23 @@
                 </div>
               </div>
               <div class=" row form-group">
+                <div class="col-lg-6 col-md-4 col-sm-8 col-12">
+                  <label>Cell Number:</label>
+                  <input type="text" 
+                          class="form-control"
+                           placeholder="Cell Number" 
+                           formControlName="cellNumber"
+                           [ngClass]="{'is-invalid': (clientDetailForm.get('cellNumber')?.touched ||
+                           clientDetailForm.get('cellNumber')?.dirty) &&
+                                          !clientDetailForm.get('cellNumber')?.valid }">
+                                          <span class="invalid-feedback">
+                                            <span *ngIf="clientDetailForm.get('cellNumber')?.errors?.required">
+                                              Please Enter Cell Number.
+                                            </span>
+                                          </span>
+              </div>
+            </div>
+              <div class=" row form-group">
                   <div class="col-lg-6 col-md-4 col-sm-8 col-12">
                     <label>ID Number:</label>
                     <input type="text" 
@@ -172,9 +181,15 @@
                                                 Please Enter Id Number.
                                               </span>
                                               <span *ngIf="clientDetailForm.get('idNumber')?.errors?.maxlength || clientDetailForm.get('idNumber')?.errors?.minlength">
-                                                Id Number should be of 13 characters
+                                                Id Number should be 13 characters.
                                               </span>
                                             </span>
+                </div>
+              </div>
+              <div class="row form-group" style="visibility: hidden;">
+                <div class="col-lg-6 col-md-4 col-sm-8 col-12">
+                  <label>UserType:</label>
+                  <input type="number" value="3" class="form-control" placeholder="initials" formControlName="userTypeId">
                 </div>
               </div>
           </form>
@@ -204,7 +219,7 @@
                                                 Please enter street name.
                                               </span>
                                               <span *ngIf="addressDetailForm.get('streetName')?.errors?.maxlength || addressDetailForm.get('streetName')?.errors?.minlength">
-                                                The street name must be greater than 10 and less than 100 characters.
+                                                The street name must be at least 3 characters.
                                               </span>
                                             </span>
                             </div>
@@ -224,7 +239,7 @@
                                                 Please enter street number.
                                               </span>
                                               <span *ngIf="addressDetailForm.get('streetNumber')?.errors?.street">
-                                                The street number must be of 4 characters.
+                                                The street number must be of at least 1 character.
                                               </span>
                                             </span>
                               </div>
@@ -244,7 +259,7 @@
                                                 Please enter city name.
                                               </span>
                                               <span *ngIf="addressDetailForm.get('cityName')?.errors?.maxlength || addressDetailForm.get('cityName')?.errors?.minlength">
-                                                The city name must be greater than 5 and less than 50 characters.
+                                                The city name must be at least 3 characters.
                                               </span>
                                             </span>
                                 </div>
@@ -263,8 +278,8 @@
                                               <span *ngIf="addressDetailForm.get('cityCode')?.errors?.required">
                                                 Please enter city code.
                                               </span>
-                                              <span *ngIf="addressDetailForm.get('streetNumber')?.errors?.street">
-                                                The city name must be of 4 characters.
+                                              <span *ngIf="addressDetailForm.get('cityCode')?.errors.minLength">
+                                                The city name must be at least 4 characters.
                                               </span>
                                             </span>
                                   </div>
@@ -277,7 +292,7 @@
 
     <div class=" row mt-5">
       <div class="col-12">
-        <button type="button" class="btn btn-primary" style="float: right; margin-left: 5px;" data-bs-toggle="modal" data-bs-target="#additionConfirmation" [disabled]="!profileDetailForm.valid || !clientDetailForm.valid || !addressDetailForm.valid">{{clientId==0?'Save':'Update'}}</button>
+        <button type="button" class="btn btn-primary" style="float: right; margin-left: 5px;" data-bs-toggle="modal" data-bs-target="#additionConfirmation" >{{clientId==0?'Save':'Update'}}</button>
         <button type="button" class="btn btn-secondary" style="float: right;"[routerLink]="'/client/list'" >Cancel</button>
       </div>
     </div>

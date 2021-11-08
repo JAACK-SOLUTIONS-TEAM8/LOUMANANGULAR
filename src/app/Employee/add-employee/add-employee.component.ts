@@ -134,6 +134,9 @@ export class AddEmployeeComponent implements OnInit {
   getUserTypes() {
     this.userService.getUserTypes().subscribe(types => {
       this.userTypes = types.userTypes;
+      let employee=this.userTypes.find(user=>user.userTypeDescription=="Employee")
+      this.employeeDetailForm.controls["userTypeId"].patchValue(Number(employee.userTypeId))
+
     });
   }
 

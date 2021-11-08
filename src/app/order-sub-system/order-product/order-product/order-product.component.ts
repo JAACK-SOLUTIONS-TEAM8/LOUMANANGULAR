@@ -133,9 +133,27 @@ var stockQuantity=0;
         confirmButtonText: 'Ok'
       }).then(()=>{
         var orderedQuantity=this.productQuantity;
+
         var cartProducts=this.cartService.getProductsFromShoppingCart();
-      cartProducts.push({product:this.selectedProduct,quantity:orderedQuantity});
-      this.cartService.addPrductToShoppingCart(cartProducts);
+
+        let product=cartProducts.find(p=>p.product.productId === this.selectedProduct.productId);
+        if(product===undefined || product===null)
+        {
+          cartProducts.push({product:this.selectedProduct,quantity:orderedQuantity});
+
+        }
+        else{
+
+            cartProducts.map(p=>{
+              if(p.product.productId === this.selectedProduct.productId)
+              {
+                p.quantity=p.quantity+orderedQuantity;
+              }
+            })
+        }
+        this.cartService.addPrductToShoppingCart(cartProducts);
+
+      
         console.log(orderedQuantity)
         this.productQuantity=0;
         this.productData.forEach(p=>{

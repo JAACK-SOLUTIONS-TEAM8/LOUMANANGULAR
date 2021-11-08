@@ -72,6 +72,7 @@ import { AddFeatureComponent } from './Admin/features/add-feature/add-feature.co
 import { RoleFeatureComponent } from './Admin/components/role-feature/role-feature.component';
 import { MonthlyTransactionalReportComponent } from './report-sub-system/monthly-transactional-report/monthly-transactional-report.component';
 import { ManagementReportComponent } from './report-sub-system/management-report/management-report.component';
+import { CaptureStockComponent } from './Admin/Stock/capture-stock/capture-stock.component';
 
 const routes: Routes = [
 
@@ -293,6 +294,11 @@ const routes: Routes = [
         path: "complete-stock",
         component: CompleteStockComponent
       },
+      
+        {
+          path:"capture/:id",
+          component:CaptureStockComponent
+        },
       {
         path:"report",
         children:[
@@ -472,6 +478,11 @@ const routes: Routes = [
         {
           path:"complete/:id",
           component:CompleteStockComponent
+        }
+        ,
+        {
+          path:"capture/:id",
+          component:CaptureStockComponent
         }
       ]
      }

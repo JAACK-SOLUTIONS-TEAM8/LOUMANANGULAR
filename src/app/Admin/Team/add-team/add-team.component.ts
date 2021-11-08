@@ -22,6 +22,14 @@ export class AddTeamComponent implements OnInit {
 
   teamDays:any[]=[]
 
+  isSelectedStartTime:boolean=false;
+  startTimeSelected:string[]=[];
+  endTimeSelected:string[]=[];
+
+  invalidStartTime:boolean=false;
+  invalidEndTime:boolean=false;
+  date:Date=new Date()
+
   constructor(
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
@@ -194,4 +202,43 @@ export class AddTeamComponent implements OnInit {
     console.log(day)
     this.daysData.push(day);
   }
+
+
+  startTimeChanges(timeEvent:any)
+  {
+     this.startTimeSelected=timeEvent.target.value.split(':');
+
+
+    console.log(this.startTimeSelected);
+
+    // if(Number(this.startTimeSelected[0]) < this.date.getHours())
+    // {
+    //   this.invalidStartTime=true;
+    //   console.log("start time already passed!");
+    // }
+    // else
+    // {
+    //   this.isSelectedStartTime=true;
+    //   this.invalidStartTime=false
+    // }
+  }
+
+
+  endTimeChanges(timeEvent:any)
+  {
+    this.endTimeSelected=timeEvent.target.value.split(':');
+
+    console.log(this.endTimeSelected);
+
+  if(Number(this.endTimeSelected[0]) <= Number(this.startTimeSelected[0]))
+  {
+    this.invalidEndTime=true;
+    console.log("end time sould be greater that start time");
+  }
+  else
+  {
+    this.invalidEndTime=false;
+  }
+}
+
 }

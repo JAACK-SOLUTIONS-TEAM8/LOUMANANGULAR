@@ -1,9 +1,22 @@
-<div class="card" id="invoice" #invoice>
+<div class="card"id="invoice" #invoice >
   <div class="card-header text-center">
     <h3>Checkout</h3>
   </div>
   <div class="card-body">
-
+    <div class="row">
+      <div class="col-lg-2 col-md-2 col-sm-2 m-1">
+        <img style="width: 300px; height: 300px;" src="../../../assets/louman.jpeg" alt="">
+      </div>
+      <div class="col-lg-4 col-md-4 col-sm-4 m-2">
+        <h3><b>Louman Farms</b></h3>
+        <p class="mt-1 ">Portion 62 Delmas </p>
+        <p class="mt-1">Mpumalanga </p>
+        <p class="mt-1">2210</p>
+        <p class="mt-1">+27 13 667 9110</p>
+        <p class="mt-1">loumanfarms@gmail.com</p>
+      </div>
+    </div>
+  
     <div class="row">
       <div class="card">
         <div class="card-header">
@@ -52,7 +65,8 @@
                       <th scope="col">Product Name</th>
                       <th scope="col">Product Type</th>
                       <th scope="col">Size</th>
-                      <th scope="col">Price</th>
+                      <th scope="col">Price(R)</th>
+                      <th scope="col">Vat(R)</th>
                       <th scope="col">Ordered Quantity</th>
                     </tr>
                   </thead>
@@ -62,6 +76,8 @@
                       <td scope="row">{{product.product.productTypeName}}</td>
                       <td scope="row">{{product.product.productSizeDescription}}</td>
                       <td scope="row">R{{product.product.price | number:'.2-4'}}</td>
+                      <td scope="row">R{{product.product.vatAmount??0 | number:'.2-4'}}</td>
+
                       <td scope="row">{{product.quantity}}</td>
                     </tr>
                   </tbody>
@@ -135,7 +151,7 @@
               <div class="row form-group">
                 <div class="col-lg-6 col-md-4 col-sm-8 col-12">
                   <label>Pickup Date:</label>
-                  <input type="date" class="form-control" formControlName="pickupDate">
+                  <input type="date" [min]="todayDate" class="form-control" formControlName="pickupDate">
                 </div>
               </div>
               <div class="row form-group">
@@ -186,7 +202,7 @@
     <div class=" row mt-5">
       <div class="col-12">
         <button type="button" class="btn btn-primary" style="float: right; margin-left: 5px;" data-bs-toggle="modal" data-bs-target="#additionConfirmation"> {{role=='admin'?'Complete Order':'Checkout'}}</button>
-        <button type="button" class="btn btn-primary" style="float: right; margin-left: 5px;" (click)="downloadPDF()"> Generate Invoice</button>
+        <!-- <button type="button" class="btn btn-primary" style="float: right; margin-left: 5px;" (click)="downloadPDF()"> Generate Invoice</button> -->
         <button type="button" class="btn btn-secondary" style="float: right;" [routerLink]="'/client/cart'" >Back</button>
       </div>
     </div>
@@ -212,3 +228,8 @@
     </div>
   </div>
 </div>
+
+
+
+
+

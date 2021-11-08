@@ -1,6 +1,6 @@
 <div class="card">
   <div class="card-header text-center">
-    <h3>{{adminId==0?'Add Admin':'View Admin Detail '}} </h3>
+    <h3>{{adminId==0?'Add Admin':'View Admin Details '}} </h3>
     <span style="float: right;">
       <h3><countdown #cd [config]="config" (event)="handleEvent($event)"></countdown></h3>
     </span>  
@@ -92,15 +92,7 @@
         </div>
         <div class="card-body">
           <form [formGroup]="adminDetailForm">
-            <div class="row form-group">
-              <div class="col-lg-6 col-md-4 col-sm-8 col-12">
-                <label>User Type:</label>
-                <select name="" id="" class="form-control" formControlName="userTypeId">
-                  <option value="none">--Select User Type--</option>
-                  <option [value]="type.userTypeId" *ngFor="let type of userTypes">{{type.userTypeDescription}}</option>
-                </select>
-              </div>
-            </div>
+            
             <div class="row form-group">
               <div class="col-lg-6 col-md-4 col-sm-8 col-12">
                 <label>Name:</label>
@@ -161,6 +153,23 @@
                                             </span>
               </div>
             </div>
+            <div class=" row form-group">
+              <div class="col-lg-6 col-md-4 col-sm-8 col-12">
+                <label>Cell Number:</label>
+                <input type="text" 
+                        class="form-control"
+                         placeholder="Cell Number" 
+                         formControlName="cellNumber"
+                         [ngClass]="{'is-invalid': (adminDetailForm.get('cellNumber')?.touched ||
+                         adminDetailForm.get('cellNumber')?.dirty) &&
+                                        !adminDetailForm.get('cellNumber')?.valid }">
+                                        <span class="invalid-feedback">
+                                          <span *ngIf="adminDetailForm.get('cellNumber')?.errors?.required">
+                                            Please Enter Cell Number.
+                                          </span>
+                                        </span>
+            </div>
+          </div>
             <div class="row form-group">
               <div class="col-lg-6 col-md-4 col-sm-8 col-12">
                 <label>ID Number:</label>
@@ -179,6 +188,12 @@
                                                 Id Number should be of 13 characters
                                               </span>
                                             </span>
+              </div>
+            </div>
+            <div class="row form-group" style="visibility: hidden;">
+              <div class="col-lg-6 col-md-4 col-sm-8 col-12">
+                <label>UserType:</label>
+                <input type="number" value="1" class="form-control" placeholder="User Type" formControlName="userTypeId">
               </div>
             </div>
           </form>

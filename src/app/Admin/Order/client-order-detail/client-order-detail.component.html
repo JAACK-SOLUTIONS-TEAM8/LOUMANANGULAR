@@ -16,7 +16,7 @@
               <table class="table">
                   <thead  style="background-color: rgb(103, 186, 241);">
                     <tr>
-                      <th scope="col">Order Id</th>
+                      <th scope="col">Invoice Number</th>
                       <th scope="col">Client Name</th>
                       <th scope="col">Created Date</th>
                       <th scope="col">Total</th>
@@ -32,7 +32,7 @@
                       <td scope="row">R{{order.total | number:'.2-4'}}</td>
                       <td scope="row">{{order.orderStatus}}</td>
                       <td scope="row">
-                        <button class="btn btn-primary" (click)="getOrderDetail(order)">View Detail</button>
+                        <button class="btn btn-primary" (click)="getOrderDetail(order)">View Details</button>
                       </td>
                     </tr>
                   </tbody>

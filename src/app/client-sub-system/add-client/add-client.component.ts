@@ -70,22 +70,25 @@ export class AddClientComponent implements OnInit {
     this.clientDetailForm = this.formBuilder.group({
       initials: [null,[Validators.required,Validators.minLength(5),Validators.maxLength(50)]],
       surname: [null,[Validators.required,Validators.minLength(5),Validators.maxLength(50)]],
-      userTypeId: [null,Validators.required],
+      userTypeId: [null],
       idNumber: [null,[Validators.required,Validators.minLength(13),Validators.maxLength(13)]],
-      email: [null,[Validators.required,Validators.email]]
+      email: [null,[Validators.required,Validators.email]],
+      cellNumber: [null,[Validators.required]]
     });
 
     this.addressDetailForm = this.formBuilder.group({
-      streetName: [null,[Validators.required,Validators.minLength(10),Validators.maxLength(100)]],
-      streetNumber: [null,[Validators.required,streetNumberValidator]],
-      cityName: [null,[Validators.required,Validators.minLength(5),Validators.maxLength(50)]],
-      cityCode: [null,[Validators.required,,streetNumberValidator]]
+      streetName: [null,[Validators.required,Validators.minLength(3),Validators.maxLength(50)]],
+      streetNumber: [null,[Validators.required,Validators.minLength(1),Validators.maxLength(3)]],
+      cityName: [null,[Validators.required,Validators.minLength(3),Validators.maxLength(50)]],
+      cityCode: [null,[Validators.required,Validators.minLength(4)]]
     });
   }
 
   getUserTypes() {
     this.userService.getUserTypes().subscribe(types => {
       this.userTypes = types.userTypes;
+      let client=this.userTypes.find(user=>user.userTypeDescription=="Client")
+      this.clientDetailForm.controls["userTypeId"].patchValue(Number(client.userTypeId))
     });
   }
 
@@ -105,11 +108,12 @@ export class AddClientComponent implements OnInit {
       this.clientDetailForm.controls["userTypeId"].patchValue(response.client.userTypeId);
       this.clientDetailForm.controls["idNumber"].patchValue(response.client.idNumber);
       this.clientDetailForm.controls["email"].patchValue(response.client.email);
-      
-      this.addressDetailForm.controls["streetName"].patchValue(response.client.surname);
-      this.addressDetailForm.controls["streetNumber"].patchValue(response.client.userTypeId);
-      this.addressDetailForm.controls["cityName"].patchValue(response.client.idNumber);
-      this.addressDetailForm.controls["cityCode"].patchValue(response.client.email);
+      this.clientDetailForm.controls["cellNumber"].patchValue(response.client.cellNumber);
+
+      this.addressDetailForm.controls["streetName"].patchValue(response.client.streetName);
+      this.addressDetailForm.controls["streetNumber"].patchValue(response.client.streetNumber);
+      this.addressDetailForm.controls["cityName"].patchValue(response.client.cityName);
+      this.addressDetailForm.controls["cityCode"].patchValue(response.client.cityCode);
 
 
     });
@@ -147,7 +151,7 @@ export class AddClientComponent implements OnInit {
       "surname":  String(this.clientDetailForm.controls["surname"].value),
       "email":  String(this.clientDetailForm.controls["email"].value),
       "idNumber":  String(this.clientDetailForm.controls["idNumber"].value),
-      "cellNumber": String(""),
+      "cellNumber": String(this.clientDetailForm.controls["cellNumber"].value),
       "addressId":Number(this.clientData!=null?this.clientData.addressId:0),
      "streetName": String(this.addressDetailForm.controls["streetName"].value),
      "streetNumber":Number(this.addressDetailForm.controls["streetNumber"].value),

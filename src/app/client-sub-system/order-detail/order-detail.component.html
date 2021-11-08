@@ -1,9 +1,21 @@
-<div class="card" id="invoice">
+<div class="card" id="invoice" #invoice>
     <div class="card-header text-center">
-      <h3>{{orderData?.clientName}}'s Order Details</h3>
+      <h3>INV#{{orderId}} - {{orderData?.clientName}}'s Order Details</h3>
     </div>
     <div class="card-body">
-  
+      <div class="row">
+        <div class="col-lg-2 col-md-2 col-sm-2 m-1">
+          <img style="width: 300px; height: 300px;" src="../../../assets/louman.jpeg" alt="">
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-4 m-2">
+          <h3><b>Louman Farms</b></h3>
+          <p class="mt-1 "> Portion 62 Delmas </p>
+          <p class="mt-1">Mpumalanga </p>
+          <p class="mt-1">2210</p>
+          <p class="mt-1">+27 13 667 9110</p>
+          <p class="mt-1">loumanfarms@gmail.com</p>
+        </div>
+      </div>
       <div class="row">
         <div class="card">
           <div class="card-header">
@@ -49,6 +61,7 @@
                 <table class="table">
                     <thead  style="background-color: rgb(103, 186, 241);">
                       <tr>
+                       
                         <th scope="col">Product Name</th>
                         <th scope="col">Product Type</th>
                         <th scope="col">Size</th>
@@ -58,6 +71,7 @@
                     </thead>
                     <tbody>
                       <tr *ngFor="let product of orderData?.products">
+                       
                         <td scope="row">{{product.product.productName}}</td>
                         <td scope="row">{{product.product.productTypeName}}</td>
                         <td scope="row">{{product.product.productSizeDescription}}</td>
@@ -67,15 +81,15 @@
                     </tbody>
                   </table>
               </div>
-              <div class="card-body mt-3">
-                <div class="row">
-                    <div class="col-lg-6">
-                        <h5>Discount:</h5>R{{orderData?.discount | number:'.2-4'}}
+              <div class="card-body mt-3" >
+                <div class="row" style="float: right; text-align: right; margin-left: 80px;" >
+                    <div class="col-lg-6"  style="float: right; text-align: right; margin-left: 80px;">
+                        <h5 style="float: right; text-align: right; margin-left: 80px;" > Discount:</h5>R{{orderData?.discount | number:'.2-4'}}
                     </div>
                 </div>
-                <div class="row">
-                  <div class="col-lg-6">
-                      <h5>Total:</h5>R{{orderData?.total | number:'.2-4'}}
+                <div class="row" style="float: right; text-align: right; margin-left: 80px;">
+                  <div class="col-lg-6" style="float: right; text-align: right; margin-left: 80px;">
+                      <h5 style="float: right; text-align: right; margin-left: 80px;">Total:</h5>R{{orderData?.total | number:'.2-4'}}
                   </div>
               </div>
             </div>    

@@ -92,6 +92,16 @@ bookSlot(slot:any)
       })
       console.log("slot is booked");
     }
+    else if(response.statusCode==404)
+    {
+      Swal.fire({
+        title: 'Warning!',
+        text: "Slot Time or date is passed Cann't book now",
+        icon: 'warning',
+        confirmButtonText: 'Ok'
+      });
+        return 
+    }
   })
 }
 

@@ -1,3 +1,4 @@
+import { CaptureStockComponent } from './Admin/Stock/capture-stock/capture-stock.component';
 import { OrderHistoryComponent } from './client-sub-system/order-history/order-history.component';
 import { OrderDetailComponent } from './client-sub-system/order-detail/order-detail.component';
 import { NgModule } from '@angular/core';
@@ -167,7 +168,7 @@ import { ManagementReportComponent } from './report-sub-system/management-report
     RoleFeatureComponent,
     MonthlyTransactionalReportComponent,
     ManagementReportComponent,
-   
+   CaptureStockComponent
     
   ],
   imports: [

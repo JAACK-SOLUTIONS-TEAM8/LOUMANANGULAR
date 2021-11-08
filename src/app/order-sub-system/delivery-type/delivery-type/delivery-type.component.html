@@ -1,6 +1,6 @@
 <div class="card">
     <div  class="card-header text-center">
-      <h3>Delivery Type Details</h3>
+      <h3>Delivery Types</h3>
     </div>
     <div class="card-body">
         <div class="row">
@@ -10,7 +10,7 @@
               <a type="button" class="btn btn-info" style="float: right;width: 8rem;" href="https://jaack-solutions-team8.github.io/index.html?page=adding-of-a-delivery-type.html" target="_blank">Help</a>
             </div>
           <div class="col-lg-4 col-md-3 col-sm-2 col-12 "> 
-              <button type="button" class="btn btn-primary" style="float: left;width: 8rem;" [routerLink]="'/order/deliveryType/add/0'" >Add</button>
+              <!-- <button type="button" class="btn btn-primary" style="float: left;width: 8rem;" [routerLink]="'/order/deliveryType/add/0'" >Add</button> -->
           </div>
           <div class="col-lg-4 col-md-3 col-sm-6 col-12">
               <span class="input-group" style="float: right;">
@@ -34,16 +34,16 @@
                         <thead  style="background-color: rgb(103, 186, 241);">
                           <tr>
                             <th scope="col">Delivery Type</th>
-                            <th scope="col">Action</th>
+                            <!-- <th scope="col">Action</th> -->
                           </tr>
                         </thead>
                         <tbody>
                           <tr *ngFor="let deliveryType of deliveryTypesData">
                             <td scope="row">{{deliveryType.description}}</td>
-                            <td scope="row">
-                              <button class="btn btn-outline-primary" (click)="editDeliveryType(deliveryType)">View</button>
-                              <button class="btn btn-outline-primary"  data-bs-toggle="modal" data-bs-target="#deletionConfirmation" (click)="deleteDeliveryType(deliveryType)" >Delete</button>
-                            </td>
+                            <!-- <td scope="row"> -->
+                              <!-- <button class="btn btn-outline-primary" (click)="editDeliveryType(deliveryType)">View</button> -->
+                              <!-- <button class="btn btn-outline-primary"  data-bs-toggle="modal" data-bs-target="#deletionConfirmation" (click)="deleteDeliveryType(deliveryType)" >Delete</button> -->
+                            <!-- </td> -->
                           </tr>
                         </tbody>
                       </table>

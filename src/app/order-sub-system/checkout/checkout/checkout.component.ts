@@ -7,6 +7,7 @@ import { OrderService } from 'src/app/services/order/order.service';
 import { UserService } from 'src/app/services/user/user.service';
 import Swal from 'sweetalert2';
 import html2PDF from 'jspdf-html2canvas';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-checkout',
@@ -24,6 +25,7 @@ export class CheckoutComponent implements OnInit {
   subTotal:number;
   discount:number;
   vat:number;
+  todayDate:string=this.datePipe.transform(new Date(),"yyyy-MM-dd");
 
 deliveryTypeForm:FormGroup;
 paymentTypeForm:FormGroup;
@@ -36,6 +38,7 @@ role:string="client";
   showPickupInfo:boolean=false;
   showCardDetailForm: boolean=false;
   constructor(
+    private datePipe:DatePipe,
     private clientService:ClientService,
     private cartServive:CartService,
     private formBuilder:FormBuilder,

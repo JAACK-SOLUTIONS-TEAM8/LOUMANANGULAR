@@ -51,7 +51,7 @@
                               <p class="card-text"><b>Size: </b>{{product.productSizeDescription}}</p>
                               <p class="card-text"><b>Price: </b>  R{{product.price | number:'.2-4'}}</p>
                               <p class="card-text"><b> Quantity in Stock: </b>  {{product.productQuantity}}</p>
-
+                              <p class="card-text"><b>Is Vat Included: </b>  {{product.isVatIncluded?'Yes':'No'}}</p>
                               <a href="#" class="btn btn-primary" (click)="addToCart(product)" data-bs-toggle="modal" data-bs-target="#additionConfirmation">Add To Cart</a>
                             </div>
                         </div>
@@ -80,7 +80,7 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title">Product Deletion confirmation</h5>
+          <h5 class="modal-title">Product Addition confirmation</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">

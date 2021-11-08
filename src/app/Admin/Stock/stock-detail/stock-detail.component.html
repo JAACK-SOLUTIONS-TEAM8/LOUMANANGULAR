@@ -34,6 +34,7 @@
                           <th scope="col">Product Type</th>
                           <th scope="col">Size</th>
                           <th scope="col">Price</th>
+                          <th scope="col">Vat(R)</th>
                           <th scope="col">Quantity</th>
                           <th scope="col">Actions</th>
                         </tr>
@@ -44,10 +45,13 @@
                           <td scope="row">{{product.productTypeName}}</td>
                           <td scope="row">{{product.productSizeDescription}}</td>
                           <td scope="row">{{product.price}}</td>
+                          <td scope="row"> R{{product.vatAmount??0 | number:'.2-4'}}</td>
                           <td scope="row">{{product.productQuantity}}</td>
+
                           <td scope="row">
-                              <button class="btn btn-outline-primary" (click)="writeOffStockProduct(product)">WriteOff</button>
-                              <button class="btn btn-outline-primary" (click)="completeStockProduct(product)">Complete</button>
+                              <button class="btn btn-outline-primary" [disabled]="product.productQuantity==0" (click)="writeOffStockProduct(product)">WriteOff</button>
+                              <button class="btn btn-outline-primary" [disabled]="product.productQuantity==0" (click)="completeStockProduct(product)">Complete</button>
+                              <button class="btn btn-outline-primary" [disabled]="product.productQuantity>0" (click)="captureStockProduct(product)">Capture</button>
 
                           </td>
                         </tr>
