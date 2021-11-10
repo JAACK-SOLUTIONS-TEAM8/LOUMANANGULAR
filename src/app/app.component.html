@@ -63,8 +63,8 @@
                             <li><a [routerLink]="'/admin/timer-config'" class="link-dark rounded" *ngIf="roles.includes('timer management')">Configure Timer</a></li>
                             <li><a [routerLink]="'/admin/roles'" class="link-dark rounded" *ngIf="roles.includes('role management')">Manage Roles</a></li>
                             <li><a href="https://jaack-solutions-team8.github.io/" class="link-dark rounded" target="_blank">Help Site</a></li>
-                            <li><a [routerLink]="'/admin/features'" class="link-dark rounded" 
-                                *ngIf="roles.includes('feature management')">Manage Features</a></li>
+                            <!-- <li><a [routerLink]="'/admin/features'" class="link-dark rounded" 
+                                *ngIf="roles.includes('feature management')">Manage Features</a></li> -->
 
                         </ul>
                     </div>
@@ -83,7 +83,7 @@
                             <li><a [routerLink]="'/admin/report/client-report'" class="link-dark rounded">Client Report</a></li>
                             <li><a [routerLink]="'/admin/report/attendance-report'" class="link-dark rounded">Attendance Report</a></li>
                             <li><a [routerLink]="'/admin/report/transactional-report'" class="link-dark rounded">Monthly Product Sales report</a></li>
-                            <li><a [routerLink]="'/admin/report/management-report'" class="link-dark rounded">Management Report Report</a></li>
+                            <li><a [routerLink]="'/admin/report/management-report'" class="link-dark rounded">Monthly Average Sales Report</a></li>
 
                         </ul>
                     </div>

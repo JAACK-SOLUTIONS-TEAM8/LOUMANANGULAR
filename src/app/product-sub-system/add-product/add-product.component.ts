@@ -69,7 +69,7 @@ export class AddProductComponent implements OnInit {
 
   initilizeForm() {
     this.productDetailForm = this.formBuilder.group({
-      productName: [null,[Validators.required,Validators.minLength(5),Validators.maxLength(50)]],
+      productName: [null,[Validators.required,Validators.minLength(3),Validators.maxLength(50)]],
       price: [null,Validators.required],
       productTypeId: [null,Validators.required],
       productSizeId: [null,Validators.required],

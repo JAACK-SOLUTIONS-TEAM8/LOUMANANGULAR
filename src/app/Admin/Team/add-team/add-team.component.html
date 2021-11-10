@@ -17,7 +17,7 @@
                             <input type="text" 
                             class="form-control" 
                             formControlName="teamName" 
-                            placeholder="teamname"
+                            placeholder="Team Name"
                             [ngClass]="{'is-invalid': (addTeamForm.get('teamName')?.touched ||
                             addTeamForm.get('teamName')?.dirty) &&
                                             !addTeamForm.get('teamName')?.valid }">
@@ -26,7 +26,7 @@
                                                 Please enter your team name.
                                               </span>
                                               <span *ngIf="addTeamForm.get('teamName')?.errors?.maxlength || addTeamForm.get('teamName')?.errors?.minlength">
-                                                The team name must be greater than 20 and less than 50 characters.
+                                                The team name must be at least 5 characters
                                               </span>
                                             </span>
                         </div>
@@ -47,7 +47,7 @@
                                                 Please enter team description.
                                               </span>
                                               <span *ngIf="addTeamForm.get('teamDescription')?.errors?.maxlength || addTeamForm.get('teamDescription')?.errors?.minlength">
-                                                The team description must be greater than 20 and less than 50 characters.
+                                                The team description must be at least 3 characters.
                                               </span>
                                             </span>
                         </div>

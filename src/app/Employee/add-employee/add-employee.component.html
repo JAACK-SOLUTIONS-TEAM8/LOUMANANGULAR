@@ -1,6 +1,6 @@
 <div class="card">
   <div class="card-header text-center">
-    <h3>{{employeeId==0?'Add Employee':'View Employee Detail '}}</h3>
+    <h3>{{employeeId==0?'Add Employee':'View Employee Details '}}</h3>
     <span style="float: right;">
       <h3><countdown #cd [config]="config" (event)="handleEvent($event)"></countdown></h3>
     </span>
@@ -49,7 +49,7 @@
                                                 Enter your password
                                               </span>
                                               <span *ngIf="profileDetailForm.get('password')?.errors?.maxlength || profileDetailForm.get('password')?.errors?.minlength">
-                                                The password must be greater than 4 and less than 8 characters.
+                                                The password must be at least 4 characters.
                                               </span>
                                               
                                             </span>
@@ -71,7 +71,7 @@
                                               </span>
                                               <br>
                                               <span *ngIf="profileDetailForm?.errors?.match">
-                                                The confirmation does not match the password.
+                                                The passwords do not match.
                                               </span>
                                             </span>
               </div>
@@ -104,7 +104,7 @@
                                                 Please enter your name.
                                               </span>
                                               <span *ngIf="employeeDetailForm.get('initials')?.errors?.maxlength || employeeDetailForm.get('initials')?.errors?.minlength">
-                                                The name must be greater than 3 and less than 50 characters.
+                                                The name must be at least 3 characters.
                                               </span>
                                             </span>
               </div>
@@ -124,7 +124,7 @@
                                                       Please enter Surname.
                                                     </span>
                                                     <span *ngIf="employeeDetailForm.get('surname')?.errors?.maxlength || employeeDetailForm.get('surname')?.errors?.minlength">
-                                                      The name must be greater than 5 and less than 50 characters.
+                                                      The name must be at least 5 characters.
                                                     </span>
                                                   </span>
               </div>
@@ -144,7 +144,7 @@
                                                 Please your email address.
                                               </span>
                                               <span *ngIf="employeeDetailForm.get('email')?.errors?.email">
-                                                Enter a Valid Email
+                                                Enter a Valid Email Address.
                                               </span>
                                             </span>
               </div>
@@ -161,7 +161,7 @@
                                             !employeeDetailForm.get('cellNumber')?.valid }">
                                             <span class="invalid-feedback">
                                               <span *ngIf="employeeDetailForm.get('cellNumber')?.errors?.required">
-                                                Please your cell Number.
+                                                Please enter the cell Number.
                                               </span>
                                             </span>
               </div>
@@ -182,7 +182,7 @@
                                                 Please Enter Id Number.
                                               </span>
                                               <span *ngIf="employeeDetailForm.get('idNumber')?.errors?.maxlength || employeeDetailForm.get('idNumber')?.errors?.minlength">
-                                                Id Number should be of 13 characters
+                                                Id Number should be 13 characters.
                                               </span>
                                             </span>
               </div>
@@ -218,7 +218,7 @@
             <div class="col-lg-4 col-md-3 col-sm-2 col-12">
                 <input style="display: none;" type="file" id="employeeDocument"
                     (change)="uploadDocument($event)" #documentFile>
-                <button style=" color:rgb(252, 250, 250);" type="button" class="btn btn-primary" (click)="documentFile.click()">{{employeeDocument.file!=null?'Upload Document':'Update Document'}}</button>
+                <button style=" color:rgb(252, 250, 250);" type="button" class="btn btn-primary" (click)="documentFile.click()">{{employeeDocument.file!=null?'Upload Document':'Upload Document'}}</button>
             </div>
             <div class="col-lg-8 col-md-6 col-sm-5 col-12">
                 <h4 style="height:15rem; width: 15rem; float: rigth;" *ngIf="employeeId==0 || employeeDocument.file!=null">{{employeeDocument.fileName}}</h4>

@@ -30,7 +30,7 @@
                                                 Please enter your username.
                                               </span>
                                               <span *ngIf="profileDetailForm.get('userName')?.errors?.maxlength || profileDetailForm.get('userName')?.errors?.minlength">
-                                                The user name must be greater than 5 and less than 50 characters.
+                                                The user name must be at least 5 characters
                                               </span>
                                             </span>
               </div>
@@ -52,7 +52,7 @@
                                                 Enter your password
                                               </span>
                                               <span *ngIf="profileDetailForm.get('password')?.errors?.maxlength || profileDetailForm.get('password')?.errors?.minlength">
-                                                The password must be greater than 4 and less than 8 characters.
+                                                The password must be greater than 4 characters.
                                               </span>
                                               
                                             </span>
@@ -74,7 +74,7 @@
                                               </span>
                                               <br>
                                               <span *ngIf="profileDetailForm?.errors?.match">
-                                                The confirmation does not match the password.
+                                                The passords do not match.
                                               </span>
                                             </span>
                                               
@@ -108,7 +108,7 @@
                                                 Please enter your name.
                                               </span>
                                               <span *ngIf="adminDetailForm.get('initials')?.errors?.maxlength || adminDetailForm.get('initials')?.errors?.minlength">
-                                                The name must be greater than 3 and less than 50 characters.
+                                                The name must be at least 3 characters.
                                               </span>
                                             </span>
               </div>
@@ -128,7 +128,7 @@
                                                 Please enter Surname.
                                               </span>
                                               <span *ngIf="adminDetailForm.get('surname')?.errors?.maxlength || adminDetailForm.get('surname')?.errors?.minlength">
-                                                The name must be greater than 5 and less than 50 characters.
+                                                The name must be at least 3 characters.
                                               </span>
                                             </span>
               </div>
@@ -148,7 +148,7 @@
                                                 Please your email address.
                                               </span>
                                               <span *ngIf="adminDetailForm.get('email')?.errors?.email">
-                                                Enter a Valid Email
+                                                Enter a Valid Email Address.
                                               </span>
                                             </span>
               </div>
@@ -185,7 +185,7 @@
                                                 Please Enter Id Number.
                                               </span>
                                               <span *ngIf="adminDetailForm.get('idNumber')?.errors?.maxlength || adminDetailForm.get('idNumber')?.errors?.minlength">
-                                                Id Number should be of 13 characters
+                                                Id Number should be at least 13 characters.
                                               </span>
                                             </span>
               </div>
@@ -204,7 +204,7 @@
     <div class="row mt-5">
       <div class="col-12">
         <button type="button" class="btn btn-primary" style="float: right; margin-left: 5px;"
-        data-bs-toggle="modal" data-bs-target="#additionConfirmation" [disabled]="!profileDetailForm.valid || !adminDetailForm.valid" >{{adminId==0?'Save':'Update'}}</button>
+        data-bs-toggle="modal" data-bs-target="#additionConfirmation" >{{adminId==0?'Save':'Update'}}</button>
         <button type="button" class="btn btn-secondary" style="float: right;" [routerLink]="'/admin/detail'" >Cancel</button>
       </div>
     </div>

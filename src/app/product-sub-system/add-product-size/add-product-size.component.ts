@@ -45,7 +45,7 @@ export class AddProductSizeComponent implements OnInit {
 
   initilizeForm() {
     this.productSizeForm = this.formBuilder.group({
-      productSizeDescription: [null,[Validators.required,Validators.minLength(15),Validators.maxLength(50)]]
+      productSizeDescription: [null,[Validators.required,Validators.minLength(3),Validators.maxLength(50)]]
     });
   }
 

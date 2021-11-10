@@ -87,7 +87,7 @@ export class AddTeamComponent implements OnInit {
   initilizeForm() {
     this.addTeamForm = this.formBuilder.group({
       teamName: [null,[Validators.required,Validators.minLength(5),Validators.maxLength(50)]],
-      teamDescription: [null,[Validators.required,Validators.minLength(20),Validators.maxLength(50)]],
+      teamDescription: [null,[Validators.required,Validators.minLength(3),Validators.maxLength(100)]],
       locationId: [null,Validators.required],
       maxEmployee: [null,Validators.required],
       startTime: [null,Validators.required],

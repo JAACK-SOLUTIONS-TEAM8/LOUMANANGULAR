@@ -76,8 +76,8 @@ export class AddAdminComponent implements OnInit {
 
     this.adminDetailForm = this.fromBuilder.group({
       initials: [null,[Validators.required,Validators.maxLength(50), Validators.minLength(3)]],
-      surname: [null,[Validators.required,Validators.maxLength(50), Validators.minLength(5)]],
-      userTypeId: [null,Validators.required],
+      surname: [null,[Validators.required,Validators.maxLength(50), Validators.minLength(3)]],
+      userTypeId: [null],
       idNumber: [null,[Validators.required,Validators.minLength(13),Validators.maxLength(13)]],
       email: [null, [Validators.required, Validators.email]],
       cellNumber: [null, [Validators.required]]

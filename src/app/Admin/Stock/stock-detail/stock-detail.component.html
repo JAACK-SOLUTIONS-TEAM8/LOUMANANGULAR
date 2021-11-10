@@ -49,8 +49,8 @@
                           <td scope="row">{{product.productQuantity}}</td>
 
                           <td scope="row">
-                              <button class="btn btn-outline-primary" [disabled]="product.productQuantity==0" (click)="writeOffStockProduct(product)">WriteOff</button>
-                              <button class="btn btn-outline-primary" [disabled]="product.productQuantity==0" (click)="completeStockProduct(product)">Complete</button>
+                              <button class="btn btn-outline-primary" [disabled]="product.productQuantity==0" (click)="writeOffStockProduct(product)">Write Off</button>
+                              <button class="btn btn-outline-primary" [disabled]="product.productQuantity==0" (click)="completeStockProduct(product)">Do Stock Take</button>
                               <button class="btn btn-outline-primary" [disabled]="product.productQuantity>0" (click)="captureStockProduct(product)">Capture</button>
 
                           </td>

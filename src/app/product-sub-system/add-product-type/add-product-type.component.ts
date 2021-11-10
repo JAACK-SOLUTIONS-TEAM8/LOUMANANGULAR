@@ -41,7 +41,7 @@ export class AddProductTypeComponent implements OnInit {
 
   initilizeForm() {
     this.productTypeForm = this.formBuilder.group({
-      productTypeName: [null,[Validators.required,Validators.minLength(10),Validators.maxLength(50)]]
+      productTypeName: [null,[Validators.required,Validators.minLength(3),Validators.maxLength(50)]]
     });
   }
 
